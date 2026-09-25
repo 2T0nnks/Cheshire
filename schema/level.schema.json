@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://github.com/2T0nnks/quantum-game/schema/level.schema.json",
+  "$id": "https://github.com/2T0nnks/Cheshire/schema/level.schema.json",
   "title": "Cheshire Level",
   "description": "Uma fase do Cheshire: uma sequência de passos (história, quiz, circuito, medição, previsão, curiosidade).",
   "type": "object",
