@@ -1,0 +1,88 @@
+{
+  "slug": "bb84",
+  "status": "open",
+  "order": 9,
+  "title": "Segredo inviolável",
+  "subtitle": "Criptografia quântica com o protocolo BB84: um espião não consegue ouvir sem deixar pegadas.",
+  "track": "algoritmos",
+  "audience": "estudante",
+  "icon": "🔐",
+  "duration": "~9 min",
+  "tags": ["criptografia", "BB84", "medição"],
+  "author": "2T0nnks",
+  "license": "CC-BY-SA-4.0",
+  "steps": [
+    {
+      "type": "story",
+      "icon": "🔐",
+      "title": "Alice, Bob e Eva",
+      "body": [
+        "Alice quer combinar uma chave secreta com Bob. Eva, a espiã, escuta tudo. Numa linha clássica, Eva pode copiar os bits sem deixar rastro.",
+        "Em 1984, Charles Bennett e Gilles Brassard propuseram usar qubits. Como medir muda o estado, qualquer bisbilhotagem deixa marcas. Esse é o <strong>BB84</strong>."
+      ]
+    },
+    {
+      "type": "story",
+      "icon": "➕",
+      "title": "Duas bases",
+      "body": [
+        "Alice codifica cada bit numa de duas “bases”, escolhida ao acaso. Na base <strong>+</strong>, usa <code>|0⟩</code> e <code>|1⟩</code>. Na base <strong>×</strong>, usa <code>|+⟩</code> e <code>|−⟩</code>.",
+        "Bob também escolhe uma base ao acaso para medir. Medir na base × é o mesmo que aplicar uma H e depois medir normalmente."
+      ]
+    },
+    {
+      "type": "measure",
+      "title": "Bob escolhe a base errada",
+      "body": "Alice envia <code>|+⟩</code> (bit 0 na base ×). Bob mede na base +.",
+      "qubits": 1,
+      "wires": ["fóton"],
+      "circuit": ["H 0"],
+      "minShots": 12,
+      "after": "Resultado aleatório: o bit de Bob não diz nada sobre o de Alice."
+    },
+    {
+      "type": "measure",
+      "title": "Bob acerta a base",
+      "body": "Mesmo <code>|+⟩</code>, mas agora Bob mede na base × (uma H antes de medir).",
+      "qubits": 1,
+      "wires": ["fóton"],
+      "circuit": ["H 0", "H 0"],
+      "minShots": 12,
+      "after": "Sempre 0 — o bit de Alice. Depois, os dois anunciam <em>em público</em> só as bases que usaram (nunca os bits) e jogam fora as rodadas em que as bases não bateram. O que sobra é a chave."
+    },
+    {
+      "type": "predict",
+      "question": "Eva intercepta o fóton <code>|+⟩</code> e mede na base + (aqui, ela “anota” o resultado num qubit dela com uma CNOT). Bob depois mede na base certa, a ×. Qual a chance de Bob obter o bit <strong>errado</strong> (1)?",
+      "qubits": 2,
+      "wires": ["fóton", "Eva"],
+      "circuit": ["H 0", "CNOT 0 1", "H 0"],
+      "outcome": "1x",
+      "explain": "50%! A medição de Eva destruiu a superposição. Como Eva só erra a base metade das vezes, na média ela introduz cerca de <strong>25% de erros</strong> nos bits que deveriam bater. Alice e Bob comparam uma amostra da chave: se a taxa de erro é alta, sabem que foram espionados."
+    },
+    {
+      "type": "quiz",
+      "question": "Por que Eva não copia o fóton, deixa o original seguir e mede só a cópia?",
+      "options": [
+        { "text": "Porque cópias custam caro.", "why": "Não é questão de custo: é impossível, por lei da física." },
+        { "text": "Por causa do teorema da não clonagem: não dá para copiar um estado quântico desconhecido.", "correct": true, "why": "Isso. Se clonagem fosse possível, o BB84 (e muita coisa) cairia. A linearidade da mecânica quântica proíbe." },
+        { "text": "Porque o fóton explode se for copiado.", "why": "Nada tão dramático — a cópia simplesmente não pode ser feita com fidelidade." }
+      ]
+    },
+    {
+      "type": "fact",
+      "icon": "📞",
+      "title": "Videochamada quântica",
+      "text": "Em 2017, o satélite Micius distribuiu chaves quânticas entre estações na China e na Áustria, que foram usadas para cifrar uma videoconferência intercontinental entre Pequim e Viena.",
+      "source": "Liao et al., Physical Review Letters (2018)."
+    }
+  ],
+  "takeaways": [
+    "No BB84, Alice e Bob escolhem bases ao acaso e só guardam os bits em que as bases coincidem.",
+    "Medir na base errada dá resultados aleatórios — e a espionagem aparece como erros.",
+    "O teorema da não clonagem impede Eva de copiar os qubits sem ser notada."
+  ],
+  "terms": ["bb84", "nao-clonagem", "medicao"],
+  "further": [
+    { "title": "Bennett & Brassard (1984) — artigo original do BB84 (reimpresso em 2014)", "url": "https://doi.org/10.1016/j.tcs.2014.05.025" }
+  ]
+}

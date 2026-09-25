@@ -1,0 +1,91 @@
+{
+  "slug": "grover",
+  "status": "open",
+  "order": 12,
+  "title": "Agulha no palheiro",
+  "subtitle": "O algoritmo de Grover: marque a resposta com fase e amplifique-a com interferência.",
+  "track": "algoritmos",
+  "audience": "avancado",
+  "icon": "🔎",
+  "duration": "~12 min",
+  "tags": ["busca", "amplificação", "algoritmos"],
+  "author": "2T0nnks",
+  "license": "CC-BY-SA-4.0",
+  "steps": [
+    {
+      "type": "story",
+      "icon": "🔎",
+      "title": "Procurar sem índice",
+      "body": [
+        "Imagine uma lista de <code>N</code> itens sem ordem nenhuma, e um jeito de conferir se um item é o certo. Classicamente, você testa um por um: em média, <code>N/2</code> tentativas.",
+        "Em 1996, Lov Grover mostrou que um computador quântico precisa de cerca de <code>√N</code> consultas. Para um milhão de itens: menos de mil, em vez de meio milhão."
+      ]
+    },
+    {
+      "type": "predict",
+      "question": "Com 2 qubits há 4 itens. Colocamos todos em superposição (H, H) e o oráculo marca o item <code>11</code> com uma CZ. Qual a chance de medir <code>11</code> agora?",
+      "qubits": 2,
+      "circuit": ["H 0", "H 1", "CZ 0 1"],
+      "outcome": "11",
+      "explain": "Ainda 25%. O oráculo marcou <code>11</code> invertendo o sinal da amplitude — repare na cor diferente da barra —, mas fase sozinha não muda probabilidade. Falta a interferência."
+    },
+    {
+      "type": "story",
+      "icon": "📈",
+      "title": "Inversão em torno da média",
+      "body": [
+        "O passo seguinte é o <strong>difusor</strong>: reflete cada amplitude em torno da média de todas. A marcada, que ficou negativa, está muito abaixo da média — e é jogada muito para cima. As outras encolhem.",
+        "Com 2 qubits, uma única rodada leva a marcada a 100%. Em circuito, o difusor é: H em todos, “marcar o <code>|00⟩</code>”, H em todos. Marcar o <code>|00⟩</code> dá para fazer com X em todos, CZ, X em todos — ou, mais curto, Z em todos e CZ."
+      ]
+    },
+    {
+      "type": "circuit",
+      "title": "Construa o difusor",
+      "goal": "O oráculo (colunas 0–1) marcou <code>11</code>. Construa o difusor para que <code>11</code> saia com 100% de chance.",
+      "qubits": 2,
+      "gates": ["H", "X", "Z", "CZ"],
+      "fixed": ["H 0 @0", "H 1 @0", "CZ 0 1 @1"],
+      "target": { "probabilities": { "11": 1 } },
+      "solution": ["H 0", "H 1", "Z 0", "Z 1", "CZ 0 1", "H 0", "H 1"],
+      "hints": [
+        "Comece com H nos dois qubits.",
+        "Depois marque o <code>|00⟩</code>: Z nos dois e uma CZ (ou X nos dois, CZ, X nos dois).",
+        "Termine com H nos dois."
+      ],
+      "success": "Achou a agulha em uma consulta! Com 4 itens, um computador clássico precisaria em média de mais de duas."
+    },
+    {
+      "type": "predict",
+      "question": "Trocamos o oráculo para marcar <code>01</code> (X no qubit 0, CZ, X no qubit 0). Mesmo difusor. Qual a chance de medir <code>01</code>?",
+      "qubits": 2,
+      "circuit": ["H 0", "H 1", "X 0", "CZ 0 1", "X 0", "H 0", "H 1", "Z 0", "Z 1", "CZ 0 1", "H 0", "H 1"],
+      "outcome": "01",
+      "explain": "100%. O difusor não sabe nada sobre a resposta: ele só amplifica o que estiver marcado. Toda a “pergunta” mora no oráculo."
+    },
+    {
+      "type": "quiz",
+      "question": "Para 1 milhão de itens, quantas consultas o Grover precisa, aproximadamente?",
+      "options": [
+        { "text": "Cerca de 500 mil", "why": "Isso é a média clássica, testando um por um." },
+        { "text": "Cerca de 800", "correct": true, "why": "Isso: por volta de <code>(π/4)·√N</code> ≈ 785. Uma aceleração quadrática." },
+        { "text": "Cerca de 20", "why": "Seria uma aceleração exponencial (≈ log₂N). Para busca sem estrutura, está provado que √N é o melhor possível." },
+        { "text": "Exatamente 1", "why": "Só com 4 itens! Em geral, são várias rodadas de oráculo + difusor — e passar do ponto piora o resultado." }
+      ]
+    },
+    {
+      "type": "fact",
+      "icon": "🔑",
+      "title": "Grover e as senhas",
+      "text": "A aceleração de Grover é “só” quadrática: quebrar uma chave de 128 bits por força bruta cairia de 2¹²⁸ para cerca de 2⁶⁴ passos. Por isso a recomendação é usar chaves simétricas maiores, como AES-256. Quem ameaça de verdade a criptografia atual é o algoritmo de Shor, contra RSA e curvas elípticas."
+    }
+  ],
+  "takeaways": [
+    "O oráculo marca a resposta invertendo sua fase; o difusor converte fase em probabilidade.",
+    "Grover precisa de ~√N consultas: aceleração quadrática, que é ótima para busca sem estrutura.",
+    "Rodadas demais passam do ponto: o número de iterações precisa ser calculado."
+  ],
+  "terms": ["oraculo", "interferencia", "amplitude", "cz"],
+  "further": [
+    { "title": "Grover (1996) — A fast quantum mechanical algorithm for database search", "url": "https://arxiv.org/abs/quant-ph/9605043" }
+  ]
+}

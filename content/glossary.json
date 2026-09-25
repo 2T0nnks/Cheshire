@@ -1,0 +1,110 @@
+{
+  "qubit": {
+    "term": "Qubit",
+    "short": "A unidade de informação quântica. Como um bit, termina em 0 ou 1 quando medido — mas antes disso pode estar numa combinação dos dois.",
+    "long": "Fisicamente pode ser um fóton, um íon preso por lasers, um circuito supercondutor resfriado perto do zero absoluto ou o spin de um elétron."
+  },
+  "bit": {
+    "term": "Bit",
+    "short": "A unidade de informação clássica: 0 ou 1, sempre com um valor definido, mesmo que ninguém olhe."
+  },
+  "ket": {
+    "term": "Ket |ψ⟩",
+    "short": "A notação de Dirac para estados quânticos. <code>|0⟩</code> e <code>|1⟩</code> são os estados básicos; <code>|ψ⟩</code> é um estado qualquer."
+  },
+  "superposicao": {
+    "term": "Superposição",
+    "short": "Um estado que combina possibilidades, cada uma com uma amplitude. Não é “os dois ao mesmo tempo” nem “um dos dois e a gente não sabe”: é uma terceira coisa, sem análogo clássico.",
+    "long": "Exemplo: <code>|+⟩ = (|0⟩ + |1⟩)/√2</code>."
+  },
+  "amplitude": {
+    "term": "Amplitude",
+    "short": "O “peso” de cada possibilidade num estado quântico. É um número complexo: a chance de medir aquele resultado é o quadrado do seu tamanho (regra de Born)."
+  },
+  "fase": {
+    "term": "Fase",
+    "short": "O “ângulo” de uma amplitude. Não muda as probabilidades sozinha, mas decide se duas possibilidades se reforçam ou se cancelam quando interferem. No Bloch, a cor da barra mostra a fase."
+  },
+  "medicao": {
+    "term": "Medição",
+    "short": "Perguntar ao qubit “0 ou 1?”. A resposta é aleatória, com chances dadas pelas amplitudes, e depois dela o estado passa a ser o resultado obtido."
+  },
+  "colapso": {
+    "term": "Colapso",
+    "short": "O nome popular para o que acontece com o estado depois de uma medição: ele “vira” o resultado. O que isso significa fisicamente ainda é debatido entre as interpretações da mecânica quântica."
+  },
+  "interferencia": {
+    "term": "Interferência",
+    "short": "Amplitudes se somam como ondas: iguais se reforçam (construtiva), opostas se cancelam (destrutiva). É o motor de quase todo algoritmo quântico."
+  },
+  "esfera-de-bloch": {
+    "term": "Esfera de Bloch",
+    "short": "Um globo onde cada ponto da superfície é um estado de um qubit. Polo norte é <code>|0⟩</code>, polo sul é <code>|1⟩</code>, e o equador guarda as superposições meio a meio com fases diferentes.",
+    "long": "Homenagem a Felix Bloch, Nobel de Física de 1952 pela ressonância magnética nuclear — a base da ressonância magnética dos hospitais."
+  },
+  "porta-quantica": {
+    "term": "Porta quântica",
+    "short": "Uma operação reversível sobre qubits. Na esfera de Bloch, as portas de um qubit são rotações."
+  },
+  "porta-x": {
+    "term": "Porta X",
+    "short": "O “NOT” quântico: troca <code>|0⟩</code> por <code>|1⟩</code> e vice-versa. É um giro de 180° em torno do eixo X."
+  },
+  "porta-z": {
+    "term": "Porta Z",
+    "short": "Inverte o sinal de <code>|1⟩</code>. Não muda nenhuma probabilidade, só a fase — invisível até alguma interferência acontecer."
+  },
+  "hadamard": {
+    "term": "Hadamard (H)",
+    "short": "A porta que cria superposição: leva <code>|0⟩</code> a <code>|+⟩</code> e <code>|1⟩</code> a <code>|−⟩</code>. Aplicada duas vezes, desfaz a si mesma."
+  },
+  "porta-s-t": {
+    "term": "Portas S e T",
+    "short": "Giram a fase de <code>|1⟩</code> em 90° (S) e 45° (T). Na esfera, fazem o estado dar a volta no equador."
+  },
+  "cnot": {
+    "term": "CNOT",
+    "short": "Porta de dois qubits: se o controle (●) é 1, aplica X no alvo (⊕). Com o controle em superposição, cria emaranhamento."
+  },
+  "cz": {
+    "term": "CZ",
+    "short": "Porta de dois qubits que inverte o sinal só de <code>|11⟩</code>. É simétrica: tanto faz quem é controle e quem é alvo."
+  },
+  "emaranhamento": {
+    "term": "Emaranhamento",
+    "short": "Quando dois ou mais qubits formam um único estado que não se descreve qubit a qubit. Os resultados das medições ficam correlacionados, a qualquer distância.",
+    "long": "No Bloch, as setas dos qubits emaranhados encolhem para o centro da esfera: sozinho, nenhum deles tem um estado definido."
+  },
+  "estado-de-bell": {
+    "term": "Estado de Bell",
+    "short": "Os quatro estados de dois qubits mais emaranhados possíveis. O mais famoso: <code>(|00⟩ + |11⟩)/√2</code>."
+  },
+  "decoerencia": {
+    "term": "Decoerência",
+    "short": "Quando o ambiente (ar, calor, luz, um detector) se emaranha com o sistema e “espalha” a informação quântica. A superposição deixa de interferir e o comportamento parece clássico."
+  },
+  "nao-clonagem": {
+    "term": "Teorema da não clonagem",
+    "short": "É impossível copiar um estado quântico desconhecido. É por isso que a criptografia quântica detecta espiões e que o teletransporte destrói o original."
+  },
+  "oraculo": {
+    "term": "Oráculo",
+    "short": "Uma caixa-preta que responde perguntas sobre uma função. Em algoritmos quânticos, costuma “marcar” respostas invertendo a fase delas."
+  },
+  "teletransporte": {
+    "term": "Teletransporte quântico",
+    "short": "Transferir o estado de um qubit para outro, distante, usando um par emaranhado e dois bits clássicos. Nada viaja mais rápido que a luz, e o original é destruído."
+  },
+  "bb84": {
+    "term": "BB84",
+    "short": "O primeiro protocolo de distribuição quântica de chaves (Bennett e Brassard, 1984). Um espião que mede os qubits deixa marcas que Alice e Bob conseguem ver."
+  },
+  "dualidade": {
+    "term": "Dualidade onda-partícula",
+    "short": "Luz e matéria chegam em pacotes (como partículas), mas as chances de onde chegam se somam e se cancelam (como ondas)."
+  },
+  "quantum": {
+    "term": "Quantum",
+    "short": "Do latim “quanto”: a menor porção indivisível de algo. Max Planck, em 1900, propôs que a luz troca energia em pacotes — os quanta."
+  }
+}

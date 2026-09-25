@@ -1,0 +1,89 @@
+{
+  "slug": "teletransporte",
+  "status": "open",
+  "order": 11,
+  "title": "Beam me up, qubit",
+  "subtitle": "Teletransporte quântico: mova um estado desconhecido de Alice para Bob usando um par emaranhado.",
+  "track": "algoritmos",
+  "audience": "avancado",
+  "icon": "🌀",
+  "duration": "~12 min",
+  "tags": ["teletransporte", "emaranhamento", "protocolos"],
+  "author": "2T0nnks",
+  "license": "CC-BY-SA-4.0",
+  "steps": [
+    {
+      "type": "story",
+      "icon": "🌀",
+      "title": "Mandar um qubit sem mandar o qubit",
+      "body": [
+        "Alice tem um qubit num estado que nem ela conhece. Quer que Bob, longe, fique com esse estado. Ela não pode medir (destruiria a superposição) nem copiar (teorema da não clonagem).",
+        "Em 1993, Bennett, Brassard, Crépeau, Jozsa, Peres e Wootters acharam a saída: se Alice e Bob já dividem um par emaranhado, basta Alice fazer uma medição conjunta e telefonar <strong>dois bits clássicos</strong> para Bob. Ele aplica uma correção e pronto.",
+        "Em 1997, grupos em Innsbruck e Roma fizeram isso com fótons pela primeira vez."
+      ]
+    },
+    {
+      "type": "circuit",
+      "title": "Passo 1 — o par compartilhado",
+      "goal": "Emaranhe Alice e Bob em <code>(|00⟩ + |11⟩)/√2</code>, deixando a mensagem em paz.",
+      "qubits": 3,
+      "wires": ["mensagem", "Alice", "Bob"],
+      "gates": ["H", "X", "CNOT"],
+      "target": { "state": { "000": 1, "011": 1 } },
+      "solution": ["H 1", "CNOT 1 2"],
+      "hints": ["É o par de Bell de sempre — só que nos fios 1 e 2."],
+      "success": "Par pronto. Na vida real, esse par seria criado antes e cada metade viajaria até seu dono."
+    },
+    {
+      "type": "circuit",
+      "title": "Passo 2 — teletransporte",
+      "goal": "A mensagem foi preparada num estado misterioso (colunas 0–1) e o par já está pronto. Faça o fio de Bob terminar exatamente no estado da mensagem.",
+      "qubits": 3,
+      "wires": ["mensagem", "Alice", "Bob"],
+      "gates": ["H", "CNOT", "CZ", "X", "Z"],
+      "fixed": ["H 0 @0", "T 0 @1", "H 1 @0", "CNOT 1 2 @1"],
+      "target": { "qubit": 2, "state": { "0": 0.7071, "1": [0.5, 0.5] } },
+      "solution": ["CNOT 0 1", "H 0", "CNOT 1 2", "CZ 0 2"],
+      "hints": [
+        "Primeiro, Alice “desfaz um par de Bell” entre mensagem e a metade dela: CNOT da mensagem para Alice, depois H na mensagem.",
+        "Na vida real, Alice mediria e telefonaria os dois bits. Aqui, as correções viram portas controladas: o bit de Alice controla uma X em Bob…",
+        "…e o bit da mensagem controla uma Z em Bob (CZ)."
+      ],
+      "success": "Teletransportado! Compare as esferas: Bob agora aponta para onde a mensagem apontava no começo, e a mensagem original perdeu seu estado. As duas portas controladas no fim fazem o papel da ligação telefônica — é o <em>princípio da medição adiada</em>."
+    },
+    {
+      "type": "quiz",
+      "question": "O teletransporte quântico permite comunicação mais rápida que a luz?",
+      "options": [
+        { "text": "Sim: o estado aparece em Bob instantaneamente.", "why": "Sem os dois bits de Alice, o qubit de Bob está num estado totalmente aleatório — é inútil. E esses bits viajam no máximo à velocidade da luz." },
+        { "text": "Não: Bob precisa dos dois bits clássicos de Alice para corrigir o estado.", "correct": true, "why": "Isso. A informação útil só chega junto com a mensagem clássica." },
+        { "text": "Só se o par emaranhado for bem grande.", "why": "Tamanho não importa: sem canal clássico, não há teletransporte." }
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "O que acontece com o qubit original da mensagem ao fim do protocolo?",
+      "options": [
+        { "text": "Continua igual: agora existem duas cópias.", "why": "Isso seria clonagem, que é proibida pela física." },
+        { "text": "Perde o estado: a informação saiu dele e foi para Bob.", "correct": true, "why": "Exato. O estado é <em>movido</em>, nunca duplicado — o teorema da não clonagem é respeitado." },
+        { "text": "Vira um estado emaranhado com Bob para sempre.", "why": "Na versão com medições, a mensagem termina num estado clássico (0 ou 1). A informação quântica foi toda para Bob." }
+      ]
+    },
+    {
+      "type": "fact",
+      "icon": "🛰️",
+      "title": "Para o espaço",
+      "text": "Em 2017, a equipe do satélite Micius teletransportou estados de fótons de uma estação no Tibete para o satélite em órbita, a distâncias de até cerca de 1.400 km.",
+      "source": "Ren et al., Nature (2017)."
+    }
+  ],
+  "takeaways": [
+    "Teletransporte = par emaranhado + medição conjunta de Alice + 2 bits clássicos + correção de Bob.",
+    "O estado é movido, não copiado; nada viaja mais rápido que a luz.",
+    "Correções controladas por medição podem ser trocadas por portas controladas (medição adiada)."
+  ],
+  "terms": ["teletransporte", "estado-de-bell", "nao-clonagem", "cz"],
+  "further": [
+    { "title": "Bennett et al. (1993) — Teleporting an unknown quantum state", "url": "https://doi.org/10.1103/PhysRevLett.70.1895" }
+  ]
+}

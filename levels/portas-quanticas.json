@@ -1,0 +1,115 @@
+{
+  "slug": "portas-quanticas",
+  "status": "open",
+  "order": 4,
+  "title": "Um passeio pela esfera",
+  "subtitle": "Portas quânticas são giros num globo. Leve a seta aonde o desafio pedir.",
+  "track": "circuitos",
+  "audience": "estudante",
+  "icon": "🌐",
+  "duration": "~10 min",
+  "tags": ["esfera de Bloch", "portas", "fase"],
+  "author": "2T0nnks",
+  "license": "CC-BY-SA-4.0",
+  "steps": [
+    {
+      "type": "story",
+      "icon": "🌐",
+      "title": "Um globo para um qubit",
+      "body": [
+        "Todo estado de um qubit pode ser desenhado como uma seta dentro de uma esfera: a <strong>esfera de Bloch</strong>. O polo norte é <code>|0⟩</code>, o polo sul é <code>|1⟩</code>.",
+        "Latitude diz as chances: quanto mais perto do polo sul, maior a chance de medir 1. No equador, é meio a meio.",
+        "Longitude é a <strong>fase</strong>: invisível para uma medição direta, mas decisiva quando estados interferem. E as portas quânticas? São giros da seta."
+      ],
+      "aside": "Nos desafios, a esfera ao lado do circuito mostra a seta em tempo real. O alvo aparece como uma seta tracejada."
+    },
+    {
+      "type": "circuit",
+      "title": "De cabeça para baixo",
+      "goal": "Leve a seta do polo norte (<code>|0⟩</code>) ao polo sul (<code>|1⟩</code>).",
+      "qubits": 1,
+      "gates": ["X", "Z", "H"],
+      "target": { "state": { "1": 1 } },
+      "solution": ["X 0"],
+      "hints": ["X é um giro de 180° em torno do eixo X, que atravessa a esfera de frente para trás."],
+      "success": "X gira meia volta: norte vira sul. É o NOT quântico."
+    },
+    {
+      "type": "circuit",
+      "title": "Rumo ao equador",
+      "goal": "Deixe a seta no equador, apontando para você: o estado <code>|+⟩ = (|0⟩ + |1⟩)/√2</code>.",
+      "qubits": 1,
+      "gates": ["X", "Z", "H"],
+      "target": { "state": { "0": 1, "1": 1 } },
+      "solution": ["H 0"],
+      "hints": ["H troca o polo norte pelo ponto do equador que aponta para você."],
+      "success": "A Hadamard é um giro de 180° em torno de um eixo diagonal, entre X e Z. Ela troca “polos” por “equador”."
+    },
+    {
+      "type": "circuit",
+      "title": "O outro lado do equador",
+      "goal": "Chegue em <code>|−⟩ = (|0⟩ − |1⟩)/√2</code>: também no equador, mas apontando para trás.",
+      "qubits": 1,
+      "gates": ["X", "Z", "H"],
+      "target": { "state": { "0": 1, "1": -1 } },
+      "solution": ["H 0", "Z 0"],
+      "hints": [
+        "As barras de probabilidade de <code>|+⟩</code> e <code>|−⟩</code> são idênticas. O que muda é a cor (a fase) da barra do 1.",
+        "Z gira meia volta em torno do eixo vertical — trocando “frente” por “trás” no equador."
+      ],
+      "success": "Repare: as probabilidades são as mesmas de <code>|+⟩</code>, mas a barra do 1 mudou de cor. O sinal de menos é real — ele só aparece quando há interferência."
+    },
+    {
+      "type": "quiz",
+      "question": "O que a porta Z faz com um qubit em <code>|0⟩</code>?",
+      "options": [
+        { "text": "Troca por <code>|1⟩</code>", "why": "Isso é a X. A Z gira em torno do eixo vertical — e um ponto no polo não sai do lugar quando o globo gira em volta dele." },
+        { "text": "Nada: <code>|0⟩</code> continua <code>|0⟩</code>", "correct": true, "why": "Isso. Z só inverte o sinal de <code>|1⟩</code>. Como <code>|0⟩</code> não tem parte em <code>|1⟩</code>, fica igual." },
+        { "text": "Cria uma superposição", "why": "Quem cria superposição a partir de um polo é a H. Z só mexe na fase." }
+      ]
+    },
+    {
+      "type": "circuit",
+      "title": "Olhe para o lado",
+      "goal": "Chegue em <code>|+i⟩ = (|0⟩ + i|1⟩)/√2</code>: no equador, apontando para a direita.",
+      "qubits": 1,
+      "gates": ["H", "S", "Z", "X"],
+      "target": { "state": { "0": 1, "1": [0, 1] } },
+      "solution": ["H 0", "S 0"],
+      "hints": [
+        "Primeiro vá ao equador. Depois dê um quarto de volta em torno do eixo vertical.",
+        "S é “meia Z”: gira 90° em vez de 180°."
+      ],
+      "success": "S girou a fase em 90°. Em números, a amplitude do 1 ganhou um <code>i</code> — e a cor da barra girou junto."
+    },
+    {
+      "type": "circuit",
+      "title": "Três quartos de volta",
+      "goal": "Chegue em <code>|−i⟩ = (|0⟩ − i|1⟩)/√2</code>, apontando para a esquerda. Sem porta que gire para trás!",
+      "qubits": 1,
+      "gates": ["H", "S", "Z"],
+      "target": { "state": { "0": 1, "1": [0, -1] } },
+      "solution": ["H 0", "S 0", "Z 0"],
+      "hints": [
+        "Girar −90° é o mesmo que girar +270°.",
+        "270° = 90° (S) + 180° (Z)."
+      ],
+      "success": "Fases se somam como ângulos: 90° + 180° = 270°, que é o mesmo que −90°."
+    },
+    {
+      "type": "fact",
+      "icon": "🏥",
+      "title": "Quem foi Bloch?",
+      "text": "Felix Bloch dividiu o Nobel de Física de 1952 pela ressonância magnética nuclear: medir como os spins de núcleos atômicos giram num campo magnético. Décadas depois, essa ideia virou o exame de ressonância magnética dos hospitais. A esfera que leva o nome dele descreve exatamente esses giros."
+    }
+  ],
+  "takeaways": [
+    "Um qubit é uma seta na esfera de Bloch: latitude dá as chances, longitude é a fase.",
+    "X, Z e H são giros de 180° em torno de eixos diferentes; S e T são giros menores em torno do eixo vertical.",
+    "Estados com as mesmas probabilidades podem ser diferentes: a fase conta."
+  ],
+  "terms": ["esfera-de-bloch", "porta-quantica", "porta-x", "porta-z", "hadamard", "porta-s-t", "fase"],
+  "further": [
+    { "title": "Quirk — simulador de circuitos quânticos no navegador", "url": "https://algassert.com/quirk" }
+  ]
+}

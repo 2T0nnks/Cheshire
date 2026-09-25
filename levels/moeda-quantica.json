@@ -1,0 +1,99 @@
+{
+  "slug": "moeda-quantica",
+  "status": "open",
+  "order": 1,
+  "title": "A moeda que ainda não caiu",
+  "subtitle": "Seu primeiro qubit: superposição, medição e a aleatoriedade mais honesta do universo.",
+  "track": "fundamentos",
+  "audience": "curioso",
+  "icon": "🪙",
+  "duration": "~6 min",
+  "tags": ["superposição", "medição", "qubit"],
+  "author": "2T0nnks",
+  "license": "CC-BY-SA-4.0",
+  "steps": [
+    {
+      "type": "story",
+      "icon": "🪙",
+      "title": "Bits são moedas no chão",
+      "body": [
+        "Todo computador que você já usou guarda informação em <strong>bits</strong>: 0 ou 1, cara ou coroa. A moeda está sempre no chão, com um lado para cima — mesmo quando ninguém olha.",
+        "Um <strong>qubit</strong> é diferente. Antes de ser medido, ele pode estar numa <em>superposição</em>: uma combinação de 0 e 1, cada um com um peso. Pense numa moeda que ainda está girando no ar.",
+        "Quando você mede, a moeda “cai”: sai 0 ou 1. Qual dos dois? Isso a física não decide de antemão — só diz as chances."
+      ],
+      "aside": "A analogia da moeda é um ponto de partida. Nas próximas fases você vai ver onde ela quebra — e é aí que a coisa fica boa."
+    },
+    {
+      "type": "measure",
+      "title": "Jogue a moeda quântica",
+      "body": "Este circuito começa com um qubit em <code>|0⟩</code> e aplica a porta <strong>H</strong> (Hadamard), que o coloca girando. Meça algumas vezes e veja o que acontece.",
+      "qubits": 1,
+      "circuit": ["H 0"],
+      "minShots": 12,
+      "after": "Metade 0, metade 1 — mas sem padrão nenhum na sequência. Cada medição preparou um qubit novinho e o mediu. Não existe “memória” nem truque: é o acaso mais puro que a natureza oferece."
+    },
+    {
+      "type": "quiz",
+      "question": "Você mediu um qubit em superposição e saiu <code>1</code>. Se medir <em>o mesmo qubit</em> de novo, sem mexer em nada, o que sai?",
+      "options": [
+        { "text": "Sempre 1", "correct": true, "why": "Isso! A medição “derruba a moeda”: depois dela, o qubit passa a ser exatamente o resultado que você viu. Medir de novo confirma o 1." },
+        { "text": "50% de chance de 0 ou 1, de novo", "why": "Seria assim se a moeda voltasse a girar sozinha. Mas a medição muda o estado: depois de ver 1, o qubit fica em <code>|1⟩</code>." },
+        { "text": "Sempre 0, para compensar", "why": "O universo não equilibra contas! Não existe memória para “compensar” — e o qubit agora está em <code>|1⟩</code>." }
+      ]
+    },
+    {
+      "type": "circuit",
+      "title": "Monte sua própria moeda",
+      "goal": "Deixe o qubit com 50% de chance de dar 0 e 50% de dar 1.",
+      "qubits": 1,
+      "gates": ["H", "X"],
+      "target": { "probabilities": { "0": 0.5, "1": 0.5 } },
+      "solution": ["H 0"],
+      "hints": [
+        "Clique numa porta da paleta e depois num espaço vazio do fio.",
+        "A porta que coloca o qubit “girando” começa com H."
+      ],
+      "success": "Moeda no ar! Repare nas barras: cada resultado tem a mesma altura. E a seta na esfera deitou no equador — ali moram as superposições meio a meio."
+    },
+    {
+      "type": "circuit",
+      "title": "Moeda viciada",
+      "goal": "Agora faça o qubit dar <code>1</code> com 100% de certeza.",
+      "qubits": 1,
+      "gates": ["H", "X"],
+      "target": { "state": { "1": 1 } },
+      "solution": ["X 0"],
+      "hints": [
+        "Não precisa de superposição aqui: você quer simplesmente virar a moeda.",
+        "A porta X é o “NOT” quântico: troca 0 por 1."
+      ],
+      "success": "A porta <strong>X</strong> é o NOT dos computadores comuns. A seta foi do polo norte (<code>|0⟩</code>) para o polo sul (<code>|1⟩</code>)."
+    },
+    {
+      "type": "fact",
+      "icon": "🎲",
+      "title": "Acaso de verdade",
+      "text": "O “aleatório” do seu computador é, quase sempre, uma conta muito bem disfarçada: quem sabe a semente consegue prever tudo. Geradores quânticos de números aleatórios medem fenômenos quânticos — como flutuações do vácuo ou fótons num espelho semitransparente — e produzem sequências que ninguém consegue prever, nem em princípio.",
+      "source": "Ex.: o gerador quântico público da Australian National University (ANU)."
+    },
+    {
+      "type": "quiz",
+      "question": "Qual frase descreve melhor a superposição?",
+      "options": [
+        { "text": "O qubit já é 0 ou 1; a gente só não sabe qual.", "why": "Essa é a ideia de “variável oculta local”, e experimentos (Nobel de 2022) mostram que a natureza não funciona assim. A superposição é mais estranha que simples ignorância." },
+        { "text": "O qubit é 0 e 1 ao mesmo tempo, e a medição escolhe.", "why": "Frase popular, mas enganosa: se fosse só “os dois ao mesmo tempo”, não haveria como explicar a interferência, que você vai ver na fase de fase e interferência." },
+        { "text": "Um estado com pesos (amplitudes) para 0 e 1, que define as chances quando se mede.", "correct": true, "why": "Exatamente. A superposição é descrita por amplitudes — números que podem até se cancelar. Elas decidem as probabilidades da medição." }
+      ]
+    }
+  ],
+  "takeaways": [
+    "Um bit é 0 ou 1. Um qubit pode estar em superposição até ser medido.",
+    "Medir dá um resultado aleatório, com chances definidas pelo estado — e muda o estado.",
+    "A porta H cria uma superposição meio a meio; a porta X troca 0 por 1."
+  ],
+  "terms": ["bit", "qubit", "superposicao", "medicao", "hadamard", "porta-x"],
+  "further": [
+    { "title": "Wikipédia — Qubit", "url": "https://pt.wikipedia.org/wiki/Qubit" },
+    { "title": "Quantum Country — ensaio interativo de Andy Matuschak e Michael Nielsen", "url": "https://quantum.country/qcvc" }
+  ]
+}

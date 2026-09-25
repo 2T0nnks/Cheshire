@@ -1,0 +1,15 @@
+{
+  "slug": "tunelamento",
+  "status": "soon",
+  "order": 8,
+  "title": "Atravessando paredes",
+  "subtitle": "Tunelamento quântico: como partículas passam por barreiras que, classicamente, seriam intransponíveis.",
+  "track": "fenomenos",
+  "audience": "curioso",
+  "icon": "🧱",
+  "duration": "~8 min",
+  "tags": ["tunelamento"],
+  "steps": [
+    { "type": "story", "title": "Em breve", "body": ["Esta fase está sendo escrita. Quer ajudar? Veja docs/CONTRIBUTING.md."] }
+  ]
+}

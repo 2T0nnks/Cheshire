@@ -1,0 +1,83 @@
+{
+  "slug": "quantico-no-dia-a-dia",
+  "status": "open",
+  "order": 3,
+  "title": "Quântico no seu bolso",
+  "subtitle": "Celular, GPS, ressonância, o próprio Sol: a física quântica já trabalha para você há décadas.",
+  "track": "fundamentos",
+  "audience": "curioso",
+  "icon": "📱",
+  "duration": "~5 min",
+  "tags": ["tecnologia", "curiosidades", "história"],
+  "author": "2T0nnks",
+  "license": "CC-BY-SA-4.0",
+  "steps": [
+    {
+      "type": "story",
+      "icon": "📱",
+      "title": "Você já usa física quântica",
+      "body": [
+        "O chip do seu celular tem bilhões de <strong>transistores</strong>. Eles só funcionam porque a mecânica quântica explica como elétrons se comportam dentro de semicondutores como o silício.",
+        "A tela usa LEDs, a câmera usa sensores que contam fótons, a fibra óptica leva sua internet com lasers. Tudo isso é engenharia quântica — a primeira revolução quântica.",
+        "A segunda revolução, que está acontecendo agora, é diferente: em vez de só entender o comportamento quântico, controlar qubits um a um."
+      ]
+    },
+    {
+      "type": "quiz",
+      "question": "Qual destes <em>não</em> precisa de mecânica quântica para ser explicado?",
+      "options": [
+        { "text": "O laser de um leitor de código de barras", "why": "O laser funciona por emissão estimulada: átomos liberam fótons idênticos em degraus de energia bem definidos. Puro efeito quântico." },
+        { "text": "A luz de um LED", "why": "A cor do LED vem do salto de energia (gap) do semicondutor — algo que só a mecânica quântica explica." },
+        { "text": "Uma alavanca levantando uma pedra", "correct": true, "why": "Isso! Alavancas são física clássica pura: Arquimedes já explicava há mais de 2.200 anos." },
+        { "text": "Um exame de ressonância magnética", "why": "A ressonância “escuta” o spin dos núcleos de hidrogênio do corpo — uma propriedade quântica." }
+      ]
+    },
+    {
+      "type": "fact",
+      "icon": "🛰️",
+      "title": "O GPS é um relógio quântico",
+      "text": "Cada satélite de GPS carrega relógios atômicos, que contam as oscilações de um salto quântico de energia em átomos de césio ou rubídio. O próprio segundo é definido assim: 9.192.631.770 oscilações do césio-133. Um erro de um milionésimo de segundo já tiraria sua posição do lugar em cerca de 300 metros.",
+      "source": "BIPM — definição do segundo no Sistema Internacional."
+    },
+    {
+      "type": "fact",
+      "icon": "☀️",
+      "title": "O Sol brilha por tunelamento",
+      "text": "No núcleo do Sol, os prótons não têm energia suficiente para vencer a repulsão elétrica entre si — pela física clássica, a fusão quase não aconteceria. Graças ao <strong>tunelamento quântico</strong>, eles às vezes “atravessam” essa barreira. Sem esse efeito, o Sol não brilharia do jeito que brilha."
+    },
+    {
+      "type": "quiz",
+      "question": "Albert Einstein ganhou o Nobel de Física de 1921 por qual trabalho?",
+      "options": [
+        { "text": "Teoria da relatividade", "why": "Surpresa comum! A relatividade era polêmica demais na época e não foi citada no prêmio." },
+        { "text": "Efeito fotoelétrico — a luz chega em pacotes (quanta)", "correct": true, "why": "Isso. Em 1905, Einstein explicou que a luz arranca elétrons de um metal em pacotes de energia, os fótons. Foi um dos pilares da física quântica." },
+        { "text": "A equação E = mc²", "why": "Ela é de 1905 também, mas não foi o motivo do Nobel." }
+      ]
+    },
+    {
+      "type": "fact",
+      "icon": "🏅",
+      "title": "Um circuito que se comporta como átomo",
+      "text": "O Nobel de Física de 2025 foi para John Clarke, Michel Devoret e John Martinis, que nos anos 1980 mostraram tunelamento quântico e níveis de energia discretos num circuito elétrico que se pode segurar na mão. Essa descoberta é a base dos qubits supercondutores usados em vários computadores quânticos atuais.",
+      "source": "The Nobel Prize in Physics 2025."
+    },
+    {
+      "type": "quiz",
+      "question": "Um computador quântico vai deixar seus jogos e planilhas mais rápidos?",
+      "options": [
+        { "text": "Sim, ele é mais rápido em tudo.", "why": "Não é. Para a maioria das tarefas do dia a dia, um computador comum é mais rápido, mais barato e mais confiável." },
+        { "text": "Não: ele acelera tipos específicos de problema, como simular moléculas ou fatorar números enormes.", "correct": true, "why": "Isso. A vantagem quântica aparece em problemas com a estrutura certa para a interferência trabalhar. Não é um “PC turbo”." },
+        { "text": "Só se for resfriado com nitrogênio líquido.", "why": "Muitos qubits supercondutores ficam ainda mais frios, perto de −273 °C, mas isso não os torna bons em tudo." }
+      ]
+    }
+  ],
+  "takeaways": [
+    "Transistores, LEDs, lasers, GPS e ressonância magnética dependem de física quântica.",
+    "A primeira revolução quântica usou o comportamento coletivo; a segunda controla qubits individuais.",
+    "Computadores quânticos não são mais rápidos em tudo — só em problemas com a estrutura certa."
+  ],
+  "terms": ["quantum", "qubit", "dualidade"],
+  "further": [
+    { "title": "The Nobel Prize in Physics 2025 — explicação popular", "url": "https://www.nobelprize.org/prizes/physics/2025/popular-information/" }
+  ]
+}

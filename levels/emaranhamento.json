@@ -1,0 +1,106 @@
+{
+  "slug": "emaranhamento",
+  "status": "open",
+  "order": 6,
+  "title": "Ação fantasmagórica",
+  "subtitle": "Crie pares emaranhados e veja por que Einstein ficou incomodado — e por que ainda assim nada viaja mais rápido que a luz.",
+  "track": "circuitos",
+  "audience": "estudante",
+  "icon": "🔗",
+  "duration": "~10 min",
+  "tags": ["emaranhamento", "CNOT", "Bell"],
+  "author": "2T0nnks",
+  "license": "CC-BY-SA-4.0",
+  "steps": [
+    {
+      "type": "story",
+      "icon": "🔗",
+      "title": "Dois qubits, um só estado",
+      "body": [
+        "Em 1935, Einstein, Podolsky e Rosen publicaram um artigo apontando uma consequência esquisita da mecânica quântica: partículas que interagiram podem ficar com resultados de medição perfeitamente ligados, mesmo muito longe uma da outra.",
+        "Einstein depois chamou isso de “ação fantasmagórica à distância”. Ele suspeitava que a teoria estava incompleta.",
+        "Hoje sabemos, por experimentos, que o emaranhamento é real. E você vai criá-lo com duas portas."
+      ]
+    },
+    {
+      "type": "circuit",
+      "title": "Crie um par de Bell",
+      "goal": "Chegue em <code>(|00⟩ + |11⟩)/√2</code>: os dois qubits sempre iguais, mas cada um aleatório.",
+      "qubits": 2,
+      "wires": ["Alice", "Bob"],
+      "gates": ["H", "X", "CNOT"],
+      "target": { "state": { "00": 1, "11": 1 } },
+      "solution": ["H 0", "CNOT 0 1"],
+      "hints": [
+        "Coloque o primeiro qubit em superposição.",
+        "Depois, a CNOT: selecione-a e clique no fio do controle (●). Com dois qubits, o outro fio vira o alvo (⊕)."
+      ],
+      "success": "Olhe as esferas: as setas <em>encolheram</em> até o centro. Emaranhados, nenhum dos dois tem um estado próprio — o estado é do par."
+    },
+    {
+      "type": "measure",
+      "title": "Alice e Bob medem",
+      "body": "Imagine Alice e Bob separados por uma galáxia, cada um com um qubit do par. Meça várias vezes.",
+      "qubits": 2,
+      "wires": ["Alice", "Bob"],
+      "circuit": ["H 0", "CNOT 0 1"],
+      "minShots": 20,
+      "after": "Sempre iguais: <code>00</code> ou <code>11</code>. Mas repare que, para Alice sozinha, o resultado é uma moeda justa. A correlação só aparece quando os dois comparam as anotações."
+    },
+    {
+      "type": "quiz",
+      "question": "Alice mede e obtém 1. Ela sabe na hora que Bob vai obter 1. Dá para usar isso para mandar uma mensagem mais rápido que a luz?",
+      "options": [
+        { "text": "Sim: Alice escolhe o resultado e Bob lê.", "why": "Alice não escolhe nada — o resultado dela é aleatório. Ela não tem como codificar uma mensagem nele." },
+        { "text": "Não: os resultados são aleatórios, e a correlação só aparece comparando dados por um canal comum.", "correct": true, "why": "Exato. É o chamado teorema da não sinalização. O emaranhamento é uma correlação, não um telefone." },
+        { "text": "Sim, mas só com muitos pares.", "why": "Nem com muitos: as estatísticas locais de Bob são sempre 50/50, independentemente do que Alice faça." }
+      ]
+    },
+    {
+      "type": "circuit",
+      "title": "Opostos inseparáveis",
+      "goal": "Crie <code>(|01⟩ + |10⟩)/√2</code>: os dois qubits <em>sempre diferentes</em>.",
+      "qubits": 2,
+      "wires": ["Alice", "Bob"],
+      "gates": ["H", "X", "CNOT"],
+      "target": { "state": { "01": 1, "10": 1 } },
+      "solution": ["H 0", "CNOT 0 1", "X 1"],
+      "hints": ["Comece com o par de Bell que você já sabe fazer. Depois, inverta um dos lados."],
+      "success": "Um estado de Bell diferente, com anticorrelação perfeita. Existem quatro estados de Bell, e todos se transformam uns nos outros com portas de um qubit só."
+    },
+    {
+      "type": "circuit",
+      "title": "Três de uma vez (GHZ)",
+      "goal": "Emaranhe três qubits em <code>(|000⟩ + |111⟩)/√2</code>.",
+      "qubits": 3,
+      "gates": ["H", "CNOT"],
+      "target": { "state": { "000": 1, "111": 1 } },
+      "solution": ["H 0", "CNOT 0 1", "CNOT 1 2"],
+      "hints": ["Faça um par de Bell e depois “estenda” a corrente com mais uma CNOT."],
+      "success": "Um estado GHZ (Greenberger–Horne–Zeilinger). Medir qualquer um dos três revela os outros dois."
+    },
+    {
+      "type": "fact",
+      "icon": "🛰️",
+      "title": "Emaranhamento do espaço",
+      "text": "Em 2017, o satélite chinês Micius enviou pares de fótons emaranhados para duas estações na Terra separadas por cerca de 1.200 km. As correlações sobreviveram à viagem.",
+      "source": "Yin et al., Science (2017)."
+    },
+    {
+      "type": "fact",
+      "icon": "🏅",
+      "title": "Einstein estava errado (desta vez)",
+      "text": "Em 1964, John Bell mostrou que dá para testar se o emaranhamento esconde “instruções” prévias. Alain Aspect, John Clauser e Anton Zeilinger fizeram os experimentos — e a natureza violou as desigualdades de Bell. Nobel de Física de 2022.",
+      "source": "The Nobel Prize in Physics 2022."
+    }
+  ],
+  "takeaways": [
+    "H seguida de CNOT cria um par de Bell: dois qubits com resultados perfeitamente correlacionados.",
+    "Emaranhados, os qubits não têm estado individual — na esfera, as setas encolhem.",
+    "Correlação não é comunicação: nada viaja mais rápido que a luz."
+  ],
+  "terms": ["emaranhamento", "estado-de-bell", "cnot"],
+  "further": [
+    { "title": "The Nobel Prize in Physics 2022 — explicação popular", "url": "https://www.nobelprize.org/prizes/physics/2022/popular-information/" }
+  ]
+}

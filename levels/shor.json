@@ -1,0 +1,15 @@
+{
+  "slug": "shor",
+  "status": "soon",
+  "order": 13,
+  "title": "Quebrando o RSA",
+  "subtitle": "O algoritmo de Shor e a transformada de Fourier quântica: por que a criptografia está migrando.",
+  "track": "algoritmos",
+  "audience": "avancado",
+  "icon": "🧩",
+  "duration": "~15 min",
+  "tags": ["Shor", "QFT", "criptografia"],
+  "steps": [
+    { "type": "story", "title": "Em breve", "body": ["Esta fase está sendo escrita. Quer ajudar? Veja docs/CONTRIBUTING.md."] }
+  ]
+}

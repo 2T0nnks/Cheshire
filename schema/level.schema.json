@@ -1,0 +1,269 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/2T0nnks/quantum-game/schema/level.schema.json",
+  "title": "Bloch Level",
+  "description": "Uma fase do Bloch: uma sequência de passos (história, quiz, circuito, medição, previsão, curiosidade).",
+  "type": "object",
+  "required": ["slug", "status", "order", "title", "subtitle", "track", "audience", "icon", "steps"],
+  "additionalProperties": false,
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,63}$",
+      "description": "Identificador para a URL. Igual ao nome do arquivo (sem .json)."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["open", "soon", "draft"],
+      "description": "open = jogável; soon = aparece como 'em breve'; draft = fica fora do build."
+    },
+    "order": {
+      "type": "number",
+      "description": "Posição sugerida na trilha (menor aparece primeiro)."
+    },
+    "title": { "type": "string", "minLength": 2, "maxLength": 48 },
+    "subtitle": { "type": "string", "minLength": 4, "maxLength": 140 },
+    "track": {
+      "type": "string",
+      "enum": ["fundamentos", "fenomenos", "circuitos", "algoritmos"],
+      "description": "Trilha em que a fase aparece no mapa."
+    },
+    "audience": {
+      "type": "string",
+      "enum": ["curioso", "estudante", "avancado"],
+      "description": "curioso = zero pré-requisito; estudante = ensino médio/graduação; avancado = dev ou pesquisa."
+    },
+    "icon": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8,
+      "description": "Um emoji que representa a fase."
+    },
+    "duration": { "type": "string", "description": "Tempo estimado, ex.: ~8 min." },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 24 },
+      "maxItems": 6
+    },
+    "author": { "type": "string", "description": "Handle do GitHub de quem escreveu." },
+    "license": { "type": "string", "default": "CC-BY-SA-4.0" },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": { "$ref": "#/$defs/step" }
+    },
+    "takeaways": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 8, "maxLength": 220 },
+      "maxItems": 6,
+      "description": "O que levar desta fase — aparece na tela final."
+    },
+    "terms": {
+      "type": "array",
+      "items": { "type": "string" },
+      "maxItems": 10,
+      "description": "Chaves de content/glossary.json apresentadas nesta fase."
+    },
+    "further": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["title", "url"],
+        "additionalProperties": false,
+        "properties": {
+          "title": { "type": "string", "minLength": 2, "maxLength": 100 },
+          "url": { "type": "string", "format": "uri", "pattern": "^https://" }
+        }
+      },
+      "description": "Leituras e vídeos para ir além."
+    }
+  },
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Texto curto. Aceita só <em>, <code>, <strong> e <br>."
+    },
+    "paragraphs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/text" },
+      "minItems": 1,
+      "maxItems": 6
+    },
+    "op": {
+      "type": "string",
+      "pattern": "^\\s*(H|X|Y|Z|S|T|SDG|TDG)\\s+\\d(\\s+@\\d{1,2})?\\s*$|^\\s*(CNOT|CZ|SWAP)\\s+\\d\\s+\\d(\\s+@\\d{1,2})?\\s*$",
+      "description": "Uma porta: \"H 0\", \"CNOT 0 1\" (controle, alvo). \"@2\" fixa na coluna 2."
+    },
+    "ops": { "type": "array", "items": { "$ref": "#/$defs/op" }, "maxItems": 40 },
+    "gate": { "type": "string", "enum": ["H", "X", "Y", "Z", "S", "T", "SDG", "TDG", "CNOT", "CZ", "SWAP"] },
+    "qubits": { "type": "integer", "minimum": 1, "maximum": 4 },
+    "basis": { "type": "string", "pattern": "^[01]{1,4}$" },
+    "amplitude": {
+      "oneOf": [
+        { "type": "number" },
+        { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 }
+      ],
+      "description": "Número real ou [real, imaginário]. Não precisa normalizar."
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "type": "object",
+          "propertyNames": { "pattern": "^[01]{1,4}$" },
+          "additionalProperties": { "$ref": "#/$defs/amplitude" },
+          "description": "Estado completo (a fase global é ignorada)."
+        },
+        "probabilities": {
+          "type": "object",
+          "propertyNames": { "pattern": "^[01]{1,4}$" },
+          "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 },
+          "description": "Só as estatísticas de medição."
+        },
+        "qubit": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3,
+          "description": "Com \"state\" de 1 qubit: vale só para este fio."
+        }
+      },
+      "oneOf": [
+        { "required": ["state"], "not": { "required": ["probabilities"] } },
+        { "required": ["probabilities"], "not": { "anyOf": [{ "required": ["state"] }, { "required": ["qubit"] }] } }
+      ]
+    },
+    "step": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["story", "fact", "quiz", "circuit", "measure", "predict"] }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "story" } } },
+          "then": {
+            "required": ["title", "body"],
+            "additionalProperties": false,
+            "properties": {
+              "type": {},
+              "icon": { "type": "string", "maxLength": 8 },
+              "title": { "$ref": "#/$defs/text" },
+              "body": { "$ref": "#/$defs/paragraphs" },
+              "aside": { "$ref": "#/$defs/text" }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "fact" } } },
+          "then": {
+            "required": ["text"],
+            "additionalProperties": false,
+            "properties": {
+              "type": {},
+              "icon": { "type": "string", "maxLength": 8 },
+              "title": { "$ref": "#/$defs/text" },
+              "text": { "$ref": "#/$defs/text" },
+              "source": { "type": "string", "maxLength": 140 }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "quiz" } } },
+          "then": {
+            "required": ["question", "options"],
+            "additionalProperties": false,
+            "properties": {
+              "type": {},
+              "question": { "$ref": "#/$defs/text" },
+              "context": { "$ref": "#/$defs/text" },
+              "options": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 5,
+                "items": {
+                  "type": "object",
+                  "required": ["text", "why"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "text": { "$ref": "#/$defs/text" },
+                    "correct": { "type": "boolean" },
+                    "why": { "$ref": "#/$defs/text" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "circuit" } } },
+          "then": {
+            "required": ["title", "goal", "qubits", "gates", "target", "solution"],
+            "additionalProperties": false,
+            "properties": {
+              "type": {},
+              "title": { "$ref": "#/$defs/text" },
+              "goal": { "$ref": "#/$defs/text" },
+              "qubits": { "$ref": "#/$defs/qubits" },
+              "slots": { "type": "integer", "minimum": 1, "maximum": 12 },
+              "initial": { "$ref": "#/$defs/basis" },
+              "gates": { "type": "array", "items": { "$ref": "#/$defs/gate" }, "minItems": 1, "uniqueItems": true },
+              "fixed": { "$ref": "#/$defs/ops" },
+              "target": { "$ref": "#/$defs/target" },
+              "solution": { "$ref": "#/$defs/ops" },
+              "hints": { "type": "array", "items": { "$ref": "#/$defs/text" }, "maxItems": 4 },
+              "success": { "$ref": "#/$defs/text" },
+              "wires": {
+                "type": "array",
+                "items": { "type": "string", "maxLength": 14 },
+                "description": "Nomes opcionais para os fios (ex.: Alice, Bob)."
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "measure" } } },
+          "then": {
+            "required": ["title", "qubits", "circuit"],
+            "additionalProperties": false,
+            "properties": {
+              "type": {},
+              "title": { "$ref": "#/$defs/text" },
+              "body": { "$ref": "#/$defs/text" },
+              "qubits": { "$ref": "#/$defs/qubits" },
+              "initial": { "$ref": "#/$defs/basis" },
+              "circuit": { "$ref": "#/$defs/ops" },
+              "minShots": { "type": "integer", "minimum": 1, "maximum": 1000 },
+              "after": { "$ref": "#/$defs/text" },
+              "wires": { "type": "array", "items": { "type": "string", "maxLength": 14 } }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "predict" } } },
+          "then": {
+            "required": ["question", "qubits", "circuit", "outcome", "explain"],
+            "additionalProperties": false,
+            "properties": {
+              "type": {},
+              "question": { "$ref": "#/$defs/text" },
+              "qubits": { "$ref": "#/$defs/qubits" },
+              "initial": { "$ref": "#/$defs/basis" },
+              "circuit": { "$ref": "#/$defs/ops" },
+              "outcome": {
+                "type": "string",
+                "pattern": "^[01x]{1,4}$",
+                "description": "Resultado cuja chance o jogador estima. \"x\" = tanto faz."
+              },
+              "explain": { "$ref": "#/$defs/text" },
+              "wires": { "type": "array", "items": { "type": "string", "maxLength": 14 } }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

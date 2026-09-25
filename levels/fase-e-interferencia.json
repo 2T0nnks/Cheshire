@@ -1,0 +1,103 @@
+{
+  "slug": "fase-e-interferencia",
+  "status": "open",
+  "order": 5,
+  "title": "Ondas que se cancelam",
+  "subtitle": "Duas vezes aleatório dá… certeza? A interferência é o truque por trás de todo algoritmo quântico.",
+  "track": "circuitos",
+  "audience": "estudante",
+  "icon": "🌊",
+  "duration": "~9 min",
+  "tags": ["interferência", "fase", "amplitude"],
+  "author": "2T0nnks",
+  "license": "CC-BY-SA-4.0",
+  "steps": [
+    {
+      "type": "story",
+      "icon": "🌊",
+      "title": "Chances que se cancelam",
+      "body": [
+        "Na vida comum, probabilidades só se somam: se há dois caminhos para um resultado, a chance total é maior.",
+        "No mundo quântico, quem se soma são as <strong>amplitudes</strong> — e elas têm sinal (na verdade, fase). Um caminho com <code>+½</code> e outro com <code>−½</code> se anulam, como uma crista de onda encontrando um vale.",
+        "Vamos testar sua intuição."
+      ]
+    },
+    {
+      "type": "predict",
+      "question": "Uma H deixa o qubit meio a meio. E se aplicarmos <strong>duas</strong> H seguidas? Qual a chance de medir 1?",
+      "qubits": 1,
+      "circuit": ["H 0", "H 0"],
+      "outcome": "1",
+      "explain": "Zero! A segunda H não “embaralha de novo”: ela <em>desfaz</em> a primeira. Os dois caminhos que levam ao 1 têm amplitudes <code>+½</code> e <code>−½</code> e se cancelam. Os que levam ao 0 somam <code>½ + ½ = 1</code>."
+    },
+    {
+      "type": "story",
+      "icon": "🧮",
+      "title": "A conta por trás",
+      "body": [
+        "A H manda <code>|0⟩ → (|0⟩ + |1⟩)/√2</code> e <code>|1⟩ → (|0⟩ − |1⟩)/√2</code>.",
+        "Aplicando duas vezes a partir de <code>|0⟩</code>, há dois caminhos até o 1: via 0 (amplitude <code>+½</code>) e via 1 (amplitude <code>−½</code>). Soma: zero. Isso é <strong>interferência destrutiva</strong>.",
+        "Algoritmos quânticos são coreografias de interferência: fazer as respostas erradas se cancelarem e as certas se reforçarem."
+      ]
+    },
+    {
+      "type": "predict",
+      "question": "E se colocarmos uma Z entre as duas H? A Z não muda nenhuma probabilidade… Qual a chance de medir 1?",
+      "qubits": 1,
+      "circuit": ["H 0", "Z 0", "H 0"],
+      "outcome": "1",
+      "explain": "100%! A Z inverteu o sinal de um dos caminhos. Agora é o 0 que se cancela e o 1 que se reforça. Uma fase “invisível” decidiu o resultado."
+    },
+    {
+      "type": "circuit",
+      "title": "O 1 sem X",
+      "goal": "Leve o qubit a <code>|1⟩</code> com certeza — mas a porta X não está disponível.",
+      "qubits": 1,
+      "gates": ["H", "Z"],
+      "target": { "probabilities": { "1": 1 } },
+      "solution": ["H 0", "Z 0", "H 0"],
+      "hints": ["Você acabou de ver esse truque no passo anterior."],
+      "success": "H·Z·H = X. Você construiu um NOT usando só interferência."
+    },
+    {
+      "type": "circuit",
+      "title": "Fases se somam",
+      "goal": "Entre as duas H fixas, gire a fase o suficiente para o qubit sair 1 com certeza. Só S e T disponíveis.",
+      "qubits": 1,
+      "slots": 5,
+      "gates": ["S", "T"],
+      "fixed": ["H 0 @0", "H 0 @4"],
+      "target": { "probabilities": { "1": 1 } },
+      "solution": ["S 0 @1", "S 0 @2"],
+      "hints": [
+        "Você precisa de meia volta (180°) de fase, como a Z.",
+        "S gira 90°, T gira 45°."
+      ],
+      "success": "Duas S = uma Z. Quatro T também dariam certo. Na esfera, cada porta girou a seta no equador; no fim, a H converteu a fase em resultado."
+    },
+    {
+      "type": "fact",
+      "icon": "🎧",
+      "title": "Interferência no seu ouvido",
+      "text": "Fones com cancelamento de ruído usam interferência destrutiva de som: um microfone capta o barulho e o fone toca a mesma onda com o sinal invertido. Crista encontra vale, e o ruído some. Com amplitudes quânticas a ideia é parecida — só que com possibilidades em vez de pressão do ar."
+    },
+    {
+      "type": "quiz",
+      "question": "Duas portas Z seguidas equivalem a quê?",
+      "options": [
+        { "text": "Uma X", "why": "Z não troca 0 por 1: ela só mexe em fase. Duas meias voltas em torno do eixo vertical não levam a seta a outro polo." },
+        { "text": "Nada (identidade)", "correct": true, "why": "Isso. Duas meias voltas = uma volta completa. O sinal de <code>|1⟩</code> inverte e desinverte." },
+        { "text": "Uma H", "why": "H mistura polos e equador. Z nunca faz isso, nem repetida." }
+      ]
+    }
+  ],
+  "takeaways": [
+    "Amplitudes se somam com fase: podem se reforçar ou se cancelar.",
+    "H seguida de H volta ao início; H·Z·H vira um X.",
+    "A fase é invisível numa medição direta, mas decide o resultado quando há interferência."
+  ],
+  "terms": ["amplitude", "fase", "interferencia", "porta-s-t"],
+  "further": [
+    { "title": "3Blue1Brown — Quantum computing explained (Grover, interferência)", "url": "https://www.youtube.com/watch?v=RQWpF2Gb-gU" }
+  ]
+}

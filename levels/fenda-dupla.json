@@ -1,0 +1,97 @@
+{
+  "slug": "fenda-dupla",
+  "status": "open",
+  "order": 7,
+  "title": "Quem olha, estraga",
+  "subtitle": "O experimento da fenda dupla num circuito: por que “espiar o caminho” apaga a interferência.",
+  "track": "fenomenos",
+  "audience": "estudante",
+  "icon": "💡",
+  "duration": "~9 min",
+  "tags": ["fenda dupla", "dualidade", "decoerência"],
+  "author": "2T0nnks",
+  "license": "CC-BY-SA-4.0",
+  "steps": [
+    {
+      "type": "story",
+      "icon": "💡",
+      "title": "Uma partícula, duas fendas",
+      "body": [
+        "Em 1801, Thomas Young passou luz por duas fendas e viu listras claras e escuras numa parede: interferência, a assinatura das ondas.",
+        "Um século depois, descobriu-se que a luz chega em pacotes (fótons). E, em 1989, Akira Tonomura e colegas mandaram <strong>elétrons um de cada vez</strong> por um aparato equivalente. Cada um aparece como um pontinho… mas, somando milhares, surgem as listras.",
+        "Cada elétron, sozinho, “interfere consigo mesmo”. Até alguém tentar descobrir por qual fenda ele passou."
+      ]
+    },
+    {
+      "type": "story",
+      "icon": "🔀",
+      "title": "A fenda dupla vira circuito",
+      "body": [
+        "Vamos usar uma versão mais limpa: o <strong>interferômetro de Mach–Zehnder</strong>. Um espelho semitransparente divide o fóton em dois caminhos; outro espelho semitransparente os junta de novo.",
+        "Em circuito, cada espelho semitransparente é uma <strong>H</strong>. Caminho de cima é <code>0</code>, caminho de baixo é <code>1</code>. O resultado da medição diz em qual detector o fóton chegou."
+      ]
+    },
+    {
+      "type": "measure",
+      "title": "Sem espiar",
+      "body": "Dois espelhos semitransparentes (H, H). Mande fótons, um por um.",
+      "qubits": 1,
+      "wires": ["fóton"],
+      "circuit": ["H 0", "H 0"],
+      "minShots": 15,
+      "after": "Todos no detector 0! Os dois caminhos interferem: construtivamente no detector 0, destrutivamente no 1. Como as listras da fenda dupla."
+    },
+    {
+      "type": "measure",
+      "title": "Agora com um detector no caminho",
+      "body": "Um segundo qubit faz o papel de um detector que registra o caminho: uma CNOT anota “passou por baixo” sem empurrar nem frear o fóton.",
+      "qubits": 2,
+      "wires": ["fóton", "detector"],
+      "circuit": ["H 0", "CNOT 0 1", "H 0"],
+      "minShots": 30,
+      "after": "Olhe só o primeiro dígito (o fóton): agora sai 0 e 1 meio a meio. A interferência sumiu. O detector não perturbou o fóton “na força” — bastou a informação de caminho existir em algum lugar."
+    },
+    {
+      "type": "quiz",
+      "question": "Por que a interferência desapareceu?",
+      "options": [
+        { "text": "O detector deu um “empurrão” no fóton.", "why": "A CNOT não mexe no fóton: ela só muda o detector quando o fóton passa por baixo. Mesmo assim a interferência sumiu." },
+        { "text": "A informação de caminho ficou registrada (emaranhada) no detector, então os caminhos deixaram de ser indistinguíveis.", "correct": true, "why": "Isso. Interferência só acontece entre possibilidades que o universo não consegue distinguir. É a decoerência em miniatura." },
+        { "text": "Detectores são clássicos e “quebram” a física quântica.", "why": "Aqui o detector é outro qubit — tudo segue quântico. O que importa é a informação, não o tamanho do detector." }
+      ]
+    },
+    {
+      "type": "circuit",
+      "title": "Apague a pista",
+      "goal": "O detector já anotou o caminho. Use o espaço livre, <em>antes</em> do último espelho, para apagar essa informação e fazer o fóton voltar a chegar sempre no detector 0.",
+      "qubits": 2,
+      "wires": ["fóton", "detector"],
+      "slots": 4,
+      "gates": ["CNOT", "H", "X"],
+      "fixed": ["H 0 @0", "CNOT 0 1 @1", "H 0 @3"],
+      "target": { "qubit": 0, "state": { "0": 1 } },
+      "solution": ["CNOT 0 1 @2"],
+      "hints": [
+        "A CNOT é a sua própria inversa.",
+        "Faça o detector “desanotar” o caminho com a mesma porta que anotou."
+      ],
+      "success": "Informação apagada, interferência de volta! É a ideia por trás dos experimentos de <em>apagador quântico</em>. Na esfera, a seta do fóton cresceu de novo."
+    },
+    {
+      "type": "fact",
+      "icon": "🏆",
+      "title": "O experimento mais bonito",
+      "text": "Em 2002, leitores da revista Physics World elegeram a fenda dupla com elétrons isolados como “o experimento mais bonito da física”. Richard Feynman dizia que ele contém “o único mistério” da mecânica quântica.",
+      "source": "Physics World, setembro de 2002."
+    }
+  ],
+  "takeaways": [
+    "Partículas isoladas produzem padrões de interferência, como ondas.",
+    "Registrar o caminho — em qualquer lugar — destrói a interferência.",
+    "Apagar a informação de caminho pode restaurá-la: o que conta é o que o universo consegue distinguir."
+  ],
+  "terms": ["dualidade", "interferencia", "decoerencia", "emaranhamento"],
+  "further": [
+    { "title": "Wikipédia — Experiência da dupla fenda", "url": "https://pt.wikipedia.org/wiki/Experi%C3%AAncia_da_dupla_fenda" }
+  ]
+}

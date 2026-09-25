@@ -1,0 +1,88 @@
+{
+  "slug": "deutsch",
+  "status": "open",
+  "order": 10,
+  "title": "Uma pergunta só",
+  "subtitle": "O algoritmo de Deutsch: descobrir uma propriedade global de uma função consultando-a uma única vez.",
+  "track": "algoritmos",
+  "audience": "avancado",
+  "icon": "🔮",
+  "duration": "~10 min",
+  "tags": ["oráculo", "phase kickback", "algoritmos"],
+  "author": "2T0nnks",
+  "license": "CC-BY-SA-4.0",
+  "steps": [
+    {
+      "type": "story",
+      "icon": "🔮",
+      "title": "A caixa-preta",
+      "body": [
+        "Alguém te entrega uma caixa-preta que calcula uma função <code>f</code> de um bit para um bit. Ela é <strong>constante</strong> (<code>f(0) = f(1)</code>) ou <strong>balanceada</strong> (<code>f(0) ≠ f(1)</code>). Qual das duas?",
+        "Classicamente, não tem jeito: você precisa consultar <code>f(0)</code> <em>e</em> <code>f(1)</code>. Duas consultas.",
+        "Em 1985, David Deutsch mostrou que um computador quântico resolve com <strong>uma</strong>."
+      ]
+    },
+    {
+      "type": "story",
+      "icon": "🧰",
+      "title": "Oráculos como circuitos",
+      "body": [
+        "A caixa vira uma porta de dois qubits: <code>|x⟩|y⟩ → |x⟩|y ⊕ f(x)⟩</code>. O qubit <code>x</code> é a pergunta; <code>f(x)</code> é somado (XOR) em <code>y</code>.",
+        "Se <code>f(x) = x</code> (balanceada), o oráculo é uma CNOT. Se <code>f(x) = 1</code> (constante), é uma X no <code>y</code>.",
+        "O truque: preparar <code>y</code> em <code>|−⟩</code>. Aí, somar <code>f(x)</code> em <code>y</code> não muda <code>y</code> — só multiplica o estado por <code>(−1)^f(x)</code>. A resposta “chuta” de volta para a fase de <code>x</code>: é o <em>phase kickback</em>."
+      ]
+    },
+    {
+      "type": "circuit",
+      "title": "Consulte o oráculo balanceado",
+      "goal": "O oráculo fixo é uma CNOT (<code>f(x) = x</code>). O <code>y</code> começa em <code>|1⟩</code>. Monte o circuito para que <code>x</code> termine em <code>|1⟩</code> — o sinal de “balanceada”.",
+      "qubits": 2,
+      "wires": ["x", "y"],
+      "initial": "01",
+      "slots": 3,
+      "gates": ["H", "Z"],
+      "fixed": ["CNOT 0 1 @1"],
+      "target": { "qubit": 0, "state": { "1": 1 } },
+      "solution": ["H 0 @0", "H 1 @0", "H 0 @2"],
+      "hints": [
+        "Antes do oráculo: coloque <code>x</code> em superposição e transforme <code>y</code> de <code>|1⟩</code> em <code>|−⟩</code>.",
+        "Depois do oráculo: uma H em <code>x</code> transforma a fase em resultado."
+      ],
+      "success": "Uma única consulta! Na esfera, veja: <code>y</code> nem se mexeu com o oráculo, mas a seta de <code>x</code> foi para o outro lado do equador — a resposta ficou na fase."
+    },
+    {
+      "type": "predict",
+      "question": "Mesmo circuito, mas agora o oráculo é constante (<code>f(x) = 1</code>, uma X em <code>y</code>). Qual a chance de medir <code>x = 1</code>?",
+      "qubits": 2,
+      "wires": ["x", "y"],
+      "initial": "01",
+      "circuit": ["H 0 @0", "H 1 @0", "X 1 @1", "H 0 @2"],
+      "outcome": "1x",
+      "explain": "Zero. Com oráculo constante, os dois ramos de <code>x</code> ganham a mesma fase (uma fase global, invisível) e a última H devolve <code>x</code> a <code>|0⟩</code>. Resultado 0 = constante, 1 = balanceada."
+    },
+    {
+      "type": "quiz",
+      "question": "Qual é o ingrediente essencial que faz o algoritmo funcionar?",
+      "options": [
+        { "text": "O computador quântico testa <code>f(0)</code> e <code>f(1)</code> em paralelo e lê os dois.", "why": "Ele até “consulta os dois” em superposição, mas uma medição só entrega um resultado. Sem interferência, não daria para extrair nada útil." },
+        { "text": "Phase kickback + interferência: <code>f(x)</code> vira fase em <code>x</code>, e a H final converte a diferença de fase em resultado.", "correct": true, "why": "Exato. É o mesmo padrão de muitos algoritmos: preparar superposição, marcar com fase, interferir." },
+        { "text": "Os qubits são mais rápidos que transistores.", "why": "Não tem a ver com velocidade física: é uma questão de quantas consultas são necessárias." }
+      ]
+    },
+    {
+      "type": "fact",
+      "icon": "📜",
+      "title": "O primeiro algoritmo quântico",
+      "text": "O artigo de Deutsch de 1985 também descreveu o computador quântico universal. Em 1992, com Richard Jozsa, ele generalizou o problema para <code>n</code> bits: o algoritmo de Deutsch–Jozsa resolve com 1 consulta o que um algoritmo clássico determinístico precisaria de até 2ⁿ⁻¹ + 1. Com aleatoriedade, o clássico se sai bem melhor — mas a ideia abriu caminho para Simon, Shor e Grover."
+    }
+  ],
+  "takeaways": [
+    "Oráculos quânticos são portas reversíveis: <code>|x⟩|y⟩ → |x⟩|y ⊕ f(x)⟩</code>.",
+    "Com o alvo em <code>|−⟩</code>, a resposta do oráculo vira uma fase no registrador de entrada (phase kickback).",
+    "Superposição + fase + interferência: a receita geral dos algoritmos quânticos."
+  ],
+  "terms": ["oraculo", "interferencia", "fase", "hadamard"],
+  "further": [
+    { "title": "Wikipedia — Deutsch–Jozsa algorithm", "url": "https://en.wikipedia.org/wiki/Deutsch%E2%80%93Jozsa_algorithm" }
+  ]
+}

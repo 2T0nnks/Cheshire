@@ -1,0 +1,35 @@
+{
+  "name": "quantum-game",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Bloch — minijogo educativo open source de computação e física quântica. Fases em JSON, motor num único HTML com simulador de qubits.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "validate": "node scripts/validate.mjs",
+    "test": "node --test scripts/*.test.mjs",
+    "new": "node scripts/new-level.mjs",
+    "dev": "npm run build && node scripts/serve.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2T0nnks/quantum-game.git"
+  },
+  "keywords": [
+    "quantum-computing",
+    "quantum-physics",
+    "education",
+    "game",
+    "qubit",
+    "bloch-sphere"
+  ],
+  "author": "Tonnks",
+  "license": "MIT",
+  "devDependencies": {
+    "@fontsource-variable/space-grotesk": "^5.3.0",
+    "@fontsource/atkinson-hyperlegible": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
+  }
+}
