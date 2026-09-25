@@ -28,3 +28,21 @@ Uma fase é um arquivo JSON em `levels/`. Não precisa mexer no motor.
 - Portas: `H X Y Z S T SDG TDG` (1 qubit) e `CNOT CZ SWAP` (2 qubits). `"CNOT 0 1"` = controle 0, alvo 1.
 - `"@3"` no fim prende a porta na coluna 3. Sem `@`, a porta vai logo depois da anterior nos mesmos fios, na ordem da lista.
 - Portas em `fixed` aparecem travadas; o jogador constrói ao redor delas.
+
+# Traduzindo
+
+O jogo fala português, espanhol e inglês. O português é o original; os outros idiomas são **camadas de texto** por cima dele.
+
+| O quê | Onde |
+|---|---|
+| Textos da interface (botões, mensagens, falas do Gato, página Sobre) | `engine/strings.js`, um bloco por idioma |
+| Texto das fases | `i18n/<idioma>/levels/<slug>.json` |
+| Glossário | `i18n/<idioma>/glossary.json` |
+
+Um arquivo de tradução de fase tem **a mesma forma** do original, mas só com os campos de texto: `title`, `subtitle`, `body`, `aside`, `question`, `options[].text`, `options[].why`, `goal`, `hints`, `success`, `after`, `explain`, `text`, `source`, `wires`, `takeaways`, `further`. Listas precisam ter o mesmo tamanho e a mesma ordem; `options` segue a ordem das alternativas do original. Campo que faltar aparece em português.
+
+A física **não se traduz**: `qubits`, `gates`, `fixed`, `target`, `solution`, `circuit`, `outcome`, `correct` etc. ficam só no arquivo original. O validador recusa uma tradução que tente mudá-los — assim o jogo é idêntico em todos os idiomas.
+
+`npm run validate` mostra a cobertura de cada idioma (ex.: `✓ i18n/es/ (100% of level text translated)`) e avisa o que falta.
+
+Para um idioma novo: copie o bloco `en` de `engine/strings.js`, traduza, adicione o código em `LANGS` e crie `i18n/<código>/`.

@@ -1,0 +1,7 @@
+{
+  "title": "Rompiendo RSA",
+  "subtitle": "El algoritmo de Shor y la transformada de Fourier cuántica: por qué la criptografía está migrando.",
+  "steps": [
+    { "title": "Muy pronto", "body": ["Este nivel se está escribiendo. ¿Quieres ayudar? Mira docs/CONTRIBUTING.md."] }
+  ]
+}

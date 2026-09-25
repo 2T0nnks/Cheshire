@@ -1,0 +1,66 @@
+{
+  "title": "Spooky action",
+  "subtitle": "Create entangled pairs and see why Einstein was bothered — and why nothing travels faster than light anyway.",
+  "steps": [
+    {
+      "title": "Two qubits, one state",
+      "body": [
+        "In 1935, Einstein, Podolsky and Rosen published a paper pointing out a strange consequence of quantum mechanics: particles that have interacted can end up with perfectly linked measurement results, even very far apart.",
+        "Einstein later called this “spooky action at a distance”. He suspected the theory was incomplete.",
+        "Today we know, from experiments, that entanglement is real. And you're going to create it with two gates."
+      ]
+    },
+    {
+      "title": "Create a Bell pair",
+      "goal": "Reach <code>(|00⟩ + |11⟩)/√2</code>: both qubits always equal, but each one random.",
+      "hints": [
+        "Put the first qubit in superposition.",
+        "Then the CNOT: select it and click the control wire (●). With two qubits, the other wire becomes the target (⊕)."
+      ],
+      "success": "Look at the spheres: the arrows <em>shrank</em> to the center. Entangled, neither has a state of its own — the state belongs to the pair."
+    },
+    {
+      "title": "Alice and Bob measure",
+      "body": "Imagine Alice and Bob a galaxy apart, each with one qubit of the pair. Measure several times.",
+      "after": "Always equal: <code>00</code> or <code>11</code>. But notice that, for Alice alone, the result is a fair coin. The correlation only shows up when the two compare notes."
+    },
+    {
+      "question": "Alice measures and gets 1. She knows right away that Bob will get 1. Can this be used to send a message faster than light?",
+      "options": [
+        { "text": "Yes: Alice picks the result and Bob reads it.", "why": "Alice doesn't pick anything — her result is random. She has no way to encode a message in it." },
+        { "text": "No: the results are random, and the correlation only shows up when comparing data over an ordinary channel.", "why": "Exactly. It's called the no-signaling theorem. Entanglement is a correlation, not a telephone." },
+        { "text": "Yes, but only with many pairs.", "why": "Not even with many: Bob's local statistics are always 50/50, whatever Alice does." }
+      ]
+    },
+    {
+      "title": "Inseparable opposites",
+      "goal": "Create <code>(|01⟩ + |10⟩)/√2</code>: both qubits <em>always different</em>.",
+      "hints": ["Start with the Bell pair you already know how to make. Then flip one side."],
+      "success": "A different Bell state, with perfect anticorrelation. There are four Bell states, and they all turn into one another with single-qubit gates."
+    },
+    {
+      "title": "Three at once (GHZ)",
+      "goal": "Entangle three qubits in <code>(|000⟩ + |111⟩)/√2</code>.",
+      "hints": ["Make a Bell pair and then “extend” the chain with one more CNOT."],
+      "success": "A GHZ state (Greenberger–Horne–Zeilinger). Measuring any one of the three reveals the other two."
+    },
+    {
+      "title": "Entanglement from space",
+      "text": "In 2017, the Chinese satellite Micius sent pairs of entangled photons to two ground stations about 1,200 km apart. The correlations survived the trip.",
+      "source": "Yin et al., Science (2017)."
+    },
+    {
+      "title": "Einstein was wrong (this time)",
+      "text": "In 1964, John Bell showed it's possible to test whether entanglement hides prior “instructions”. Alain Aspect, John Clauser and Anton Zeilinger did the experiments — and nature violated Bell's inequalities. Nobel Prize in Physics 2022.",
+      "source": "The Nobel Prize in Physics 2022."
+    }
+  ],
+  "takeaways": [
+    "H followed by CNOT creates a Bell pair: two qubits with perfectly correlated results.",
+    "When entangled, qubits have no individual state — on the sphere, the arrows shrink.",
+    "Correlation isn't communication: nothing travels faster than light."
+  ],
+  "further": [
+    { "title": "The Nobel Prize in Physics 2022 — popular information", "url": "https://www.nobelprize.org/prizes/physics/2022/popular-information/" }
+  ]
+}

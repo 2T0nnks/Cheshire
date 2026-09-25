@@ -1,0 +1,68 @@
+{
+  "title": "Schrödinger's cat",
+  "subtitle": "The most famous thought experiment in physics was actually a critique. Open the box.",
+  "steps": [
+    {
+      "title": "A box, a cat, an atom",
+      "body": [
+        "In 1935, Erwin Schrödinger proposed a scenario: a cat in a closed box with a radioactive atom. If the atom decays, a mechanism releases poison. Within an hour, there's a 50% chance that happens.",
+        "According to quantum mechanics, while nobody measures, the atom is in a superposition of “decayed” and “not decayed”. And the cat, tied to the atom's fate, would be… alive and dead?",
+        "Schrödinger didn't think cats could be alive and dead. He wanted to show how absurd it looks to take superposition literally for things our size."
+      ],
+      "aside": "No cats were harmed in the history of physics. The experiment is purely mental."
+    },
+    {
+      "question": "Why did Schrödinger come up with the cat?",
+      "options": [
+        { "text": "To prove cats can be alive and dead at the same time.", "why": "The opposite: he used the cat precisely because nobody believes that. The absurdity was the argument." },
+        { "text": "To criticize the idea that superposition applies just the same to everyday objects.", "why": "Right. The 1935 paper dealt with the measurement problem: where does the quantum world end and the classical one begin? The question is still debated." },
+        { "text": "For a real laboratory experiment.", "why": "It was never done with cats. But versions with larger and larger objects — molecules, tiny crystals — are done for real today." }
+      ]
+    },
+    {
+      "title": "Open the box (many times)",
+      "body": "Here the atom is a qubit put in superposition (H), and the cat is another qubit that “copies” the atom with a CNOT gate: if the atom decays (1), the cat switches to 1 too. Open the box several times.",
+      "wires": ["atom", "cat"],
+      "after": "You only see <code>00</code> (no decay, cat alive) or <code>11</code> (decayed, cat… well). Never <code>01</code> or <code>10</code>. Atom and cat became <strong>entangled</strong>: you can no longer describe one without the other."
+    },
+    {
+      "question": "Before opening the box, what's the chance of finding the cat alive (cat = 0), whatever the atom does?",
+      "wires": ["atom", "cat"],
+      "explain": "50%. On its own, the cat looks like an ordinary coin — the weirdness is in the perfect <em>correlation</em> with the atom, not in each one's odds."
+    },
+    {
+      "title": "So why do we never see cats in superposition?",
+      "body": [
+        "A real cat exchanges heat, light and air with its surroundings all the time. Every photon that bounces off it and escapes carries a tiny bit of information about “alive or dead”.",
+        "That leaked information entangles the cat with trillions of particles in the environment, and the superposition stops producing observable effects. This is called <strong>decoherence</strong>, and it's extremely fast for large objects.",
+        "It's also the great enemy of quantum computers: that's why qubits are kept isolated, in a vacuum or cooled to hundredths of a degree above absolute zero."
+      ]
+    },
+    {
+      "title": "How big can we go?",
+      "text": "In 2019, a group in Vienna sent molecules of about 2,000 atoms (over 25,000 atomic mass units) through an interferometer and saw interference — wave-like behavior, as if they took more than one path at once. There's no known size limit: the challenge is just isolating the object well enough.",
+      "source": "Fein et al., Nature Physics (2019)."
+    },
+    {
+      "title": "Physics' other famous cat",
+      "text": "Schrödinger's isn't physics' only cat. In 2013, physicists proposed the <strong>quantum Cheshire cat</strong>, inspired by the cat in <em>Alice's Adventures in Wonderland</em> that vanishes and leaves only its grin: in an interferometer, weak measurements suggest a particle takes one path and its spin takes the other. The effect was observed with neutrons in 2014.",
+      "source": "Aharonov et al., New Journal of Physics (2013); Denkmayr et al., Nature Communications (2014)."
+    },
+    {
+      "question": "What's the main reason we don't see large objects in superposition in everyday life?",
+      "options": [
+        { "text": "Quantum laws only apply to small things.", "why": "As far as we know, the laws are the same for everything. What changes is how much the object interacts with its surroundings." },
+        { "text": "Decoherence: the environment “spreads” the information and the superposition stops interfering.", "why": "Right. The bigger and hotter the object, the faster it becomes entangled with its surroundings and starts behaving classically." },
+        { "text": "Gravity destroys superposition.", "why": "There are proposals (like Roger Penrose's) that gravity might play a role, but this hasn't been observed. Decoherence is well established." }
+      ]
+    }
+  ],
+  "takeaways": [
+    "The cat was a critique: Schrödinger thought it absurd to apply superposition carelessly to large objects.",
+    "Atom and cat become entangled: the results are correlated even though each one, on its own, looks random.",
+    "Decoherence explains why the big world looks classical — and why qubits need so much isolation."
+  ],
+  "further": [
+    { "title": "Stanford Encyclopedia of Philosophy — Measurement in Quantum Theory", "url": "https://plato.stanford.edu/entries/qt-measurement/" }
+  ]
+}

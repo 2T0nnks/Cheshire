@@ -1,0 +1,58 @@
+{
+  "title": "Secreto inviolable",
+  "subtitle": "Criptografía cuántica con el protocolo BB84: un espía no puede escuchar sin dejar huellas.",
+  "steps": [
+    {
+      "title": "Alice, Bob y Eva",
+      "body": [
+        "Alice quiere acordar una clave secreta con Bob. Eva, la espía, escucha todo. En una línea clásica, Eva puede copiar los bits sin dejar rastro.",
+        "En 1984, Charles Bennett y Gilles Brassard propusieron usar qubits. Como medir cambia el estado, cualquier espionaje deja marcas. Eso es <strong>BB84</strong>."
+      ]
+    },
+    {
+      "title": "Dos bases",
+      "body": [
+        "Alice codifica cada bit en una de dos “bases”, elegida al azar. En la base <strong>+</strong>, usa <code>|0⟩</code> y <code>|1⟩</code>. En la base <strong>×</strong>, usa <code>|+⟩</code> y <code>|−⟩</code>.",
+        "Bob también elige una base al azar para medir. Medir en la base × es lo mismo que aplicar una H y después medir normalmente."
+      ]
+    },
+    {
+      "title": "Bob elige la base equivocada",
+      "body": "Alice envía <code>|+⟩</code> (bit 0 en la base ×). Bob mide en la base +.",
+      "wires": ["fotón"],
+      "after": "Resultado aleatorio: el bit de Bob no dice nada sobre el de Alice."
+    },
+    {
+      "title": "Bob acierta la base",
+      "body": "El mismo <code>|+⟩</code>, pero ahora Bob mide en la base × (una H antes de medir).",
+      "wires": ["fotón"],
+      "after": "Siempre 0 — el bit de Alice. Después, los dos anuncian <em>en público</em> solo las bases que usaron (nunca los bits) y descartan las rondas en que las bases no coincidieron. Lo que queda es la clave."
+    },
+    {
+      "question": "Eva intercepta el fotón <code>|+⟩</code> y mide en la base + (aquí, “anota” el resultado en un qubit suyo con una CNOT). Bob después mide en la base correcta, la ×. ¿Qué probabilidad hay de que Bob obtenga el bit <strong>equivocado</strong> (1)?",
+      "wires": ["fotón", "Eva"],
+      "explain": "¡50%! La medición de Eva destruyó la superposición. Como Eva solo se equivoca de base la mitad de las veces, en promedio introduce cerca de un <strong>25% de errores</strong> en los bits que deberían coincidir. Alice y Bob comparan una muestra de la clave: si la tasa de error es alta, saben que los espiaron."
+    },
+    {
+      "question": "¿Por qué Eva no copia el fotón, deja seguir al original y mide solo la copia?",
+      "options": [
+        { "text": "Porque las copias son caras.", "why": "No es cuestión de costo: es imposible, por una ley de la física." },
+        { "text": "Por el teorema de no clonación: no se puede copiar un estado cuántico desconocido.", "why": "Eso. Si la clonación fuera posible, BB84 (y mucho más) se vendría abajo. La linealidad de la mecánica cuántica lo prohíbe." },
+        { "text": "Porque el fotón explota si se copia.", "why": "Nada tan dramático — la copia simplemente no se puede hacer con fidelidad." }
+      ]
+    },
+    {
+      "title": "Videollamada cuántica",
+      "text": "En 2017, el satélite Micius distribuyó claves cuánticas entre estaciones en China y Austria, que se usaron para cifrar una videoconferencia intercontinental entre Pekín y Viena.",
+      "source": "Liao et al., Physical Review Letters (2018)."
+    }
+  ],
+  "takeaways": [
+    "En BB84, Alice y Bob eligen bases al azar y solo guardan los bits en que las bases coinciden.",
+    "Medir en la base equivocada da resultados aleatorios — y el espionaje aparece como errores.",
+    "El teorema de no clonación impide que Eva copie los qubits sin ser notada."
+  ],
+  "further": [
+    { "title": "Bennett & Brassard (1984) — artículo original de BB84 (reimpreso en 2014; en inglés)", "url": "https://doi.org/10.1016/j.tcs.2014.05.025" }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "title": "Beam me up, qubit",
+  "subtitle": "Quantum teleportation: move an unknown state from Alice to Bob using an entangled pair.",
+  "steps": [
+    {
+      "title": "Sending a qubit without sending the qubit",
+      "body": [
+        "Alice has a qubit in a state not even she knows. She wants Bob, far away, to end up with that state. She can't measure it (that would destroy the superposition) or copy it (the no-cloning theorem).",
+        "In 1993, Bennett, Brassard, Crépeau, Jozsa, Peres and Wootters found the way out: if Alice and Bob already share an entangled pair, Alice just makes a joint measurement and phones <strong>two classical bits</strong> to Bob. He applies a correction and that's it.",
+        "In 1997, groups in Innsbruck and Rome did it with photons for the first time."
+      ]
+    },
+    {
+      "title": "Step 1 — the shared pair",
+      "goal": "Entangle Alice and Bob in <code>(|00⟩ + |11⟩)/√2</code>, leaving the message alone.",
+      "wires": ["message", "Alice", "Bob"],
+      "hints": ["It's the usual Bell pair — just on wires 1 and 2."],
+      "success": "Pair ready. In real life, this pair would be created beforehand and each half would travel to its owner."
+    },
+    {
+      "title": "Step 2 — teleportation",
+      "goal": "The message was prepared in a mystery state (columns 0–1) and the pair is ready. Make Bob's wire end up exactly in the message's state.",
+      "wires": ["message", "Alice", "Bob"],
+      "hints": [
+        "First, Alice “undoes a Bell pair” between the message and her half: CNOT from the message to Alice, then H on the message.",
+        "In real life, Alice would measure and phone over the two bits. Here, the corrections become controlled gates: Alice's bit controls an X on Bob…",
+        "…and the message bit controls a Z on Bob (CZ)."
+      ],
+      "success": "Teleported! Compare the spheres: Bob now points where the message pointed at the start, and the original message lost its state. The two controlled gates at the end play the role of the phone call — that's the <em>deferred measurement principle</em>."
+    },
+    {
+      "question": "Does quantum teleportation allow faster-than-light communication?",
+      "options": [
+        { "text": "Yes: the state shows up at Bob's instantly.", "why": "Without Alice's two bits, Bob's qubit is in a completely random state — it's useless. And those bits travel at the speed of light at most." },
+        { "text": "No: Bob needs Alice's two classical bits to correct the state.", "why": "Right. The useful information only arrives along with the classical message." },
+        { "text": "Only if the entangled pair is really big.", "why": "Size doesn't matter: without a classical channel, there's no teleportation." }
+      ]
+    },
+    {
+      "question": "What happens to the original message qubit at the end of the protocol?",
+      "options": [
+        { "text": "It stays the same: now there are two copies.", "why": "That would be cloning, which physics forbids." },
+        { "text": "It loses its state: the information left it and went to Bob.", "why": "Exactly. The state is <em>moved</em>, never duplicated — the no-cloning theorem holds." },
+        { "text": "It becomes entangled with Bob forever.", "why": "In the version with measurements, the message ends in a classical state (0 or 1). All the quantum information went to Bob." }
+      ]
+    },
+    {
+      "title": "To space",
+      "text": "In 2017, the Micius satellite team teleported photon states from a ground station in Tibet to the satellite in orbit, over distances of up to about 1,400 km.",
+      "source": "Ren et al., Nature (2017)."
+    }
+  ],
+  "takeaways": [
+    "Teleportation = entangled pair + Alice's joint measurement + 2 classical bits + Bob's correction.",
+    "The state is moved, not copied; nothing travels faster than light.",
+    "Measurement-controlled corrections can be swapped for controlled gates (deferred measurement)."
+  ],
+  "further": [
+    { "title": "Bennett et al. (1993) — Teleporting an unknown quantum state", "url": "https://doi.org/10.1103/PhysRevLett.70.1895" }
+  ]
+}

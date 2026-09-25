@@ -1,0 +1,7 @@
+{
+  "title": "Breaking RSA",
+  "subtitle": "Shor's algorithm and the quantum Fourier transform: why cryptography is migrating.",
+  "steps": [
+    { "title": "Coming soon", "body": ["This level is being written. Want to help? See docs/CONTRIBUTING.md."] }
+  ]
+}

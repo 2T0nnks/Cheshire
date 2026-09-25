@@ -1,0 +1,61 @@
+{
+  "title": "Quantum in your pocket",
+  "subtitle": "Phones, GPS, MRI scans, the Sun itself: quantum physics has been working for you for decades.",
+  "steps": [
+    {
+      "title": "You already use quantum physics",
+      "body": [
+        "Your phone's chip has billions of <strong>transistors</strong>. They only work because quantum mechanics explains how electrons behave inside semiconductors like silicon.",
+        "The screen uses LEDs, the camera uses sensors that count photons, and optical fiber carries your internet with lasers. All of that is quantum engineering — the first quantum revolution.",
+        "The second revolution, happening now, is different: instead of just understanding quantum behavior, controlling qubits one by one."
+      ]
+    },
+    {
+      "question": "Which of these does <em>not</em> need quantum mechanics to be explained?",
+      "options": [
+        { "text": "The laser in a barcode scanner", "why": "A laser works by stimulated emission: atoms release identical photons in well-defined energy steps. Purely quantum." },
+        { "text": "The light of an LED", "why": "An LED's color comes from the semiconductor's energy gap — something only quantum mechanics explains." },
+        { "text": "A lever lifting a rock", "why": "Right! Levers are pure classical physics: Archimedes explained them more than 2,200 years ago." },
+        { "text": "An MRI scan", "why": "MRI “listens” to the spin of hydrogen nuclei in the body — a quantum property." }
+      ]
+    },
+    {
+      "title": "GPS is a quantum clock",
+      "text": "Every GPS satellite carries atomic clocks, which count the oscillations of a quantum energy jump in cesium or rubidium atoms. The second itself is defined this way: 9,192,631,770 oscillations of cesium-133. An error of one millionth of a second would already put your position off by about 300 meters.",
+      "source": "BIPM — definition of the second in the International System of Units."
+    },
+    {
+      "title": "The Sun shines by tunneling",
+      "text": "In the Sun's core, protons don't have enough energy to overcome their mutual electric repulsion — by classical physics, fusion would barely happen. Thanks to <strong>quantum tunneling</strong>, they sometimes “go through” that barrier. Without this effect, the Sun wouldn't shine the way it does."
+    },
+    {
+      "question": "Albert Einstein won the 1921 Nobel Prize in Physics for which work?",
+      "options": [
+        { "text": "The theory of relativity", "why": "A common surprise! Relativity was too controversial at the time and wasn't cited in the prize." },
+        { "text": "The photoelectric effect — light comes in packets (quanta)", "why": "Right. In 1905, Einstein explained that light knocks electrons out of a metal in packets of energy, photons. It was one of the pillars of quantum physics." },
+        { "text": "The equation E = mc²", "why": "It's also from 1905, but it wasn't the reason for the Nobel." }
+      ]
+    },
+    {
+      "title": "A circuit that behaves like an atom",
+      "text": "The 2025 Nobel Prize in Physics went to John Clarke, Michel Devoret and John Martinis, who in the 1980s showed quantum tunneling and discrete energy levels in an electric circuit you can hold in your hand. That discovery is the basis of the superconducting qubits used in many of today's quantum computers.",
+      "source": "The Nobel Prize in Physics 2025."
+    },
+    {
+      "question": "Will a quantum computer make your games and spreadsheets faster?",
+      "options": [
+        { "text": "Yes, it's faster at everything.", "why": "It isn't. For most everyday tasks, a regular computer is faster, cheaper and more reliable." },
+        { "text": "No: it speeds up specific kinds of problems, like simulating molecules or factoring huge numbers.", "why": "Right. Quantum advantage shows up in problems with the right structure for interference to do its work. It's not a “turbo PC”." },
+        { "text": "Only if it's cooled with liquid nitrogen.", "why": "Many superconducting qubits are kept even colder, near −273 °C, but that doesn't make them good at everything." }
+      ]
+    }
+  ],
+  "takeaways": [
+    "Transistors, LEDs, lasers, GPS and MRI all depend on quantum physics.",
+    "The first quantum revolution used collective behavior; the second controls individual qubits.",
+    "Quantum computers aren't faster at everything — only at problems with the right structure."
+  ],
+  "further": [
+    { "title": "The Nobel Prize in Physics 2025 — popular information", "url": "https://www.nobelprize.org/prizes/physics/2025/popular-information/" }
+  ]
+}

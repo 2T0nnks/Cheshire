@@ -5,8 +5,12 @@
 <meta name="description" content="Cheshire — minijogo educativo e open source para aprender computação e física quântica brincando com qubits.">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cheshire — física quântica na prática">
+<meta property="og:description" content="Minijogo educativo e open source de computação e física quântica, em português, español e English.">
+<meta name="twitter:card" content="summary">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src __CSP_SCRIPT_HASHES__; style-src 'unsafe-inline'; font-src 'self'; img-src data:; base-uri 'none'; form-action 'none'">
-<title>Cheshire — física quântica de brincadeira</title>
+<title>Cheshire — física quântica na prática</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2224%22%20fill%3D%22%2311121A%22%2F%3E%3Cg%20transform%3D%22translate%284%202%29%20scale%28.92%29%22%3E%3Cpath%20d%3D%22M20%2042%20L17%209%20L43%2029%20Z%22%20fill%3D%22%239B63C4%22%2F%3E%3Cpath%20d%3D%22M23%2035%20L21.5%2017%20L36%2029%20Z%22%20fill%3D%22%23F4A6C8%22%2F%3E%3Cpath%20d%3D%22M80%2042%20L83%209%20L57%2029%20Z%22%20fill%3D%22%239B63C4%22%2F%3E%3Cpath%20d%3D%22M77%2035%20L78.5%2017%20L64%2029%20Z%22%20fill%3D%22%23F4A6C8%22%2F%3E%3Cellipse%20cx%3D%2250%22%20cy%3D%2256%22%20rx%3D%2237%22%20ry%3D%2231%22%20fill%3D%22%239B63C4%22%2F%3E%3Cpath%20d%3D%22M40%2028%20Q50%2034%2060%2028M35%2035%20Q50%2043%2065%2035M14%2054%20Q21%2056%2024%2062M86%2054%20Q79%2056%2076%2062%22%20stroke%3D%22%237A3FA0%22%20stroke-width%3D%224%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%2F%3E%3Cellipse%20cx%3D%2236%22%20cy%3D%2249%22%20rx%3D%228.5%22%20ry%3D%227%22%20fill%3D%22%23F6D35B%22%2F%3E%3Cellipse%20cx%3D%2264%22%20cy%3D%2249%22%20rx%3D%228.5%22%20ry%3D%227%22%20fill%3D%22%23F6D35B%22%2F%3E%3Cellipse%20cx%3D%2236%22%20cy%3D%2249%22%20rx%3D%221.9%22%20ry%3D%225.8%22%20fill%3D%22%232A1B35%22%2F%3E%3Cellipse%20cx%3D%2264%22%20cy%3D%2249%22%20rx%3D%221.9%22%20ry%3D%225.8%22%20fill%3D%22%232A1B35%22%2F%3E%3Cpath%20d%3D%22M19%2063%20Q50%2098%2081%2063%20Q50%2078%2019%2063Z%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%23D2407A%22%20stroke-width%3D%222.6%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M31%2069.5v8M40.5%2072.5v10M50%2073.5v10.5M59.5%2072.5v10M69%2069.5v8%22%20stroke%3D%22%23D2407A%22%20stroke-width%3D%221.7%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
 <!-- LEVELS:INJECT -->
 
@@ -184,7 +188,8 @@ button { font: inherit; color: inherit; }
 .hero-sphere .caption { position: absolute; bottom: -4px; left: 0; right: 0; text-align: center; font-family: var(--mono); font-size: 0.85rem; color: var(--muted); }
 @media (max-width: 820px) {
   .hero { grid-template-columns: 1fr; padding-top: 32px; }
-  .hero-sphere { width: min(260px, 70vw); order: -1; }
+  .hero-sphere { width: min(260px, 70vw); order: -1; margin-bottom: 18px; }
+  .hero-sphere .caption { bottom: -22px; font-size: 0.7rem; white-space: nowrap; left: -40px; right: -40px; }
 }
 
 .panel { background: var(--surface); border: 1px solid var(--line-soft); border-radius: var(--r-lg); box-shadow: var(--shadow); }
@@ -511,6 +516,19 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
 .confetti i.sq { border-radius: 2px; }
 @keyframes burst { to { transform: translate(var(--dx), var(--dy)) rotate(var(--r)) scale(0.3); opacity: 0; } }
 
+/* Language menu */
+.lang { position: relative; }
+.lang-btn { height: 40px; display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; color: var(--ink-soft); font-family: var(--display); font-weight: 700; font-size: 0.85rem; }
+.lang-btn svg { width: 17px; height: 17px; }
+.lang-btn:hover { border-color: var(--muted); }
+.lang-menu { position: absolute; right: 0; top: calc(100% + 8px); min-width: 170px; padding: 6px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-lg); z-index: 60; display: flex; flex-direction: column; gap: 2px; animation: step-in .2s var(--ease); }
+.lang-menu button { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 0; background: none; cursor: pointer; padding: 10px 12px; border-radius: 10px; text-align: left; font-family: var(--display); font-weight: 500; }
+.lang-menu button:hover, .lang-menu button:focus-visible { background: var(--accent-soft); }
+.lang-menu button[aria-checked="true"] { font-weight: 700; color: var(--accent-ink); }
+.lang-menu button[aria-checked="true"]::after { content: "✓"; }
+.lang-menu .code { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+@media (max-width: 420px) { .xp-pill { display: none; } }
+
 /* Pet: the Cheshire Cat */
 .brand svg { width: 34px; height: 34px; }
 .pet { position: fixed; right: 18px; bottom: 18px; z-index: 50; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; pointer-events: none; transition: bottom .3s var(--ease); }
@@ -547,23 +565,30 @@ body.in-level .pet { bottom: 84px; }
 </style>
 
 <body>
-<a class="sr-only" href="#main">Pular para o conteúdo</a>
+<a class="sr-only" href="#main" data-i18n="skip">Pular para o conteúdo</a>
 <header class="site-header">
   <div class="wrap">
-    <button class="brand" data-go="home" aria-label="Cheshire — início">
+    <button class="brand" data-go="home" aria-label="Cheshire — início" data-i18n-aria="brandAria">
       <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M20 42 L17 9 L43 29 Z" fill="#9B63C4"/><path d="M23 35 L21.5 17 L36 29 Z" fill="#F4A6C8"/><path d="M80 42 L83 9 L57 29 Z" fill="#9B63C4"/><path d="M77 35 L78.5 17 L64 29 Z" fill="#F4A6C8"/><ellipse cx="50" cy="56" rx="37" ry="31" fill="#9B63C4"/><path d="M40 28 Q50 34 60 28M35 35 Q50 43 65 35M14 54 Q21 56 24 62M86 54 Q79 56 76 62" stroke="#7A3FA0" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="36" cy="49" rx="8.5" ry="7" fill="#F6D35B"/><ellipse cx="64" cy="49" rx="8.5" ry="7" fill="#F6D35B"/><ellipse cx="36" cy="49" rx="1.9" ry="5.8" fill="#2A1B35"/><ellipse cx="64" cy="49" rx="1.9" ry="5.8" fill="#2A1B35"/><path d="M19 63 Q50 98 81 63 Q50 78 19 63Z" fill="#FFFFFF" stroke="#D2407A" stroke-width="2.6" stroke-linejoin="round"/><path d="M31 69.5v8M40.5 72.5v10M50 73.5v10.5M59.5 72.5v10M69 69.5v8" stroke="#D2407A" stroke-width="1.7"/></svg>
       Cheshire
     </button>
-    <nav class="nav" id="nav" aria-label="Principal">
-      <button data-go="home">Fases</button>
-      <button data-go="lab">Laboratório</button>
-      <button data-go="glossario">Glossário</button>
-      <button data-go="sobre">Sobre</button>
+    <nav class="nav" id="nav" aria-label="Principal" data-i18n-aria="navAria">
+      <button data-go="home" data-i18n="navHome">Fases</button>
+      <button data-go="lab" data-i18n="navLab">Laboratório</button>
+      <button data-go="glossario" data-i18n="navGlossary">Glossário</button>
+      <button data-go="sobre" data-i18n="navAbout">Sobre</button>
     </nav>
     <div class="header-right">
-      <span class="xp-pill" id="xp" title="Pontos de experiência">⚛ <span id="xp-val">0</span> XP</span>
+      <span class="xp-pill" id="xp" title="Pontos de experiência" data-i18n-title="xpTitle">⚛ <span id="xp-val">0</span> XP</span>
+      <div class="lang">
+        <button class="lang-btn" id="lang" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu" data-i18n-aria="langAria" aria-label="Idioma">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg>
+          <span id="lang-short">PT</span>
+        </button>
+        <div class="lang-menu" id="lang-menu" role="menu" hidden></div>
+      </div>
       <button class="icon-btn" id="theme" aria-label="Alternar tema claro/escuro"></button>
-      <button class="icon-btn menu-btn" id="menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+      <button class="icon-btn menu-btn" id="menu" data-i18n-aria="menuOpen" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
@@ -575,24 +600,24 @@ body.in-level .pet { bottom: 84px; }
     <div class="wrap">
       <div class="hero">
         <div>
-          <span class="kicker">⚛ minijogo educativo · código aberto</span>
-          <h1>Física quântica, <em>de brincadeira</em>.</h1>
-          <p class="lede">Monte circuitos, meça qubits e veja a interferência acontecer. Fases curtas para quem está só curioso e para quem quer ir fundo.</p>
+          <span class="kicker" data-i18n="heroKicker">⚛ minijogo educativo · código aberto</span>
+          <h1 data-i18n-html="heroTitleHtml">Física quântica, <em>na prática</em>.</h1>
+          <p class="lede" data-i18n="heroLede">Monte circuitos, meça qubits e veja a interferência acontecer. Fases curtas para quem está só curioso e para quem quer ir fundo.</p>
           <div class="ctas">
             <button class="btn primary" id="cta-start">Começar</button>
-            <button class="btn" data-go="lab">Abrir o laboratório</button>
+            <button class="btn" data-go="lab" data-i18n="heroLab">Abrir o laboratório</button>
           </div>
         </div>
         <div class="hero-sphere">
-          <div id="hero-bloch" class="no-anim" role="img" aria-label="Esfera de Bloch animada: uma seta girando representa o estado de um qubit"></div>
+          <div id="hero-bloch" class="no-anim" role="img" data-i18n-aria="heroSphereAria" aria-label="Esfera de Bloch animada: uma seta girando representa o estado de um qubit"></div>
           <div class="caption" id="hero-ket">|ψ⟩</div>
         </div>
       </div>
 
       <div class="panel home-bar">
         <div>
-          <span class="seg-label">Pra quem?</span>
-          <div class="seg" id="aud-seg" role="group" aria-label="Filtrar fases por público"></div>
+          <span class="seg-label" data-i18n="homeWho">Pra quem?</span>
+          <div class="seg" id="aud-seg" role="group" data-i18n-aria="homeAudAria" aria-label="Filtrar fases por público"></div>
           <div class="audience-desc" id="aud-desc"></div>
         </div>
         <div class="stats" id="stats"></div>
@@ -603,11 +628,11 @@ body.in-level .pet { bottom: 84px; }
       <div class="panel did-you-know" id="dyk">
         <div class="bulb" aria-hidden="true">💡</div>
         <div>
-          <h3>Você sabia?</h3>
+          <h3 data-i18n="dykTitle">Você sabia?</h3>
           <p id="dyk-text"></p>
           <div class="from" id="dyk-from"></div>
         </div>
-        <button class="btn small" id="dyk-next">Outra curiosidade</button>
+        <button class="btn small" id="dyk-next" data-i18n="dykNext">Outra curiosidade</button>
       </div>
     </div>
   </section>
@@ -615,7 +640,7 @@ body.in-level .pet { bottom: 84px; }
   <section id="view-level" class="view" hidden>
     <div class="wrap">
       <div class="player-top">
-        <button class="btn ghost small" data-go="home" aria-label="Voltar ao mapa de fases">← Fases</button>
+        <button class="btn ghost small" data-go="home" data-i18n="playerBack" data-i18n-aria="playerBackAria" aria-label="Voltar ao mapa de fases">← Fases</button>
         <div class="player-title"><span class="i" id="lv-icon"></span><h2 id="lv-title"></h2></div>
         <div class="progress" id="lv-progress" aria-hidden="true"></div>
         <span class="step-count" id="lv-count"></span>
@@ -634,8 +659,8 @@ body.in-level .pet { bottom: 84px; }
   <section id="view-lab" class="view" hidden>
     <div class="wrap">
       <div class="page-head">
-        <h1>Laboratório livre</h1>
-        <p>Sem objetivo, sem nota: monte o circuito que quiser (até 4 qubits) e veja o estado mudar em tempo real. Bom para testar ideias das fases.</p>
+        <h1 data-i18n="labTitle">Laboratório livre</h1>
+        <p data-i18n="labDesc">Sem objetivo, sem nota: monte o circuito que quiser (até 4 qubits) e veja o estado mudar em tempo real. Bom para testar ideias das fases.</p>
       </div>
       <div class="panel step-card wide" id="lab-root"></div>
     </div>
@@ -644,9 +669,9 @@ body.in-level .pet { bottom: 84px; }
   <section id="view-glossario" class="view" hidden>
     <div class="wrap">
       <div class="page-head">
-        <h1>Glossário</h1>
-        <p>As palavras que aparecem nas fases, explicadas sem fórmula (quase).</p>
-        <input class="search" id="gloss-search" type="search" placeholder="Buscar termo…" aria-label="Buscar no glossário">
+        <h1 data-i18n="glossTitle">Glossário</h1>
+        <p data-i18n="glossDesc">As palavras que aparecem nas fases, explicadas sem fórmula (quase).</p>
+        <input class="search" id="gloss-search" type="search" placeholder="Buscar termo…" aria-label="Buscar no glossário" data-i18n-placeholder="glossSearch" data-i18n-aria="glossSearchAria">
       </div>
       <div class="gloss" id="gloss"></div>
     </div>
@@ -655,61 +680,25 @@ body.in-level .pet { bottom: 84px; }
   <section id="view-sobre" class="view" hidden>
     <div class="wrap">
       <div class="page-head">
-        <h1>Sobre o Cheshire</h1>
-        <p>Um minijogo aberto para ensinar computação e física quântica a pessoas diferentes, em níveis diferentes — do “nunca ouvi falar” ao “quero entender Grover”.</p>
+        <h1 data-i18n="aboutTitle">Sobre o Cheshire</h1>
+        <p data-i18n="aboutLede"></p>
       </div>
-      <div class="prose">
-        <h2>Por que “Cheshire”?</h2>
-        <p>Em <em>Alice no País das Maravilhas</em> (Lewis Carroll, 1865), o Gato de Cheshire some aos poucos até sobrar só o sorriso — e Alice comenta que já viu muito gato sem sorriso, mas nunca um sorriso sem gato. É o seu companheiro aqui: ele comenta suas jogadas, dá pistas e, se você ficar parado, desaparece deixando só o sorriso. Clique nele para ouvir uma curiosidade.</p>
-        <p>A física também tem o seu: em 2013, Aharonov, Popescu, Rohrlich e Skrzypczyk propuseram o <strong>gato de Cheshire quântico</strong> — num interferômetro, medições fracas indicam que a partícula passou por um caminho e o seu spin, por outro. Em 2014 o efeito foi observado com nêutrons, e o que ele significa ainda é debatido.</p>
-        <p><button class="btn small" id="pet-toggle">Esconder o Gato</button></p>
-        <h2>E a esfera que gira?</h2>
-        <p>É a esfera de Bloch, homenagem a Felix Bloch: o jeito mais bonito de enxergar um qubit. Em todo desafio, a seta que você vê girando é ela.</p>
-        <h2>Como as fases funcionam</h2>
-        <p>Cada fase é um único arquivo JSON na pasta <code>levels/</code> do repositório. O motor lê esses arquivos no build e monta tudo num só HTML — sem servidor, sem rastreador, sem requisição a terceiros. Uma fase é uma sequência de passos:</p>
-        <div class="types">
-          <div><b>story</b><span>Texto curto com ícone: contexto, história, explicação.</span></div>
-          <div><b>quiz</b><span>Múltipla escolha, com o porquê de cada alternativa.</span></div>
-          <div><b>circuit</b><span>Desafio: monte um circuito que chegue ao estado-alvo.</span></div>
-          <div><b>measure</b><span>Meça um circuito várias vezes e veja a estatística surgir.</span></div>
-          <div><b>predict</b><span>Chute a probabilidade antes de ver a resposta.</span></div>
-          <div><b>fact</b><span>Uma curiosidade para lembrar depois.</span></div>
-        </div>
-        <p>Portas são escritas como texto — <code>"H 0"</code>, <code>"CNOT 0 1"</code> — e o validador do repositório roda a solução de referência de cada desafio no mesmo simulador do jogo. Nenhuma fase publicada é impossível.</p>
-        <pre>{
-  "type": "circuit",
-  "title": "Crie um par de Bell",
-  "goal": "Os dois qubits sempre iguais.",
-  "qubits": 2,
-  "gates": ["H", "X", "CNOT"],
-  "target": { "state": { "00": 1, "11": 1 } },
-  "solution": ["H 0", "CNOT 0 1"]
-}</pre>
-        <h2>Convenções</h2>
-        <p>O fio de cima é o qubit 0 e é o dígito mais à esquerda: em <code>|10⟩</code>, o qubit 0 vale 1. Nas barras de probabilidade, a <strong>cor</strong> mostra a fase de cada amplitude; nas esferas, uma seta curta significa que o qubit está emaranhado com os outros.</p>
-        <h2>Contribua</h2>
-        <p>Professor(a), estudante ou pesquisador(a)? Escreva uma fase. O passo a passo está em <code>docs/CONTRIBUTING.md</code> e o formato completo em <code>docs/SCHEMA.md</code>, no <a href="https://github.com/2T0nnks/quantum-game" rel="noopener">repositório no GitHub</a>.</p>
-        <h2>Privacidade</h2>
-        <p>Seu progresso fica só no seu navegador (localStorage). Nada é enviado a lugar nenhum.</p>
-        <p><button class="btn small" id="reset-progress">Apagar meu progresso</button></p>
-        <h2>Licenças</h2>
-        <p>Código do motor sob MIT; conteúdo das fases e documentação sob CC BY-SA 4.0. Fontes Space Grotesk, Atkinson Hyperlegible e JetBrains Mono sob SIL OFL.</p>
-      </div>
+      <div class="prose" id="about-body"></div>
     </div>
   </section>
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
-    <span>Cheshire · aprenda quântica brincando · <a href="https://github.com/2T0nnks/quantum-game" rel="noopener">código no GitHub</a></span>
-    <span>Feito com qubits simulados e muito café ☕</span>
+    <span data-i18n-html="footerLeftHtml">Cheshire · aprenda quântica brincando · <a href="https://github.com/2T0nnks/quantum-game" rel="noopener">código no GitHub</a></span>
+    <span data-i18n="footerRight">Feito com qubits simulados e muito café ☕</span>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="pet" id="pet" data-mood="idle">
   <div class="pet-bubble" id="pet-bubble" role="status" aria-live="polite" hidden></div>
-  <button class="pet-cat" id="pet-cat" aria-label="Gato de Cheshire — clique para ouvir uma curiosidade">
+  <button class="pet-cat" id="pet-cat" data-i18n-aria="petAria" aria-label="Gato de Cheshire — clique para ouvir uma curiosidade">
     <svg viewBox="0 0 100 100" aria-hidden="true">
       <g class="pet-body">
         <path class="pet-tail" d="M80 82 C100 80 101 54 88 50" stroke="#8A52B3" stroke-width="7" fill="none" stroke-linecap="round"/>
@@ -724,6 +713,7 @@ body.in-level .pet { bottom: 84px; }
 </div>
 
 <script>
+/* STRINGS:INJECT */
 /* QUANTUM:INJECT */
 
 (function () {
@@ -761,43 +751,61 @@ body.in-level .pet { bottom: 84px; }
     return node;
   }
 
-  // ── Content ──────────────────────────────────────────
-  const LEVELS = $$("script[data-level]").map(s => JSON.parse(s.textContent)).sort((a, b) => a.order - b.order);
-  const GLOSSARY = JSON.parse($("#glossary").textContent);
-  const PLAYABLE = LEVELS.filter(l => l.status === "open");
+  // ── Language ─────────────────────────────────────────
+  const S = globalThis.STRINGS;
+  const LANG_CODES = S.LANGS.map(l => l.code);
+  let lang = "pt";
+  const langInfo = () => S.LANGS.find(l => l.code === lang);
+  function detectLang() {
+    const want = (navigator.languages || [navigator.language || "pt"]).map(x => String(x).slice(0, 2).toLowerCase());
+    return want.find(c => LANG_CODES.includes(c)) || "pt";
+  }
+  /** Interface string for the current language (falls back to pt). {0}, {1}… are filled from args. */
+  function t(key, ...args) {
+    let v = S[lang]?.[key] ?? S.pt[key];
+    if (v == null) return key;
+    if (Array.isArray(v)) v = v[Math.floor(Math.random() * v.length)];
+    return typeof v === "string" ? v.replace(/\{(\d)\}/g, (_, i) => args[i] ?? "") : v;
+  }
 
-  const TRACKS = {
-    fundamentos: { title: "Fundamentos", desc: "Qubits, medição e a estranheza básica." },
-    circuitos: { title: "Circuitos", desc: "Portas, fase, interferência e emaranhamento na prática." },
-    fenomenos: { title: "Fenômenos", desc: "Experimentos reais da física quântica, em forma de circuito." },
-    algoritmos: { title: "Algoritmos e protocolos", desc: "O que dá para fazer com tudo isso." },
-  };
-  const AUDIENCE = {
-    todos: { label: "Todos", desc: "Todas as fases, na ordem sugerida." },
-    curioso: { label: "🌱 Curioso(a)", short: "Curioso(a)", desc: "Zero pré-requisito. Só curiosidade." },
-    estudante: { label: "📘 Estudante", short: "Estudante", desc: "Ensino médio ou graduação: um pouco de vetor e ângulo ajuda." },
-    avancado: { label: "🚀 Avançado", short: "Avançado", desc: "Para devs e pesquisadores: algoritmos e protocolos." },
-  };
-  const GATE_INFO = {
-    H: { label: "H", name: "Hadamard", desc: "cria superposição — troca polos por equador." },
-    X: { label: "X", name: "Pauli-X", desc: "o NOT quântico — troca 0 e 1." },
-    Y: { label: "Y", name: "Pauli-Y", desc: "meia volta em torno do eixo Y." },
-    Z: { label: "Z", name: "Pauli-Z", desc: "inverte a fase de |1⟩ (meia volta no equador)." },
-    S: { label: "S", name: "Fase S", desc: "gira a fase de |1⟩ em 90°." },
-    T: { label: "T", name: "Fase T", desc: "gira a fase de |1⟩ em 45°." },
-    SDG: { label: "S†", name: "S adjunta", desc: "gira a fase em −90°." },
-    TDG: { label: "T†", name: "T adjunta", desc: "gira a fase em −45°." },
-    CNOT: { label: "CNOT", name: "NOT controlado", desc: "se o controle (●) é 1, aplica X no alvo (⊕)." },
-    CZ: { label: "CZ", name: "Z controlada", desc: "inverte o sinal de |11⟩." },
-    SWAP: { label: "SWAP", name: "Troca", desc: "troca o estado de dois qubits." },
-  };
+  // ── Content ──────────────────────────────────────────
+  // Levels are authored in pt; i18n/<lang>/ overlays replace only text fields.
+  const BASE_LEVELS = $$("script[data-level]").map(s => JSON.parse(s.textContent)).sort((a, b) => a.order - b.order);
+  const BASE_GLOSSARY = JSON.parse($("#glossary").textContent);
+  const LEVEL_TR = {}, GLOSSARY_TR = {};
+  $$("script[data-level-tr]").forEach(s => { (LEVEL_TR[s.dataset.lang] ||= {})[s.dataset.levelTr] = JSON.parse(s.textContent); });
+  $$("script[data-glossary-tr]").forEach(s => { GLOSSARY_TR[s.dataset.glossaryTr] = JSON.parse(s.textContent); });
+
+  /** Deep-merges a translation over the base: objects by key, arrays by index; types must match. */
+  function overlay(base, tr) {
+    if (tr == null) return base;
+    if (Array.isArray(base)) return Array.isArray(tr) ? base.map((b, i) => overlay(b, tr[i])) : base;
+    if (base && typeof base === "object") {
+      const out = { ...base };
+      for (const k of Object.keys(base)) if (k in tr) out[k] = overlay(base[k], tr[k]);
+      return out;
+    }
+    return typeof tr === typeof base ? tr : base;
+  }
+
+  let LEVELS, PLAYABLE, GLOSSARY, FACTS, TRACKS, AUDIENCE, GATE_INFO;
+  const GATE_LABELS = { SDG: "S†", TDG: "T†" };
+  function loadContent() {
+    LEVELS = BASE_LEVELS.map(l => overlay(l, LEVEL_TR[lang]?.[l.slug]));
+    PLAYABLE = LEVELS.filter(l => l.status === "open");
+    GLOSSARY = Object.fromEntries(Object.entries(BASE_GLOSSARY).map(([k, g]) => [k, overlay(g, GLOSSARY_TR[lang]?.[k])]));
+    FACTS = PLAYABLE.flatMap(l => l.steps.filter(s => s.type === "fact").map(s => ({ ...s, level: l })));
+    TRACKS = Object.fromEntries(Object.entries(t("tracks")).map(([k, [title, desc]]) => [k, { title, desc }]));
+    AUDIENCE = Object.fromEntries(Object.entries(t("audience")).map(([k, [label, desc, short]]) => [k, { label, desc, short }]));
+    GATE_INFO = Object.fromEntries(Object.entries(t("gates")).map(([g, [name, desc]]) => [g, { label: GATE_LABELS[g] || g, name, desc }]));
+  }
   const KET = bits => `|${bits}⟩`;
 
   // ── Persistence (per browser only) ───────────────────
   const STORE_KEY = "cheshire:v1";
   const LEGACY_KEY = "bloch:v1";
   const store = (() => {
-    const base = { progress: {}, theme: null, audience: "todos", pet: true };
+    const base = { progress: {}, theme: null, audience: "todos", pet: true, lang: null, resume: null };
     try {
       const d = JSON.parse(localStorage.getItem(STORE_KEY) || localStorage.getItem(LEGACY_KEY) || "{}");
       return { ...base, ...d, progress: d.progress || {} };
@@ -820,7 +828,7 @@ body.in-level .pet { bottom: 84px; }
     if (store.theme) document.documentElement.setAttribute("data-theme", store.theme);
     else document.documentElement.removeAttribute("data-theme");
     $("#theme").innerHTML = isDark() ? SUN : MOON;
-    $("#theme").setAttribute("aria-label", isDark() ? "Mudar para tema claro" : "Mudar para tema escuro");
+    $("#theme").setAttribute("aria-label", isDark() ? t("themeToLight") : t("themeToDark"));
   }
 
   // ── Toast + confetti ─────────────────────────────────
@@ -887,7 +895,7 @@ body.in-level .pet { bottom: 84px; }
     return parts;
   }
   const phaseColor = phi => `hsl(${(170 + phi * 180 / Math.PI + 360) % 360} var(--phase-s) var(--phase-l))`;
-  const pct = p => `${Math.round(p * 1000) / 10}%`.replace(".0%", "%");
+  const pct = p => `${new Intl.NumberFormat(langInfo().locale, { maximumFractionDigits: 1 }).format(p * 100)}%`;
 
   // ── Bloch sphere (SVG) ───────────────────────────────
   // Orthographic view from slightly above, with +x (|+⟩) toward the viewer and +y (|+i⟩) to the right.
@@ -939,7 +947,7 @@ body.in-level .pet { bottom: 84px; }
         const len = Math.hypot(v.x, v.y, v.z);
         head.setAttribute("r", 0.035 + 0.05 * len);
         shadow.setAttribute("x2", s.x); shadow.setAttribute("y2", s.y);
-        if (!opts.quiet) root.setAttribute("aria-label", `Esfera de Bloch: x ${v.x.toFixed(2)}, y ${v.y.toFixed(2)}, z ${v.z.toFixed(2)}`);
+        if (!opts.quiet) root.setAttribute("aria-label", t("blochAria", v.x.toFixed(2), v.y.toFixed(2), v.z.toFixed(2)));
       },
       ghost(v) {
         if (!v) { ghost.style.display = ghostHead.style.display = "none"; return; }
@@ -954,9 +962,9 @@ body.in-level .pet { bottom: 84px; }
   // ── State panel: ket, probability bars, Bloch spheres ─
   function createStatePanel({ n, target, wires }) {
     const box = el("div", { class: "box" });
-    const legend = el("span", { class: "phase-legend", title: "A cor de cada barra mostra a fase da amplitude" }, el("i"), "cor = fase");
-    box.append(el("div", { class: "box-title" }, el("span", { text: "Estado atual" }), legend));
-    const ket = el("div", { class: "ket-line", "aria-label": "Estado em notação de Dirac" });
+    const legend = el("span", { class: "phase-legend", title: t("legendTitle") }, el("i"), t("legend"));
+    box.append(el("div", { class: "box-title" }, el("span", { text: t("stateNow") }), legend));
+    const ket = el("div", { class: "ket-line", "aria-label": t("ketAria") });
     box.append(ket);
     const size = 1 << n;
     const bars = el("div", { class: `bars${size > 8 ? " many" : ""}`, style: `--n:${size}` });
@@ -966,12 +974,12 @@ body.in-level .pet { bottom: 84px; }
       const fill = el("div", { class: "bar-fill" });
       const val = el("div", { class: "bar-val" });
       const track = el("div", { class: "bar-track" }, fill, val);
-      if (ghostP) track.append(el("div", { class: "bar-ghost", style: `height:${ghostP[i] * 100}%`, title: `Alvo: ${pct(ghostP[i])}` }));
+      if (ghostP) track.append(el("div", { class: "bar-ghost", style: `height:${ghostP[i] * 100}%`, title: t("targetTitle", pct(ghostP[i])) }));
       bars.append(el("div", { class: "bar" }, track, el("div", { class: "bar-lab", text: KET(Q.label(n, i)) })));
       cols.push({ fill, val });
     }
     box.append(bars);
-    if (ghostP) box.append(el("div", { class: "audience-desc", html: "Contorno tracejado = alvo." }));
+    if (ghostP) box.append(el("div", { class: "audience-desc", text: t("ghostNote") }));
 
     const spheres = el("div", { class: `spheres${n === 1 ? " single" : ""}` });
     const blochs = [];
@@ -988,7 +996,7 @@ body.in-level .pet { bottom: 84px; }
         b.ghost(Q.bloch(t, 0));
       }
     }
-    box.append(el("div", { class: "box-title", style: "margin:18px 0 0" }, el("span", { text: n === 1 ? "Esfera de Bloch" : "Um qubit de cada vez" })));
+    box.append(el("div", { class: "box-title", style: "margin:18px 0 0" }, el("span", { text: n === 1 ? t("sphereOne") : t("spherePerQubit") })));
     box.append(spheres);
 
     return {
@@ -1007,7 +1015,7 @@ body.in-level .pet { bottom: 84px; }
           const v = Q.bloch(st, q);
           b.set(v);
           const len = Math.hypot(v.x, v.y, v.z);
-          purity.textContent = len < 0.98 ? (len < 0.02 ? "emaranhado" : `seta ${Math.round(len * 100)}%`) : "";
+          purity.textContent = len < 0.98 ? (len < 0.02 ? t("entangled") : t("arrowLen", Math.round(len * 100))) : "";
         });
       },
     };
@@ -1030,7 +1038,7 @@ body.in-level .pet { bottom: 84px; }
 
     const root = el("div");
     const help = el("div", { class: "gate-help", "aria-live": "polite" });
-    const palette = el("div", { class: "palette", role: "toolbar", "aria-label": "Portas disponíveis" });
+    const palette = el("div", { class: "palette", role: "toolbar", "aria-label": t("paletteAria") });
     if (editable) {
       for (const g of gates) {
         const info = GATE_INFO[g];
@@ -1043,21 +1051,21 @@ body.in-level .pet { bottom: 84px; }
       root.append(palette, help);
     }
     const scroll = el("div", { class: "board-scroll" });
-    const board = el("div", { class: `board${editable ? "" : " readonly"}`, "aria-label": "Circuito quântico" });
+    const board = el("div", { class: `board${editable ? "" : " readonly"}`, "aria-label": t("boardAria") });
     scroll.append(board);
     root.append(scroll);
     const count = el("span", { class: "gate-count" });
-    const clearBtn = el("button", { class: "btn small", onclick: () => { ops = ops.filter(o => o.fixed); pending = null; render(); changed(); } }, "Limpar");
+    const clearBtn = el("button", { class: "btn small", onclick: () => { ops = ops.filter(o => o.fixed); pending = null; render(); changed(); } }, t("clear"));
     if (editable) root.append(el("div", { class: "board-actions" }, clearBtn, count));
 
     function syncPalette() {
       $$(".pal", palette).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.gate === selected)));
       if (!editable) return;
-      if (pending) help.innerHTML = `<b>${GATE_INFO[pending.gate].label}</b>: agora clique no fio do <b>${pending.gate === "CNOT" ? "alvo (⊕)" : "segundo qubit"}</b>, na mesma coluna. <span class="dim">Esc cancela.</span>`;
+      if (pending) help.innerHTML = t("pendingHtml", GATE_INFO[pending.gate].label, pending.gate === "CNOT" ? t("pendingTarget") : t("pendingSecond"));
       else if (selected) {
         const two = Q.arity(selected) === 2;
-        help.innerHTML = `<b>${GATE_INFO[selected].name}</b> — ${GATE_INFO[selected].desc} ${two ? (n === 2 ? "Clique no fio do controle; o outro fio vira o alvo." : "Clique no fio do controle e depois no alvo.") : "Clique num espaço do fio."}`;
-      } else help.textContent = "Escolha uma porta acima. Clique numa porta já colocada para removê-la.";
+        help.innerHTML = `<b>${GATE_INFO[selected].name}</b> — ${GATE_INFO[selected].desc} ${two ? (n === 2 ? t("helpTwo2") : t("helpTwoN")) : t("helpOne")}`;
+      } else help.textContent = t("helpNone");
     }
     const span = op => { const lo = Math.min(...op.qubits), hi = Math.max(...op.qubits); return [lo, hi]; };
     function occupant(q, c) {
@@ -1082,15 +1090,15 @@ body.in-level .pet { bottom: 84px; }
         return;
       }
       if (occ) {
-        if (occ.fixed) { toast("Essa porta faz parte do desafio e não pode sair."); return; }
+        if (occ.fixed) { toast(t("gateLocked")); return; }
         ops = ops.filter(o => o !== occ); render(); changed();
         return;
       }
-      if (!selected) { toast("Escolha uma porta na paleta primeiro."); return; }
+      if (!selected) { toast(t("pickFirst")); return; }
       if (Q.arity(selected) === 1) return place({ gate: selected, qubits: [q], col: c, fixed: false });
       if (n === 2) {
         const other = 1 - q;
-        if (!spanFree(q, other, c)) { toast("O outro fio já está ocupado nessa coluna."); return; }
+        if (!spanFree(q, other, c)) { toast(t("wireBusy")); return; }
         return place({ gate: selected, qubits: [q, other], col: c, fixed: false });
       }
       pending = { gate: selected, col: c, first: q };
@@ -1113,7 +1121,7 @@ body.in-level .pet { bottom: 84px; }
           if (occ || isPending) cls.push("has");
           if (canTarget) cls.push("can-target");
           if (isPending) cls.push("pending");
-          let content = null, label = `${wires?.[q] || "q" + q}, coluna ${c + 1}: vazio`;
+          let content = null, label = t("cellEmpty", wires?.[q] || "q" + q, c + 1);
           if (isPending) {
             content = pending.gate === "CNOT" || pending.gate === "CZ" ? el("span", { class: `ctrl g-${pending.gate}` }) : el("span", { class: `swapx g-${pending.gate}`, text: "×" });
           } else if (occ) {
@@ -1137,7 +1145,7 @@ body.in-level .pet { bottom: 84px; }
             } else {
               content = el("span", { class: `swapx ${g}`, text: "×" });
             }
-            label = `${wires?.[q] || "q" + q}, coluna ${c + 1}: ${Q.formatOp(occ)}${occ.fixed ? " (fixa)" : editable ? " — clique para remover" : ""}`;
+            label = t("cellGate", wires?.[q] || "q" + q, c + 1, Q.formatOp(occ)) + (occ.fixed ? t("cellFixed") : editable ? t("cellRemove") : "");
           }
           const cell = el(editable ? "button" : "div", { class: cls.join(" "), "aria-label": label, title: editable ? label : null, onclick: editable ? () => onCell(q, c) : null });
           if (cls.some(k => k.startsWith("link"))) {
@@ -1150,7 +1158,7 @@ body.in-level .pet { bottom: 84px; }
         board.append(el("div", { class: "meter", html: METER, "aria-hidden": "true" }));
       }
       const mine = ops.filter(o => !o.fixed).length;
-      count.textContent = `${mine} ${mine === 1 ? "porta" : "portas"}`;
+      count.textContent = t(mine === 1 ? "gateCount1" : "gateCountN", mine);
       syncPalette();
     }
 
@@ -1188,14 +1196,6 @@ body.in-level .pet { bottom: 84px; }
   const Pet = (() => {
     const root = $("#pet"), bubble = $("#pet-bubble");
     let hideTimer, idleTimer, last = "";
-    const QUIPS = [
-      "Aqui somos todos meio superpostos. Você também, até alguém olhar.",
-      "Aonde você quer chegar? Isso depende bastante do circuito que você montar.",
-      "Já vi muito gato sem sorriso. Mas qubit sem fase? Nunca.",
-      "Se eu sumir, não se preocupe: é só decoerência.",
-      "Cada vez mais curiosíssimo! É assim que se aprende quântica.",
-      "Duas H seguidas se desfazem. Eu e o Chapeleiro também, depois do chá.",
-    ];
     function setMood(m) { root.dataset.mood = m; }
     function wake() {
       root.classList.remove("vanish");
@@ -1216,12 +1216,11 @@ body.in-level .pet { bottom: 84px; }
     $("#pet-cat").addEventListener("click", () => {
       const terms = Object.values(GLOSSARY);
       if (Math.random() < 0.5) { const g = choose(terms); say(`<strong>${g.term}:</strong> ${g.short}`, "happy", 9000, true); }
-      else say(choose(QUIPS), "happy", 6000);
+      else say(t("petQuips"), "happy", 6000);
     });
     function apply() {
       root.hidden = !store.pet;
-      const t = $("#pet-toggle");
-      if (t) t.textContent = store.pet ? "Esconder o Gato" : "Mostrar o Gato";
+      $$('[data-action="pet-toggle"]').forEach(b => { b.textContent = store.pet ? t("petHide") : t("petShow"); });
     }
     return { say, sayOnce, wake, apply };
   })();
@@ -1231,6 +1230,7 @@ body.in-level .pet { bottom: 84px; }
   let current = { view: "home" };
   let heroAnim = null;
   let activeKeyHandler = null;
+  let greeted = false;
 
   function go(view, params = {}, push = true) {
     const url = new URL(location.href);
@@ -1261,17 +1261,16 @@ body.in-level .pet { bottom: 84px; }
     activeKeyHandler = null;
     if (heroAnim) { cancelAnimationFrame(heroAnim); heroAnim = null; }
     document.body.classList.toggle("in-level", view === "level");
-    if (view === "home") { renderHome(); Pet.say(choose(["Olá! Por onde começar? Depende de aonde você quer chegar.", "Bem-vindo. Aqui nada é só uma coisa ou outra — até alguém olhar.", "Escolha uma fase. Eu te acompanho… às vezes só com o sorriso."]), "talk", 5000); }
+    if (view === "home") { renderHome(); if (!greeted) { greeted = true; if (innerWidth > 640) Pet.say(t("petGreet"), "talk", 5000); } }
     if (view === "level") startLevel(PLAYABLE.find(l => l.slug === params.slug));
-    if (view === "lab") { renderLab(); Pet.say("Laboratório livre! Nada pode dar errado. Quer dizer… quase nada.", "think", 4500); }
+    if (view === "lab") { renderLab(); Pet.say(t("petLab"), "think", 4500); }
     if (view === "glossario") renderGlossary(params.term);
-    const titles = { home: "Cheshire — física quântica de brincadeira", lab: "Laboratório · Cheshire", glossario: "Glossário · Cheshire", sobre: "Sobre · Cheshire" };
-    document.title = view === "level" ? `${PLAYABLE.find(l => l.slug === params.slug).title} · Cheshire` : titles[view];
+    const titles = { lab: t("navLab"), glossario: t("navGlossary"), sobre: t("navAbout") };
+    document.title = view === "home" ? t("titleHome") : t("titleSuffix", view === "level" ? PLAYABLE.find(l => l.slug === params.slug).title : titles[view]);
   }
 
   // ── Home ─────────────────────────────────────────────
-  const FACTS = LEVELS.filter(l => l.status === "open").flatMap(l => l.steps.filter(s => s.type === "fact").map(s => ({ ...s, level: l })));
-  let factIdx = Math.floor(Math.random() * Math.max(1, FACTS.length));
+  let factIdx = Math.floor(Math.random() * 1000);
 
   function nextRecommended() {
     const pool = PLAYABLE.filter(l => store.audience === "todos" || l.audience === store.audience);
@@ -1289,19 +1288,25 @@ body.in-level .pet { bottom: 84px; }
     const done = PLAYABLE.filter(l => store.progress[l.slug]).length;
     const stars = Object.values(store.progress).reduce((s, p) => s + (p.stars || 0), 0);
     $("#stats").replaceChildren(
-      el("div", { class: "stat" }, el("b", { text: `${done}/${PLAYABLE.length}` }), el("span", { text: "fases" })),
-      el("div", { class: "stat" }, el("b", { text: `${stars}` }), el("span", { text: "estrelas" })),
+      el("div", { class: "stat" }, el("b", { text: `${done}/${PLAYABLE.length}` }), el("span", { text: t("homeLevels") })),
+      el("div", { class: "stat" }, el("b", { text: `${stars}` }), el("span", { text: t("homeStars") })),
     );
 
     const next = nextRecommended();
+    const resume = resumable();
     const cta = $("#cta-start");
-    cta.textContent = next ? (done ? `Continuar: ${next.title}` : "Começar a primeira fase") : "Rever as fases";
-    cta.onclick = () => next ? go("level", { slug: next.slug }) : document.querySelector("#tracks").scrollIntoView();
+    if (resume) {
+      cta.textContent = t("ctaResume", resume.level.title, resume.i + 1);
+      cta.onclick = () => go("level", { slug: resume.level.slug });
+    } else {
+      cta.textContent = next ? (done ? t("ctaContinue", next.title) : t("ctaStart")) : t("ctaReview");
+      cta.onclick = () => next ? go("level", { slug: next.slug }) : document.querySelector("#tracks").scrollIntoView();
+    }
 
     const tracks = $("#tracks");
     tracks.replaceChildren();
     let n = 0;
-    Object.entries(TRACKS).forEach(([key, t], ti) => {
+    Object.entries(TRACKS).forEach(([key, track], ti) => {
       const list = LEVELS.filter(l => l.track === key && (store.audience === "todos" || l.audience === store.audience));
       if (!list.length) return;
       const cards = el("div", { class: "cards" });
@@ -1313,10 +1318,10 @@ body.in-level .pet { bottom: 84px; }
           class: `card${soon ? " soon" : ""}${prog ? " done" : ""}`,
           "data-aud": l.audience,
           onclick: soon ? null : () => go("level", { slug: l.slug }),
-          "aria-label": soon ? null : `${l.title} — ${AUDIENCE[l.audience].short}, ${l.duration || ""}${prog ? `, ${prog.stars} estrelas` : ""}`,
+          "aria-label": soon ? null : `${l.title} — ${AUDIENCE[l.audience].short}, ${l.duration || ""}${prog ? t("cardStars", prog.stars) : ""}`,
         },
-          next && next.slug === l.slug ? el("span", { class: "ribbon", text: "próxima" }) : null,
-          el("div", { class: "top" }, el("span", { class: "icon", text: l.icon, "aria-hidden": "true" }), el("span", { class: "num", text: soon ? "em breve" : String(n).padStart(2, "0") })),
+          resume && resume.level.slug === l.slug ? el("span", { class: "ribbon", text: t("homeInProgress") }) : !resume && next && next.slug === l.slug ? el("span", { class: "ribbon", text: t("homeNext") }) : null,
+          el("div", { class: "top" }, el("span", { class: "icon", text: l.icon, "aria-hidden": "true" }), el("span", { class: "num", text: soon ? t("homeSoon") : String(n).padStart(2, "0") })),
           el("h3", { text: l.title }),
           el("p", { text: l.subtitle }),
           el("div", { class: "meta" },
@@ -1326,22 +1331,22 @@ body.in-level .pet { bottom: 84px; }
         cards.append(card);
       });
       tracks.append(el("section", { class: "track" },
-        el("div", { class: "track-head" }, el("span", { class: "track-num", text: `trilha ${ti + 1}` }), el("h2", { text: t.title }), el("p", { text: t.desc })),
+        el("div", { class: "track-head" }, el("span", { class: "track-num", text: t("homeTrack", ti + 1) }), el("h2", { text: track.title }), el("p", { text: track.desc })),
         cards));
     });
-    if (!tracks.children.length) tracks.append(el("p", { class: "audience-desc", text: "Nenhuma fase para este público ainda. Que tal escrever uma?" }));
+    if (!tracks.children.length) tracks.append(el("p", { class: "audience-desc", text: t("homeNone") }));
 
     showFact();
     startHeroSphere();
   }
   function starsEl(k) {
-    return el("span", { class: "stars", "aria-label": `${k} de 3 estrelas` }, [0, 1, 2].map(i => el("span", { class: i < k ? "on" : "", text: "★" })));
+    return el("span", { class: "stars", "aria-label": t("starsOf", k) }, [0, 1, 2].map(i => el("span", { class: i < k ? "on" : "", text: "★" })));
   }
   function showFact() {
     if (!FACTS.length) { $("#dyk").hidden = true; return; }
     const f = FACTS[factIdx % FACTS.length];
     $("#dyk-text").innerHTML = f.text;
-    $("#dyk-from").replaceChildren("Da fase ", el("a", { href: `?fase=${f.level.slug}`, text: f.level.title, onclick: e => { e.preventDefault(); go("level", { slug: f.level.slug }); } }));
+    $("#dyk-from").replaceChildren(t("dykFrom"), el("a", { href: `?fase=${f.level.slug}`, text: f.level.title, onclick: e => { e.preventDefault(); go("level", { slug: f.level.slug }); } }));
   }
   let heroBloch = null;
   function startHeroSphere() {
@@ -1364,19 +1369,33 @@ body.in-level .pet { bottom: 84px; }
   // ── Level player ─────────────────────────────────────
   let session = null;
 
-  function startLevel(level) {
+  /** A level left half-way, if any: { level, i, points }. */
+  function resumable() {
+    const r = store.resume;
+    const level = r && PLAYABLE.find(l => l.slug === r.slug);
+    if (!level || !(r.i > 0) || r.i >= level.steps.length || r.points?.length !== level.steps.length) return null;
+    return { level, i: r.i, points: r.points };
+  }
+
+  function startLevel(level, { fresh = false } = {}) {
     $("#btn-next").hidden = false;
     session = { level, i: 0, points: level.steps.map(() => 0), max: level.steps.map(s => ["quiz", "circuit", "predict"].includes(s.type) ? 1 : 0), done: false };
+    const r = !fresh && resumable();
+    if (r && r.level.slug === level.slug) {
+      session.i = r.i;
+      session.points = [...r.points];
+      toast(t("resumed", r.i + 1));
+    }
     $("#lv-icon").textContent = level.icon;
     $("#lv-title").textContent = level.title;
     renderStep();
-    Pet.say(choose([`${level.icon} ${level.title}. Vamos nessa!`, `Ah, “${level.title}”. Uma das minhas favoritas.`, "Siga o coelho. Ou o circuito."]), "talk", 3500);
+    Pet.say(t("petStart", level.icon, level.title), "talk", 3500);
   }
 
   function setNext({ enabled, label, ready }) {
     const b = $("#btn-next");
     b.disabled = !enabled;
-    b.firstChild.textContent = `${label || "Continuar"} `;
+    b.firstChild.textContent = `${label || t("next")} `;
     b.classList.toggle("ready", !!ready);
   }
   function setStatus(text, kind) {
@@ -1389,7 +1408,7 @@ body.in-level .pet { bottom: 84px; }
     const { level, i } = session;
     const bar = $("#lv-progress");
     bar.replaceChildren(...level.steps.map((_, k) => el("span", { class: k < i || session.done ? "done" : k === i ? "now" : "" })));
-    $("#lv-count").textContent = session.done ? "fim" : `${i + 1}/${level.steps.length}`;
+    $("#lv-count").textContent = session.done ? t("stepEnd") : `${i + 1}/${level.steps.length}`;
   }
 
   function renderStep() {
@@ -1401,12 +1420,14 @@ body.in-level .pet { bottom: 84px; }
     setStatus("");
     activeKeyHandler = null;
     const step = level.steps[i];
+    store.resume = { slug: level.slug, i, points: session.points };
+    save();
     const complete = (points = 0, opts = {}) => {
       session.points[i] = Math.max(session.points[i], points);
-      setNext({ enabled: true, ready: true, label: i === level.steps.length - 1 ? "Concluir fase" : "Continuar" });
+      setNext({ enabled: true, ready: true, label: i === level.steps.length - 1 ? t("nextFinish") : t("next") });
       if (opts.status) setStatus(opts.status, opts.kind || "ok");
     };
-    setNext({ enabled: ["story", "fact"].includes(step.type), label: i === level.steps.length - 1 ? "Concluir fase" : "Continuar" });
+    setNext({ enabled: ["story", "fact"].includes(step.type), label: i === level.steps.length - 1 ? t("nextFinish") : t("next") });
     const node = STEP_RENDERERS[step.type](step, complete);
     node.classList.add("step");
     stage.append(node);
@@ -1435,11 +1456,11 @@ body.in-level .pet { bottom: 84px; }
 
     fact(step) {
       return el("article", { class: "panel step-card fact-card" },
-        kicker("fact", "Você sabia?"),
+        kicker("fact", t("dykTitle")),
         el("div", { class: "big", text: step.icon || "💡", "aria-hidden": "true" }),
         step.title ? el("h2", { html: step.title }) : null,
         el("p", { class: "text", html: step.text }),
-        step.source ? el("div", { class: "source", text: `Fonte: ${step.source}` }) : null);
+        step.source ? el("div", { class: "source", text: t("factSource", step.source) }) : null);
     },
 
     quiz(step, complete) {
@@ -1461,15 +1482,15 @@ body.in-level .pet { bottom: 84px; }
         if (o.correct) {
           b.classList.add("right");
           buttons.forEach((x, j) => { x.disabled = true; if (j !== k && !x.classList.contains("wrong")) x.classList.add("dim"); });
-          complete(firstTry ? 1 : 0, { status: firstTry ? "Na primeira! +1 ponto" : "Isso! Agora você sabe o porquê.", kind: "ok" });
-          Pet.say(firstTry ? choose(["Isso! Sorri de orelha a orelha.", "Exato. Até apareci inteiro de alegria.", "Na mosca. Você é bom nisso."]) : "Aí sim. Errar faz parte da superposição.", "happy", 3500);
+          complete(firstTry ? 1 : 0, { status: firstTry ? t("quizFirst") : t("quizAfter"), kind: "ok" });
+          Pet.say(firstTry ? t("petQuizRight") : t("petQuizLate"), "happy", 3500);
           if (firstTry) confetti(b);
         } else {
           firstTry = false;
           b.classList.add("wrong");
           b.disabled = true;
-          setStatus("Quase! Leia o porquê e tente outra.", "warn");
-          Pet.say(choose(["Hmm, não foi dessa vez. Lê o porquê — eu espero.", "Cada vez mais curiosíssimo! Tenta outra.", "Nem tudo é o que parece. Tenta de novo."]), "oops", 3500);
+          setStatus(t("quizWrong"), "warn");
+          Pet.say(t("petQuizWrong"), "oops", 3500);
         }
       }
       activeKeyHandler = e => {
@@ -1478,7 +1499,7 @@ body.in-level .pet { bottom: 84px; }
         return false;
       };
       return el("article", { class: "panel step-card" },
-        kicker("quiz", "Pergunta"),
+        kicker("quiz", t("kickerQuiz")),
         el("div", { class: "quiz-q", html: step.question }),
         step.context ? el("p", { class: "quiz-context", html: step.context }) : null,
         opts);
@@ -1505,31 +1526,31 @@ body.in-level .pet { bottom: 84px; }
           solved = true;
           const used = circuit.playerCount();
           const pts = gaveUp ? 0 : used <= par && hintsUsed === 0 ? 1 : 0.5;
-          const msg = gaveUp ? "Solução aplicada. Estude o circuito e siga em frente." : used < par ? `Resolvido com ${used} portas — menos que a nossa solução! 🤯` : used <= par ? (hintsUsed ? "Resolvido!" : "Resolvido de primeira, com o mínimo de portas! ✨") : `Resolvido! Dá para fazer com ${par} ${par === 1 ? "porta" : "portas"}.`;
-          successBox.replaceChildren(el("div", { class: "success-box" }, el("b", { text: "Alvo atingido. " }), el("span", { html: step.success || "" })));
+          const msg = gaveUp ? t("solvedGaveUp") : used < par ? t("solvedFewer", used) : used <= par ? (hintsUsed ? t("solved") : t("solvedPerfect")) : t(par === 1 ? "solvedMore1" : "solvedMoreN", par);
+          successBox.replaceChildren(el("div", { class: "success-box" }, el("b", { text: t("targetHit") }), el("span", { html: step.success || "" })));
           complete(pts, { status: msg, kind: "ok" });
           if (!gaveUp) confetti(successBox);
-          Pet.say(gaveUp ? "Estude esse circuito com calma. Da próxima, é seu." : used < par ? "Menos portas que a solução oficial?! Até eu fiquei visível de surpresa." : choose(["O Gato sorri: alvo atingido!", "Que circuito elegante.", "Perfeito. A seta foi exatamente aonde devia."]), gaveUp ? "talk" : "happy", 4500);
+          Pet.say(gaveUp ? t("petGaveUp") : used < par ? t("petFewer") : t("petSolved"), gaveUp ? "talk" : "happy", 4500);
         } else if (r.probsMatch && step.target.state) {
-          setStatus("As probabilidades batem… mas a <strong>fase</strong> não. Olhe as cores das barras e a esfera.", "warn");
-          Pet.sayOnce("Psst: as barras batem, mas a cor não. É a fase!", "think", 5000);
+          setStatus(t("phaseOffHtml"), "warn");
+          Pet.sayOnce(t("petPhase"), "think", 5000);
         } else if (circuit.playerCount() > 0) {
-          setStatus(`Quase lá? Fidelidade com o alvo: ${Math.round(Math.max(0, r.score) * 100)}%`);
+          setStatus(t("fidelity", Math.round(Math.max(0, r.score) * 100)));
         } else setStatus("");
       }
       const hints = step.hints || [];
       const hb = $("#btn-hint");
       hb.hidden = false;
       const refreshHint = () => {
-        hb.textContent = hintsUsed < hints.length ? `💡 Dica${hints.length > 1 ? ` (${hintsUsed + 1}/${hints.length})` : ""}` : "🔓 Ver solução";
+        hb.textContent = hintsUsed < hints.length ? (hints.length > 1 ? t("hintN", hintsUsed + 1, hints.length) : t("hint")) : t("hintSolution");
       };
       hb.onclick = () => {
         if (solved) return;
         if (hintsUsed < hints.length) {
-          hintArea.append(el("div", { class: "hint-box" }, el("b", { text: `Dica ${hintsUsed + 1}: ` }), el("span", { html: hints[hintsUsed] })));
+          hintArea.append(el("div", { class: "hint-box" }, el("b", { text: t("hintLabel", hintsUsed + 1) }), el("span", { html: hints[hintsUsed] })));
           hintsUsed++;
           refreshHint();
-          Pet.say("Psst… deixei uma dica logo abaixo do circuito.", "think", 3500);
+          Pet.say(t("petHint"), "think", 3500);
         } else {
           gaveUp = true;
           circuit.setPlayer(step.solution);
@@ -1538,11 +1559,11 @@ body.in-level .pet { bottom: 84px; }
       refreshHint();
       activeKeyHandler = e => circuit.keydown(e);
       const node = el("article", { class: "panel step-card wide" },
-        kicker("circuit", "Desafio"),
+        kicker("circuit", t("kickerCircuit")),
         el("h2", { html: step.title }),
-        el("div", { class: "goal" }, el("span", { class: "tag", text: "Alvo" }), el("span", { html: step.goal })),
+        el("div", { class: "goal" }, el("span", { class: "tag", text: t("goalTag") }), el("span", { html: step.goal })),
         el("div", { class: "lab-grid" },
-          el("div", {}, el("div", { class: "box" }, el("div", { class: "box-title" }, el("span", { text: "Seu circuito" })), circuit.root), hintArea, successBox),
+          el("div", {}, el("div", { class: "box" }, el("div", { class: "box-title" }, el("span", { text: t("yourCircuit") })), circuit.root), hintArea, successBox),
           panel.root));
       queueMicrotask(evaluate);
       return node;
@@ -1557,21 +1578,24 @@ body.in-level .pet { bottom: 84px; }
       let shots = 0, finished = false;
       const min = step.minShots || 10;
       const big = el("span", { class: "ket-big", text: "?" });
-      const note = el("span", { class: "hint", text: "Nenhuma medição ainda." });
+      const note = el("span", { class: "hint", text: t("measureNone") });
+      const expected = Q.probabilities(st);
+      const expectNote = el("div", { class: "audience-desc", text: t("measureExpected"), hidden: true });
       const bars = el("div", { class: `bars${size > 8 ? " many" : ""}`, style: `--n:${size}` });
       const cols = [];
       for (let i = 0; i < size; i++) {
         const fill = el("div", { class: "bar-fill", style: "--phase: var(--accent)" });
         const val = el("div", { class: "bar-val" });
-        bars.append(el("div", { class: "bar" }, el("div", { class: "bar-track" }, fill, val), el("div", { class: "bar-lab", text: KET(Q.label(n, i)) })));
-        cols.push({ fill, val });
+        const ghost = el("div", { class: "bar-ghost", style: "height:0%", hidden: true });
+        bars.append(el("div", { class: "bar" }, el("div", { class: "bar-track" }, fill, val, ghost), el("div", { class: "bar-lab", text: KET(Q.label(n, i)) })));
+        cols.push({ fill, val, ghost });
       }
-      const seq = el("div", { class: "seq", "aria-label": "Últimos resultados" });
+      const seq = el("div", { class: "seq", "aria-label": t("measureSeqAria") });
       const meterFill = el("i", { style: "width:0%" });
       const meterText = el("span", { text: `0/${min}` });
       const afterBox = el("div");
       function shoot(k) {
-        if (shots === 0) Pet.say("Caiu! Antes de medir, nem eu sabia o resultado.", "think", 4000);
+        if (shots === 0) Pet.say(t("petMeasure"), "think", 4000);
         let last;
         for (let j = 0; j < k; j++) {
           last = Q.sample(st);
@@ -1582,37 +1606,44 @@ body.in-level .pet { bottom: 84px; }
         }
         big.textContent = KET(last);
         big.classList.remove("flash"); void big.offsetWidth; big.classList.add("flash");
-        note.textContent = k === 1 ? "O qubit “caiu” para este resultado." : `Último de ${k} resultados.`;
+        note.textContent = k === 1 ? t("measureOne") : t("measureMany", k);
         const maxC = Math.max(...counts);
         counts.forEach((c, i) => {
           const h = maxC ? c / maxC * 100 : 0;
           cols[i].fill.style.height = `${h}%`;
           cols[i].val.textContent = c ? `${c}` : "";
           cols[i].val.style.bottom = `${h}%`;
+          // After the minimum, show what theory predicts (same scale as the bars).
+          if (finished || shots >= min) {
+            cols[i].ghost.hidden = false;
+            cols[i].ghost.style.height = `${Math.min(100, expected[i] * shots / maxC * 100)}%`;
+          }
         });
+        if (shots >= min) expectNote.hidden = false;
         meterFill.style.width = `${Math.min(100, shots / min * 100)}%`;
         meterText.textContent = `${Math.min(shots, min)}/${min}`;
         if (!finished && shots >= min) {
           finished = true;
           if (step.after) afterBox.append(el("div", { class: "after", html: step.after }));
-          complete(0, { status: "Continue medindo à vontade — ou siga em frente.", kind: "ok" });
+          complete(0, { status: t("measureDone"), kind: "ok" });
         }
       }
       const btn = (k, label) => el("button", { class: `btn${k === 1 ? " primary" : ""}`, onclick: () => shoot(k) }, label);
-      const reset = el("button", { class: "btn ghost small", onclick: () => { counts.fill(0); seq.replaceChildren(); cols.forEach(c => { c.fill.style.height = "0%"; c.val.textContent = ""; }); big.textContent = "?"; note.textContent = "Contagem zerada."; } }, "Zerar");
+      const reset = el("button", { class: "btn ghost small", onclick: () => { counts.fill(0); seq.replaceChildren(); cols.forEach(c => { c.fill.style.height = "0%"; c.val.textContent = ""; c.ghost.hidden = true; }); shots = 0; expectNote.hidden = true; big.textContent = "?"; note.textContent = t("measureCleared"); } }, t("measureReset"));
       activeKeyHandler = e => { if (e.key === " " || e.key.toLowerCase() === "m") { shoot(1); return true; } return false; };
       return el("article", { class: "panel step-card wide" },
-        kicker("measure", "Experimento"),
+        kicker("measure", t("kickerMeasure")),
         el("h2", { html: step.title }),
         step.body ? el("p", { class: "story-body", html: step.body }) : null,
         el("div", { class: "lab-grid" },
-          el("div", { class: "box" }, el("div", { class: "box-title" }, el("span", { text: "O circuito" })), circuit.root),
+          el("div", { class: "box" }, el("div", { class: "box-title" }, el("span", { text: t("theCircuit") })), circuit.root),
           el("div", { class: "box" },
-            el("div", { class: "box-title" }, el("span", { text: "Medições" }), el("span", { class: "phase-legend", text: "atalho: espaço" })),
-            el("div", { class: "shot-btns" }, btn(1, "Medir 1×"), btn(10, "10×"), btn(100, "100×"), reset),
+            el("div", { class: "box-title" }, el("span", { text: t("measurements") }), el("span", { class: "phase-legend", text: t("measureShortcut") })),
+            el("div", { class: "shot-btns" }, btn(1, t("measure1")), btn(10, "10×"), btn(100, "100×"), reset),
             el("div", { class: "last-shot" }, big, note),
             bars,
-            el("div", { class: "shots-meter" }, el("span", { text: "Progresso" }), el("div", { class: "track" }, meterFill), meterText),
+            expectNote,
+            el("div", { class: "shots-meter" }, el("span", { text: t("progress") }), el("div", { class: "track" }, meterFill), meterText),
             seq)),
         afterBox);
     },
@@ -1622,12 +1653,12 @@ body.in-level .pet { bottom: 84px; }
       const circuit = createCircuit({ n, fixed: step.circuit, initial: step.initial, wires: step.wires });
       const st = circuit.state();
       const truth = Q.patternProbability(st, step.outcome);
-      const outLabel = /x/.test(step.outcome) ? `${step.outcome.replace(/x/g, "·")} (· = tanto faz)` : KET(step.outcome);
+      const outLabel = /x/.test(step.outcome) ? t("predictAny", step.outcome.replace(/x/g, "·")) : KET(step.outcome);
       const val = el("div", { class: "guess-val", text: "50%" });
-      const range = el("input", { type: "range", min: 0, max: 100, step: 5, value: 50, "aria-label": "Seu palpite, em porcentagem" });
+      const range = el("input", { type: "range", min: 0, max: 100, step: 5, value: 50, "aria-label": t("predictAria") });
       range.addEventListener("input", () => { val.textContent = `${range.value}%`; });
       const reveal = el("div");
-      const confirm = el("button", { class: "btn primary", onclick: submit }, "Confirmar palpite");
+      const confirm = el("button", { class: "btn primary", onclick: submit }, t("predictConfirm"));
       let locked = false;
       function submit() {
         if (locked) return;
@@ -1636,20 +1667,20 @@ body.in-level .pet { bottom: 84px; }
         const guess = Number(range.value) / 100;
         const err = Math.abs(guess - truth);
         const pts = err <= 0.1 ? 1 : err <= 0.25 ? 0.5 : 0;
-        const verdict = err <= 0.05 ? "Na mosca! 🎯" : err <= 0.1 ? "Muito perto! 👏" : err <= 0.25 ? "Chegou perto." : "Surpresa, né? 😮";
+        const verdict = t(err <= 0.05 ? "verdict1" : err <= 0.1 ? "verdict2" : err <= 0.25 ? "verdict3" : "verdict4");
         const truthBar = el("i", { class: "truth", style: "width:0%" });
         const panel = createStatePanel({ n, wires: step.wires });
         reveal.append(
           el("div", { class: "verdict", text: verdict }),
           el("div", { class: "compare" }, truthBar, el("span", { class: "mark", style: `left:${guess * 100}%` })),
-          el("div", { class: "compare-legend" }, el("span", { text: `Seu palpite: ${pct(guess)}` }), el("span", { text: `Resposta: ${pct(truth)}` })),
+          el("div", { class: "compare-legend" }, el("span", { text: t("predictYours", pct(guess)) }), el("span", { text: t("predictAnswer", pct(truth)) })),
           el("div", { class: "after", html: step.explain }),
           el("div", { style: "margin-top:18px" }, panel.root));
         panel.update(st);
         requestAnimationFrame(() => requestAnimationFrame(() => { truthBar.style.width = `${truth * 100}%`; }));
-        complete(pts, { status: pts === 1 ? "+1 ponto pela intuição quântica" : pts ? "+½ ponto" : "Sem ponto desta vez — mas agora você sabe!", kind: pts ? "ok" : "warn" });
+        complete(pts, { status: t(pts === 1 ? "predictP1" : pts ? "predictP05" : "predictP0"), kind: pts ? "ok" : "warn" });
         if (pts === 1) confetti(confirm);
-        Pet.say(pts === 1 ? "Que intuição quântica! Estou impressionado." : pts ? "Chegou perto. A quântica engana todo mundo." : "Surpreso? Eu também fiquei, da primeira vez.", pts ? "happy" : "oops", 4500);
+        Pet.say(t(pts === 1 ? "petPredict1" : pts ? "petPredict05" : "petPredict0"), pts ? "happy" : "oops", 4500);
       }
       activeKeyHandler = e => {
         if (locked) return false;
@@ -1657,14 +1688,14 @@ body.in-level .pet { bottom: 84px; }
         return false;
       };
       return el("article", { class: "panel step-card wide" },
-        kicker("predict", "Palpite"),
+        kicker("predict", t("kickerPredict")),
         el("div", { class: "quiz-q", html: step.question }),
         el("div", { class: "lab-grid" },
-          el("div", { class: "box" }, el("div", { class: "box-title" }, el("span", { text: "O circuito" })), circuit.root),
+          el("div", { class: "box" }, el("div", { class: "box-title" }, el("span", { text: t("theCircuit") })), circuit.root),
           el("div", { class: "box predict-box" },
-            el("div", { class: "box-title" }, el("span", { text: "Qual a chance?" })),
+            el("div", { class: "box-title" }, el("span", { text: t("predictChance") })),
             val,
-            el("div", { class: "guess-out", text: `de medir ${outLabel}` }),
+            el("div", { class: "guess-out", text: t("predictOf", outLabel) }),
             range,
             el("div", { class: "ticks" }, el("span", { text: "0%" }), el("span", { text: "50%" }), el("span", { text: "100%" })),
             confirm)),
@@ -1672,7 +1703,7 @@ body.in-level .pet { bottom: 84px; }
     },
   };
 
-  function finishLevel() {
+  function finishLevel({ quiet = false } = {}) {
     const { level, points, max } = session;
     session.done = true;
     renderProgress();
@@ -1681,46 +1712,51 @@ body.in-level .pet { bottom: 84px; }
     const ratio = total ? got / total : 1;
     const stars = ratio >= 0.9 ? 3 : ratio >= 0.6 ? 2 : 1;
     const xp = Math.round(level.steps.length * 5 + got * 20);
-    const prev = store.progress[level.slug];
-    const gained = Math.max(0, xp - (prev?.xp || 0));
-    store.progress[level.slug] = { stars: Math.max(stars, prev?.stars || 0), xp: Math.max(xp, prev?.xp || 0), at: new Date().toISOString().slice(0, 10) };
-    save();
-    renderXp(gained > 0);
+    if (!quiet) {
+      session.prev = store.progress[level.slug];
+      session.gained = Math.max(0, xp - (session.prev?.xp || 0));
+      store.progress[level.slug] = { stars: Math.max(stars, session.prev?.stars || 0), xp: Math.max(xp, session.prev?.xp || 0), at: new Date().toISOString().slice(0, 10) };
+      if (store.resume?.slug === level.slug) store.resume = null;
+      save();
+      renderXp(session.gained > 0);
+    }
+    const { prev, gained } = session;
 
     const nextLevel = PLAYABLE.find(l => l.order > level.order);
     const stage = $("#stage");
     const node = el("article", { class: "panel step-card finish step" },
-      el("div", { class: "big-stars", "aria-label": `${stars} de 3 estrelas` }, [0, 1, 2].map(k => el("span", { class: k < stars ? "on" : "", text: "★" }))),
-      el("h2", { text: stars === 3 ? "Fase dominada!" : "Fase concluída!" }),
-      el("div", { class: "xp-gain", text: gained ? `+${gained} XP` : `${xp} XP (seu recorde é ${prev.xp})` }),
-      level.takeaways?.length ? el("div", { class: "sub-h", text: "Para levar" }) : null,
-      level.takeaways?.length ? el("ul", { class: "takeaways" }, level.takeaways.map(t => el("li", { html: t }))) : null,
-      level.terms?.length ? el("div", { class: "sub-h", text: "Termos desta fase" }) : null,
-      level.terms?.length ? el("div", { class: "term-chips" }, level.terms.filter(t => GLOSSARY[t]).map(t => el("button", { class: "chip", html: GLOSSARY[t].term, onclick: () => openTerm(t) }))) : null,
-      level.further?.length ? el("div", { class: "sub-h", text: "Para ir além" }) : null,
+      el("div", { class: "big-stars", "aria-label": t("starsOf", stars) }, [0, 1, 2].map(k => el("span", { class: k < stars ? "on" : "", text: "★" }))),
+      el("h2", { text: stars === 3 ? t("finishMastered") : t("finishDone") }),
+      el("div", { class: "xp-gain", text: gained ? `+${gained} XP` : t("finishRecord", xp, prev?.xp ?? xp) }),
+      level.takeaways?.length ? el("div", { class: "sub-h", text: t("finishTake") }) : null,
+      level.takeaways?.length ? el("ul", { class: "takeaways" }, level.takeaways.map(x => el("li", { html: x }))) : null,
+      level.terms?.length ? el("div", { class: "sub-h", text: t("finishTerms") }) : null,
+      level.terms?.length ? el("div", { class: "term-chips" }, level.terms.filter(k => GLOSSARY[k]).map(k => el("button", { class: "chip", html: GLOSSARY[k].term, onclick: () => openTerm(k) }))) : null,
+      level.further?.length ? el("div", { class: "sub-h", text: t("finishFurther") }) : null,
       level.further?.length ? el("ul", { class: "further" }, level.further.map(f => el("li", {}, el("a", { href: safeUrl(f.url), target: "_blank", rel: "noopener noreferrer", text: f.title })))) : null,
       el("div", { class: "finish-ctas" },
-        nextLevel ? el("button", { class: "btn primary", onclick: () => go("level", { slug: nextLevel.slug }) }, `Próxima: ${nextLevel.icon} ${nextLevel.title}`) : null,
-        el("button", { class: "btn", onclick: () => startLevel(level) }, "Jogar de novo"),
-        el("button", { class: "btn ghost", onclick: () => go("home") }, "Mapa de fases")));
+        nextLevel ? el("button", { class: "btn primary", onclick: () => go("level", { slug: nextLevel.slug }) }, t("finishNext", `${nextLevel.icon} ${nextLevel.title}`)) : null,
+        el("button", { class: "btn", onclick: () => startLevel(level, { fresh: true }) }, t("finishAgain")),
+        el("button", { class: "btn ghost", onclick: () => go("home") }, t("finishMap"))));
     stage.replaceChildren(node);
-    setStatus(stars === 3 ? "Três estrelas! ⭐⭐⭐" : `Dica: acerte de primeira e use menos portas para mais estrelas.`, stars === 3 ? "ok" : "");
-    setNext({ enabled: false, label: "Fim da fase" });
+    setStatus(stars === 3 ? t("finishThree") : t("finishTip"), stars === 3 ? "ok" : "");
+    setNext({ enabled: false, label: t("nextOver") });
     $("#btn-next").hidden = true;
+    if (quiet) return;
     confetti($(".big-stars", node));
-    Pet.say(stars === 3 ? "Três estrelas! Eu sabia — ou estava em superposição de saber." : "Fase concluída! Quer tentar as três estrelas?", "happy", 5000);
+    Pet.say(stars === 3 ? t("petFinish3") : t("petFinish"), "happy", 5000);
     window.scrollTo({ top: 0, behavior: reducedMotion() ? "auto" : "smooth" });
   }
   function safeUrl(u) { return /^https:\/\//.test(u) ? u : "#"; }
 
   // ── Lab (sandbox) ────────────────────────────────────
   const PRESETS = {
-    vazio: { label: "Circuito vazio", n: 2, ops: [] },
-    bell: { label: "Par de Bell", n: 2, ops: ["H 0", "CNOT 0 1"] },
-    ghz: { label: "GHZ (3 qubits)", n: 3, ops: ["H 0", "CNOT 0 1", "CNOT 1 2"] },
-    interferencia: { label: "Interferência (H·Z·H)", n: 1, ops: ["H 0", "Z 0", "H 0"] },
-    grover: { label: "Grover (marca |11⟩)", n: 2, ops: ["H 0", "H 1", "CZ 0 1", "H 0", "H 1", "Z 0", "Z 1", "CZ 0 1", "H 0", "H 1"] },
-    teleporte: { label: "Teletransporte", n: 3, ops: ["H 0 @0", "T 0 @1", "H 1 @0", "CNOT 1 2 @1", "CNOT 0 1", "H 0", "CNOT 1 2", "CZ 0 2"] },
+    vazio: { n: 2, ops: [] },
+    bell: { n: 2, ops: ["H 0", "CNOT 0 1"] },
+    ghz: { n: 3, ops: ["H 0", "CNOT 0 1", "CNOT 1 2"] },
+    interferencia: { n: 1, ops: ["H 0", "Z 0", "H 0"] },
+    grover: { n: 2, ops: ["H 0", "H 1", "CZ 0 1", "H 0", "H 1", "Z 0", "Z 1", "CZ 0 1", "H 0", "H 1"] },
+    teleporte: { n: 3, ops: ["H 0 @0", "T 0 @1", "H 1 @0", "CNOT 1 2 @1", "CNOT 0 1", "H 0", "CNOT 1 2", "CZ 0 2"] },
   };
   function renderLab(presetKey = "bell") {
     const root = $("#lab-root");
@@ -1735,17 +1771,17 @@ body.in-level .pet { bottom: 84px; }
     };
     build();
     const circuit = createCircuit({ n, slots: 10, gates: Q.GATES, onChange: c => panel.update(c.state()) });
-    const count = el("span", { text: `${n} ${n === 1 ? "qubit" : "qubits"}` });
+    const count = el("span", { text: t(n === 1 ? "labQ1" : "labQN", n) });
     const setN = k => {
       if (k < 1 || k > Q.MAX_QUBITS) return;
-      n = k; count.textContent = `${n} ${n === 1 ? "qubit" : "qubits"}`;
+      n = k; count.textContent = t(n === 1 ? "labQ1" : "labQN", n);
       build(); circuit.setQubits(k);
     };
-    const select = el("select", { class: "btn small", "aria-label": "Carregar exemplo", onchange: e => renderLab(e.target.value) },
-      Object.entries(PRESETS).map(([k, p]) => el("option", { value: k, selected: k === presetKey }, p.label)));
+    const select = el("select", { class: "btn small", "aria-label": t("labLoad"), onchange: e => renderLab(e.target.value) },
+      Object.keys(PRESETS).map(k => el("option", { value: k, selected: k === presetKey }, t("presets")[k])));
     root.append(
       el("div", { class: "lab-controls" },
-        el("div", { class: "stepper" }, el("button", { "aria-label": "Menos qubits", onclick: () => setN(n - 1) }, "−"), count, el("button", { "aria-label": "Mais qubits", onclick: () => setN(n + 1) }, "+")),
+        el("div", { class: "stepper" }, el("button", { "aria-label": t("labLess"), onclick: () => setN(n - 1) }, "−"), count, el("button", { "aria-label": t("labMore"), onclick: () => setN(n + 1) }, "+")),
         select),
       el("div", { class: "lab-grid" }, el("div", { class: "box" }, circuit.root), panelHost));
     if (preset.ops.length) circuit.setPlayer(preset.ops); else panel.update(circuit.state());
@@ -1760,10 +1796,10 @@ body.in-level .pet { bottom: 84px; }
       const term = q.value.trim().toLowerCase();
       list.replaceChildren(...Object.entries(GLOSSARY)
         .filter(([, g]) => !term || (g.term + " " + g.short + " " + (g.long || "")).toLowerCase().includes(term))
-        .sort((a, b) => a[1].term.localeCompare(b[1].term, "pt-BR"))
+        .sort((a, b) => a[1].term.localeCompare(b[1].term, langInfo().locale))
         .map(([k, g]) => el("article", { class: "panel", id: `termo-${k}` },
           el("h3", { html: g.term }), el("p", { html: g.short }), g.long ? el("p", { class: "long", html: g.long }) : null)));
-      if (!list.children.length) list.append(el("p", { class: "audience-desc", text: "Nada encontrado." }));
+      if (!list.children.length) list.append(el("p", { class: "audience-desc", text: t("glossNone") }));
     };
     q.oninput = draw;
     if (focus) q.value = "";
@@ -1796,12 +1832,41 @@ body.in-level .pet { bottom: 84px; }
     });
     $("#btn-next").addEventListener("click", advance);
     $("#dyk-next").addEventListener("click", () => { factIdx++; showFact(); });
-    $("#pet-toggle").addEventListener("click", () => { store.pet = !store.pet; save(); Pet.apply(); if (store.pet) Pet.say("Voltei! Nunca fui embora, na verdade.", "happy"); });
-    ["pointerdown", "keydown"].forEach(ev => document.addEventListener(ev, () => Pet.wake(), { passive: true }));
-    $("#reset-progress").addEventListener("click", () => {
-      if (!confirm("Apagar todo o seu progresso neste navegador?")) return;
-      store.progress = {}; save(); renderXp(); toast("Progresso apagado.");
+    // About-page buttons are re-rendered on language change, so delegate.
+    document.addEventListener("click", e => {
+      const a = e.target.closest("[data-action]");
+      if (!a) return;
+      if (a.dataset.action === "pet-toggle") {
+        store.pet = !store.pet; save(); Pet.apply();
+        if (store.pet) Pet.say(t("petBack"), "happy");
+      } else if (a.dataset.action === "reset-progress") {
+        if (!confirm(t("resetConfirm"))) return;
+        store.progress = {}; store.resume = null; save(); renderXp(); toast(t("resetDone"));
+      }
     });
+    const langBtn = $("#lang"), langMenu = $("#lang-menu");
+    const closeLang = () => { langMenu.hidden = true; langBtn.setAttribute("aria-expanded", "false"); };
+    langBtn.addEventListener("click", e => {
+      e.stopPropagation();
+      const open = langMenu.hidden;
+      langMenu.hidden = !open;
+      langBtn.setAttribute("aria-expanded", String(open));
+      if (open) ($('[aria-checked="true"]', langMenu) || langMenu.firstChild).focus();
+    });
+    langMenu.addEventListener("click", e => {
+      const b = e.target.closest("[data-lang]");
+      if (!b) return;
+      closeLang();
+      setLang(b.dataset.lang);
+      langBtn.focus();
+    });
+    langMenu.addEventListener("keydown", e => {
+      const items = $$("button", langMenu), i = items.indexOf(document.activeElement);
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); items[(i + (e.key === "ArrowDown" ? 1 : -1) + items.length) % items.length].focus(); }
+      if (e.key === "Escape") { closeLang(); langBtn.focus(); }
+    });
+    document.addEventListener("click", e => { if (!e.target.closest(".lang")) closeLang(); });
+    ["pointerdown", "keydown"].forEach(ev => document.addEventListener(ev, () => Pet.wake(), { passive: true }));
     window.addEventListener("popstate", () => route(true));
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyTheme);
     document.addEventListener("keydown", e => {
@@ -1817,9 +1882,44 @@ body.in-level .pet { bottom: 84px; }
     });
   }
 
-  applyTheme();
+  // ── Language switching ───────────────────────────────
+  function applyStatic() {
+    const info = langInfo();
+    document.documentElement.lang = info.html;
+    $$("[data-i18n]").forEach(n => { n.textContent = t(n.dataset.i18n); });
+    $$("[data-i18n-html]").forEach(n => { n.innerHTML = t(n.dataset.i18nHtml); });
+    $$("[data-i18n-aria]").forEach(n => n.setAttribute("aria-label", t(n.dataset.i18nAria)));
+    $$("[data-i18n-title]").forEach(n => n.setAttribute("title", t(n.dataset.i18nTitle)));
+    $$("[data-i18n-placeholder]").forEach(n => n.setAttribute("placeholder", t(n.dataset.i18nPlaceholder)));
+    $("#about-body").innerHTML = t("aboutHtml");
+    $("#lang-short").textContent = info.short;
+    $("#lang-menu").replaceChildren(...S.LANGS.map(l => el("button", { role: "menuitemradio", "aria-checked": String(l.code === lang), "data-lang": l.code, lang: l.html },
+      el("span", { text: l.label }), el("span", { class: "code", text: l.short }))));
+    applyTheme();
+    Pet.apply();
+  }
+  function setLang(code) {
+    if (!LANG_CODES.includes(code) || code === lang) return;
+    lang = store.lang = code;
+    save();
+    loadContent();
+    applyStatic();
+    if (current.view === "level" && session) {
+      // Keep the player's place and points; just redraw in the new language.
+      session.level = PLAYABLE.find(l => l.slug === session.level.slug);
+      $("#lv-title").textContent = session.level.title;
+      if (session.done) finishLevel({ quiet: true }); else renderStep();
+      document.title = t("titleSuffix", session.level.title);
+    } else {
+      show(current.view, current);
+    }
+    Pet.say(t("petLang"), "happy", 3500);
+  }
+
+  lang = store.lang && LANG_CODES.includes(store.lang) ? store.lang : detectLang();
+  loadContent();
+  applyStatic();
   renderXp();
-  Pet.apply();
   wire();
   route(true);
 })();

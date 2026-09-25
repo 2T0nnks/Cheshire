@@ -1,0 +1,64 @@
+{
+  "title": "Mirar lo arruina",
+  "subtitle": "El experimento de la doble rendija como circuito: por qué “espiar el camino” borra la interferencia.",
+  "steps": [
+    {
+      "title": "Una partícula, dos rendijas",
+      "body": [
+        "En 1801, Thomas Young hizo pasar luz por dos rendijas y vio franjas claras y oscuras en una pared: interferencia, la firma de las ondas.",
+        "Un siglo después, se descubrió que la luz llega en paquetes (fotones). Y en 1989, Akira Tonomura y sus colegas enviaron <strong>electrones de a uno</strong> por un montaje equivalente. Cada uno aparece como un puntito… pero, sumando miles, surgen las franjas.",
+        "Cada electrón, solo, “interfiere consigo mismo”. Hasta que alguien intenta descubrir por qué rendija pasó."
+      ]
+    },
+    {
+      "title": "La doble rendija se vuelve circuito",
+      "body": [
+        "Usemos una versión más limpia: el <strong>interferómetro de Mach–Zehnder</strong>. Un espejo semitransparente divide el fotón en dos caminos; otro espejo semitransparente los vuelve a juntar.",
+        "En el circuito, cada espejo semitransparente es una <strong>H</strong>. El camino de arriba es <code>0</code>, el de abajo es <code>1</code>. El resultado de la medición dice a qué detector llegó el fotón."
+      ]
+    },
+    {
+      "title": "Sin espiar",
+      "body": "Dos espejos semitransparentes (H, H). Envía fotones, de a uno.",
+      "wires": ["fotón"],
+      "after": "¡Todos en el detector 0! Los dos caminos interfieren: de forma constructiva en el detector 0 y destructiva en el 1. Como las franjas de la doble rendija."
+    },
+    {
+      "title": "Ahora con un detector en el camino",
+      "body": "Un segundo qubit hace de detector que registra el camino: una CNOT anota “pasó por abajo” sin empujar ni frenar al fotón.",
+      "wires": ["fotón", "detector"],
+      "after": "Mira solo el primer dígito (el fotón): ahora sale 0 y 1 mitad y mitad. La interferencia desapareció. El detector no perturbó al fotón “a la fuerza” — bastó con que la información del camino existiera en algún lugar."
+    },
+    {
+      "question": "¿Por qué desapareció la interferencia?",
+      "options": [
+        { "text": "El detector le dio un “empujón” al fotón.", "why": "La CNOT no toca al fotón: solo cambia el detector cuando el fotón pasa por abajo. Aun así, la interferencia desapareció." },
+        { "text": "La información del camino quedó registrada (entrelazada) en el detector, así que los caminos dejaron de ser indistinguibles.", "why": "Eso. La interferencia solo ocurre entre posibilidades que el universo no puede distinguir. Es la decoherencia en miniatura." },
+        { "text": "Los detectores son clásicos y “rompen” la física cuántica.", "why": "Aquí el detector es otro qubit — todo sigue siendo cuántico. Lo que importa es la información, no el tamaño del detector." }
+      ]
+    },
+    {
+      "title": "Borra la pista",
+      "goal": "El detector ya anotó el camino. Usa el espacio libre, <em>antes</em> del último espejo, para borrar esa información y hacer que el fotón vuelva a llegar siempre al detector 0.",
+      "wires": ["fotón", "detector"],
+      "hints": [
+        "La CNOT es su propia inversa.",
+        "Haz que el detector “desanote” el camino con la misma puerta que lo anotó."
+      ],
+      "success": "¡Información borrada, interferencia de vuelta! Es la idea detrás de los experimentos de <em>borrador cuántico</em>. En la esfera, la flecha del fotón volvió a crecer."
+    },
+    {
+      "title": "El experimento más bello",
+      "text": "En 2002, los lectores de la revista Physics World eligieron la doble rendija con electrones individuales como “el experimento más bello de la física”. Richard Feynman decía que contiene “el único misterio” de la mecánica cuántica.",
+      "source": "Physics World, septiembre de 2002."
+    }
+  ],
+  "takeaways": [
+    "Partículas individuales producen patrones de interferencia, como las ondas.",
+    "Registrar el camino — en cualquier lugar — destruye la interferencia.",
+    "Borrar la información del camino puede restaurarla: lo que cuenta es lo que el universo puede distinguir."
+  ],
+  "further": [
+    { "title": "Wikipedia — Experimento de la doble rendija", "url": "https://es.wikipedia.org/wiki/Experimento_de_la_doble_rendija" }
+  ]
+}

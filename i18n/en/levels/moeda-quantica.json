@@ -1,0 +1,68 @@
+{
+  "title": "The coin that hasn't landed",
+  "subtitle": "Your first qubit: superposition, measurement and the most honest randomness in the universe.",
+  "steps": [
+    {
+      "title": "Bits are coins on the floor",
+      "body": [
+        "Every computer you've ever used stores information in <strong>bits</strong>: 0 or 1, heads or tails. The coin is always on the floor, one side up — even when nobody is looking.",
+        "A <strong>qubit</strong> is different. Before it's measured, it can be in a <em>superposition</em>: a combination of 0 and 1, each with a weight. Think of a coin still spinning in the air.",
+        "When you measure, the coin “lands”: you get 0 or 1. Which one? Physics doesn't decide that in advance — it only gives the odds."
+      ],
+      "aside": "The coin analogy is a starting point. In the next levels you'll see where it breaks — and that's where it gets good."
+    },
+    {
+      "title": "Toss the quantum coin",
+      "body": "This circuit starts with a qubit in <code>|0⟩</code> and applies the <strong>H</strong> gate (Hadamard), which sets it spinning. Measure a few times and see what happens.",
+      "after": "Half 0, half 1 — but no pattern at all in the sequence. Each measurement prepared a brand-new qubit and measured it. There's no “memory” and no trick: it's the purest chance nature has to offer."
+    },
+    {
+      "question": "You measured a qubit in superposition and got <code>1</code>. If you measure <em>the same qubit</em> again, without touching anything, what do you get?",
+      "options": [
+        { "text": "Always 1", "why": "Yes! Measuring “drops the coin”: afterwards, the qubit is exactly the result you saw. Measuring again confirms the 1." },
+        { "text": "50% chance of 0 or 1, again", "why": "That would be true if the coin started spinning again on its own. But measurement changes the state: after seeing 1, the qubit is in <code>|1⟩</code>." },
+        { "text": "Always 0, to even things out", "why": "The universe doesn't balance its books! There's no memory to “even out” — and the qubit is now in <code>|1⟩</code>." }
+      ]
+    },
+    {
+      "title": "Build your own coin",
+      "goal": "Give the qubit a 50% chance of reading 0 and a 50% chance of reading 1.",
+      "hints": [
+        "Click a gate in the palette, then an empty spot on the wire.",
+        "The gate that sets the qubit “spinning” starts with H."
+      ],
+      "success": "Coin in the air! Look at the bars: both results have the same height. And the arrow on the sphere lay down on the equator — that's where half-and-half superpositions live."
+    },
+    {
+      "title": "Loaded coin",
+      "goal": "Now make the qubit read <code>1</code> with 100% certainty.",
+      "hints": [
+        "No superposition needed here: you just want to flip the coin.",
+        "The X gate is the quantum “NOT”: it swaps 0 and 1."
+      ],
+      "success": "The <strong>X</strong> gate is the NOT of ordinary computers. The arrow went from the north pole (<code>|0⟩</code>) to the south pole (<code>|1⟩</code>)."
+    },
+    {
+      "title": "True randomness",
+      "text": "The “random” in your computer is almost always a well-disguised calculation: whoever knows the seed can predict everything. Quantum random number generators measure quantum phenomena — like vacuum fluctuations or photons hitting a half-silvered mirror — and produce sequences nobody can predict, not even in principle.",
+      "source": "E.g. the public quantum random number generator at the Australian National University (ANU)."
+    },
+    {
+      "question": "Which sentence best describes superposition?",
+      "options": [
+        { "text": "The qubit is already 0 or 1; we just don't know which.", "why": "That's the “local hidden variable” idea, and experiments (Nobel Prize 2022) show nature doesn't work that way. Superposition is stranger than simple ignorance." },
+        { "text": "The qubit is 0 and 1 at the same time, and measurement picks one.", "why": "A popular phrase, but misleading: if it were just “both at once”, there would be no way to explain interference, which you'll see in the level on phase and interference." },
+        { "text": "A state with weights (amplitudes) for 0 and 1, which set the odds when you measure.", "why": "Exactly. Superposition is described by amplitudes — numbers that can even cancel out. They decide the measurement probabilities." }
+      ]
+    }
+  ],
+  "takeaways": [
+    "A bit is 0 or 1. A qubit can be in superposition until it's measured.",
+    "Measuring gives a random result, with odds set by the state — and it changes the state.",
+    "The H gate creates a half-and-half superposition; the X gate swaps 0 and 1."
+  ],
+  "further": [
+    { "title": "Wikipedia — Qubit", "url": "https://en.wikipedia.org/wiki/Qubit" },
+    { "title": "Quantum Country — interactive essay by Andy Matuschak and Michael Nielsen", "url": "https://quantum.country/qcvc" }
+  ]
+}

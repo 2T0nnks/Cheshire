@@ -1,0 +1,61 @@
+{
+  "title": "Teletranspórtame, qubit",
+  "subtitle": "Teletransporte cuántico: mueve un estado desconocido de Alice a Bob usando un par entrelazado.",
+  "steps": [
+    {
+      "title": "Enviar un qubit sin enviar el qubit",
+      "body": [
+        "Alice tiene un qubit en un estado que ni ella conoce. Quiere que Bob, lejos, se quede con ese estado. No puede medirlo (destruiría la superposición) ni copiarlo (teorema de no clonación).",
+        "En 1993, Bennett, Brassard, Crépeau, Jozsa, Peres y Wootters encontraron la salida: si Alice y Bob ya comparten un par entrelazado, basta con que Alice haga una medición conjunta y le pase por teléfono <strong>dos bits clásicos</strong> a Bob. Él aplica una corrección y listo.",
+        "En 1997, grupos en Innsbruck y Roma lo hicieron con fotones por primera vez."
+      ]
+    },
+    {
+      "title": "Paso 1 — el par compartido",
+      "goal": "Entrelaza a Alice y Bob en <code>(|00⟩ + |11⟩)/√2</code>, sin tocar el mensaje.",
+      "wires": ["mensaje", "Alice", "Bob"],
+      "hints": ["Es el par de Bell de siempre — solo que en los hilos 1 y 2."],
+      "success": "Par listo. En la vida real, este par se crearía antes y cada mitad viajaría hasta su dueño."
+    },
+    {
+      "title": "Paso 2 — teletransporte",
+      "goal": "El mensaje se preparó en un estado misterioso (columnas 0–1) y el par ya está listo. Haz que el hilo de Bob termine exactamente en el estado del mensaje.",
+      "wires": ["mensaje", "Alice", "Bob"],
+      "hints": [
+        "Primero, Alice “deshace un par de Bell” entre el mensaje y su mitad: CNOT del mensaje hacia Alice, después H en el mensaje.",
+        "En la vida real, Alice mediría y pasaría los dos bits por teléfono. Aquí, las correcciones se vuelven puertas controladas: el bit de Alice controla una X en Bob…",
+        "…y el bit del mensaje controla una Z en Bob (CZ)."
+      ],
+      "success": "¡Teletransportado! Compara las esferas: Bob ahora apunta adonde apuntaba el mensaje al principio, y el mensaje original perdió su estado. Las dos puertas controladas del final hacen el papel de la llamada telefónica — es el <em>principio de medición diferida</em>."
+    },
+    {
+      "question": "¿El teletransporte cuántico permite comunicación más rápida que la luz?",
+      "options": [
+        { "text": "Sí: el estado aparece en Bob al instante.", "why": "Sin los dos bits de Alice, el qubit de Bob está en un estado totalmente aleatorio — es inútil. Y esos bits viajan, como mucho, a la velocidad de la luz." },
+        { "text": "No: Bob necesita los dos bits clásicos de Alice para corregir el estado.", "why": "Eso. La información útil solo llega junto con el mensaje clásico." },
+        { "text": "Solo si el par entrelazado es muy grande.", "why": "El tamaño no importa: sin canal clásico, no hay teletransporte." }
+      ]
+    },
+    {
+      "question": "¿Qué pasa con el qubit original del mensaje al final del protocolo?",
+      "options": [
+        { "text": "Queda igual: ahora hay dos copias.", "why": "Eso sería clonación, que la física prohíbe." },
+        { "text": "Pierde su estado: la información salió de él y fue a Bob.", "why": "Exacto. El estado se <em>mueve</em>, nunca se duplica — el teorema de no clonación se respeta." },
+        { "text": "Queda entrelazado con Bob para siempre.", "why": "En la versión con mediciones, el mensaje termina en un estado clásico (0 o 1). Toda la información cuántica se fue a Bob." }
+      ]
+    },
+    {
+      "title": "Hacia el espacio",
+      "text": "En 2017, el equipo del satélite Micius teletransportó estados de fotones desde una estación en el Tíbet hasta el satélite en órbita, a distancias de hasta unos 1.400 km.",
+      "source": "Ren et al., Nature (2017)."
+    }
+  ],
+  "takeaways": [
+    "Teletransporte = par entrelazado + medición conjunta de Alice + 2 bits clásicos + corrección de Bob.",
+    "El estado se mueve, no se copia; nada viaja más rápido que la luz.",
+    "Las correcciones controladas por medición se pueden cambiar por puertas controladas (medición diferida)."
+  ],
+  "further": [
+    { "title": "Bennett et al. (1993) — Teleporting an unknown quantum state (en inglés)", "url": "https://doi.org/10.1103/PhysRevLett.70.1895" }
+  ]
+}

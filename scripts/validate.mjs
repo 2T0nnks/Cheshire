@@ -16,7 +16,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
-import { ROOT, GLOSSARY, loadQuantum, readLevels } from "./lib.mjs";
+import { ROOT, GLOSSARY, loadQuantum, loadStrings, readLevels, readTranslations } from "./lib.mjs";
 
 const SCHEMA = path.join(ROOT, "schema", "level.schema.json");
 
@@ -120,6 +120,70 @@ export function checkSteps(Q, data, glossary) {
   return errors;
 }
 
+// Translations may only replace text. Anything that changes the physics or
+// the catalog stays in the pt level file, so every language plays the same.
+const PHYSICS_KEYS = new Set(["slug", "status", "order", "track", "audience", "icon", "type", "qubits", "slots",
+  "initial", "gates", "fixed", "target", "solution", "circuit", "outcome", "correct", "minShots", "terms", "license", "author"]);
+
+// Translatable, but often identical in every language (names, "~6 min"), so
+// they don't count toward coverage. Tags are metadata and never shown.
+const OPTIONAL_KEYS = new Set(["url", "duration", "tags", "wires"]);
+
+/** Checks an i18n overlay against its base level. Returns { errors, total, done } (string leaves). */
+export function checkTranslation(base, tr) {
+  const errors = [];
+  let total = 0, done = 0;
+  (function count(b) {
+    if (typeof b === "string") total++;
+    else if (Array.isArray(b)) b.forEach(count);
+    else if (b && typeof b === "object") Object.entries(b).forEach(([k, v]) => { if (!PHYSICS_KEYS.has(k) && !OPTIONAL_KEYS.has(k)) count(v); });
+  })(base);
+  (function walk(b, t, where) {
+    if (t == null) return;
+    if (Array.isArray(b)) {
+      if (!Array.isArray(t)) return errors.push(`${where}: expected an array`);
+      if (t.length !== b.length) errors.push(`${where}: has ${t.length} item(s), the original has ${b.length} — keep the same order and count`);
+      t.forEach((x, i) => walk(b[i], x, `${where}[${i}]`));
+    } else if (b && typeof b === "object") {
+      if (!t || typeof t !== "object" || Array.isArray(t)) return errors.push(`${where}: expected an object`);
+      for (const k of Object.keys(t)) {
+        if (PHYSICS_KEYS.has(k)) errors.push(`${where}.${k}: "${k}" can't be translated — it belongs to the original level`);
+        else if (!(k in b)) errors.push(`${where}.${k}: not in the original level`);
+        else walk(b[k], t[k], `${where}.${k}`);
+      }
+    } else if (typeof b !== typeof t) {
+      errors.push(`${where}: expected a ${typeof b}`);
+    } else if (typeof t === "string") {
+      if (where.endsWith(".url")) { if (!/^https:\/\//.test(t)) errors.push(`${where}: must be an https:// URL`); }
+      else if (!OPTIONAL_KEYS.has(where.replace(/\[\d+\]$/, "").split(".").pop())) done++;
+    }
+  })(base, tr, "$");
+  errors.push(...checkHtml(tr));
+  return { errors, total, done: Math.min(done, total) };
+}
+
+/** Every interface key in pt must exist, with the same shape, in each language. */
+export function checkStrings(STR) {
+  const errors = [];
+  const shape = v => Array.isArray(v) ? "array" : typeof v;
+  for (const { code } of STR.LANGS) {
+    if (!STR[code]) { errors.push(`${code}: missing block`); continue; }
+    if (code === "pt") continue;
+    (function walk(a, b, where) {
+      for (const k of Object.keys(a)) {
+        if (!(k in b)) errors.push(`${code}${where}.${k}: missing`);
+        else if (shape(a[k]) !== shape(b[k])) errors.push(`${code}${where}.${k}: expected ${shape(a[k])}`);
+        else if (shape(a[k]) === "object") walk(a[k], b[k], `${where}.${k}`);
+        else if (typeof a[k] === "string") {
+          const ph = x => (x.match(/\{\d\}/g) || []).sort().join();
+          if (ph(a[k]) !== ph(b[k])) errors.push(`${code}${where}.${k}: placeholders differ from pt`);
+        }
+      }
+    })(STR.pt, STR[code], "");
+  }
+  return errors;
+}
+
 async function main() {
   const Q = await loadQuantum();
   const ajv = new Ajv({ allErrors: true, strict: false });
@@ -167,6 +231,66 @@ async function main() {
       continue;
     }
     console.log(`✓ levels/${file}`);
+  }
+
+  // Interface strings
+  const STR = await loadStrings();
+  const sErrors = checkStrings(STR);
+  if (sErrors.length) {
+    console.error("✗ engine/strings.js:");
+    sErrors.forEach(e => console.error(`    ${e}`));
+    failed++;
+  } else {
+    console.log(`✓ engine/strings.js (${STR.LANGS.map(l => l.code).join(", ")})`);
+  }
+
+  // Translations
+  const bySlug = Object.fromEntries(levels.map(({ data }) => [data.slug, data]));
+  const translations = await readTranslations();
+  for (const { code } of STR.LANGS) {
+    if (code === "pt") continue;
+    if (!translations[code]) console.warn(`! i18n/${code}/ is missing — ${code} falls back to Portuguese`);
+  }
+  for (const [lang, tr] of Object.entries(translations)) {
+    if (!STR.LANGS.some(l => l.code === lang)) {
+      console.error(`✗ i18n/${lang}/: language not listed in engine/strings.js`);
+      failed++;
+      continue;
+    }
+    let total = 0, done = 0, bad = 0;
+    for (const [slug, overlay] of Object.entries(tr.levels)) {
+      const base = bySlug[slug];
+      const where = `i18n/${lang}/levels/${slug}.json`;
+      if (!base) { console.error(`✗ ${where}: no levels/${slug}.json`); bad++; continue; }
+      const r = checkTranslation(base, overlay);
+      if (r.errors.length) {
+        console.error(`✗ ${where}:`);
+        r.errors.forEach(e => console.error(`    ${e}`));
+        bad++;
+      }
+      if (base.status === "open") { total += r.total; done += r.done; }
+    }
+    for (const { data } of levels) {
+      if (data.status === "open" && !tr.levels[data.slug]) {
+        console.warn(`! i18n/${lang}/levels/${data.slug}.json missing — shown in Portuguese`);
+        total += checkTranslation(data, {}).total;
+      }
+    }
+    if (tr.glossary) {
+      const gb = { ...glossary };
+      const r = checkTranslation(gb, Object.fromEntries(Object.entries(tr.glossary).filter(([k]) => k in gb)));
+      Object.keys(tr.glossary).filter(k => !(k in gb)).forEach(k => r.errors.push(`"${k}" is not in content/glossary.json`));
+      if (r.errors.length) {
+        console.error(`✗ i18n/${lang}/glossary.json:`);
+        r.errors.forEach(e => console.error(`    ${e}`));
+        bad++;
+      }
+      Object.keys(gb).filter(k => !(k in tr.glossary)).forEach(k => console.warn(`! i18n/${lang}/glossary.json: "${k}" missing — shown in Portuguese`));
+    } else {
+      console.warn(`! i18n/${lang}/glossary.json missing — glossary shown in Portuguese`);
+    }
+    failed += bad;
+    if (!bad) console.log(`✓ i18n/${lang}/ (${total ? Math.round(done / total * 100) : 100}% of level text translated)`);
   }
 
   if (failed > 0) {

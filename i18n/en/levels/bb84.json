@@ -1,0 +1,58 @@
+{
+  "title": "An unbreakable secret",
+  "subtitle": "Quantum cryptography with the BB84 protocol: a spy can't listen in without leaving footprints.",
+  "steps": [
+    {
+      "title": "Alice, Bob and Eve",
+      "body": [
+        "Alice wants to agree on a secret key with Bob. Eve, the spy, listens to everything. On a classical line, Eve can copy the bits without leaving a trace.",
+        "In 1984, Charles Bennett and Gilles Brassard proposed using qubits. Since measuring changes the state, any eavesdropping leaves marks. That's <strong>BB84</strong>."
+      ]
+    },
+    {
+      "title": "Two bases",
+      "body": [
+        "Alice encodes each bit in one of two “bases”, chosen at random. In the <strong>+</strong> basis, she uses <code>|0⟩</code> and <code>|1⟩</code>. In the <strong>×</strong> basis, she uses <code>|+⟩</code> and <code>|−⟩</code>.",
+        "Bob also picks a basis at random to measure in. Measuring in the × basis is the same as applying an H and then measuring normally."
+      ]
+    },
+    {
+      "title": "Bob picks the wrong basis",
+      "body": "Alice sends <code>|+⟩</code> (bit 0 in the × basis). Bob measures in the + basis.",
+      "wires": ["photon"],
+      "after": "A random result: Bob's bit says nothing about Alice's."
+    },
+    {
+      "title": "Bob picks the right basis",
+      "body": "Same <code>|+⟩</code>, but now Bob measures in the × basis (an H before measuring).",
+      "wires": ["photon"],
+      "after": "Always 0 — Alice's bit. Afterwards, the two announce <em>publicly</em> only the bases they used (never the bits) and throw away the rounds where the bases didn't match. What's left is the key."
+    },
+    {
+      "question": "Eve intercepts the <code>|+⟩</code> photon and measures in the + basis (here, she “writes down” the result in her own qubit with a CNOT). Bob then measures in the right basis, ×. What's the chance Bob gets the <strong>wrong</strong> bit (1)?",
+      "wires": ["photon", "Eve"],
+      "explain": "50%! Eve's measurement destroyed the superposition. Since Eve only picks the wrong basis half the time, on average she introduces about <strong>25% errors</strong> in the bits that should match. Alice and Bob compare a sample of the key: if the error rate is high, they know they've been spied on."
+    },
+    {
+      "question": "Why doesn't Eve just copy the photon, let the original go on and measure only the copy?",
+      "options": [
+        { "text": "Because copies are expensive.", "why": "It's not about cost: it's impossible, by a law of physics." },
+        { "text": "Because of the no-cloning theorem: you can't copy an unknown quantum state.", "why": "Right. If cloning were possible, BB84 (and a lot more) would fall apart. The linearity of quantum mechanics forbids it." },
+        { "text": "Because the photon explodes if it's copied.", "why": "Nothing that dramatic — the copy simply can't be made faithfully." }
+      ]
+    },
+    {
+      "title": "A quantum video call",
+      "text": "In 2017, the Micius satellite distributed quantum keys between stations in China and Austria, which were used to encrypt an intercontinental video conference between Beijing and Vienna.",
+      "source": "Liao et al., Physical Review Letters (2018)."
+    }
+  ],
+  "takeaways": [
+    "In BB84, Alice and Bob pick bases at random and keep only the bits where their bases match.",
+    "Measuring in the wrong basis gives random results — and spying shows up as errors.",
+    "The no-cloning theorem stops Eve from copying the qubits without being noticed."
+  ],
+  "further": [
+    { "title": "Bennett & Brassard (1984) — the original BB84 paper (reprinted in 2014)", "url": "https://doi.org/10.1016/j.tcs.2014.05.025" }
+  ]
+}

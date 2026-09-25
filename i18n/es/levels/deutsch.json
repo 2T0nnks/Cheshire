@@ -1,0 +1,55 @@
+{
+  "title": "Una sola pregunta",
+  "subtitle": "El algoritmo de Deutsch: descubrir una propiedad global de una función consultándola una única vez.",
+  "steps": [
+    {
+      "title": "La caja negra",
+      "body": [
+        "Alguien te da una caja negra que calcula una función <code>f</code> de un bit a un bit. Es <strong>constante</strong> (<code>f(0) = f(1)</code>) o <strong>balanceada</strong> (<code>f(0) ≠ f(1)</code>). ¿Cuál de las dos?",
+        "Clásicamente, no hay forma: tienes que consultar <code>f(0)</code> <em>y</em> <code>f(1)</code>. Dos consultas.",
+        "En 1985, David Deutsch mostró que una computadora cuántica lo resuelve con <strong>una</strong>."
+      ]
+    },
+    {
+      "title": "Oráculos como circuitos",
+      "body": [
+        "La caja se vuelve una puerta de dos qubits: <code>|x⟩|y⟩ → |x⟩|y ⊕ f(x)⟩</code>. El qubit <code>x</code> es la pregunta; <code>f(x)</code> se suma (XOR) en <code>y</code>.",
+        "Si <code>f(x) = x</code> (balanceada), el oráculo es una CNOT. Si <code>f(x) = 1</code> (constante), es una X en <code>y</code>.",
+        "El truco: preparar <code>y</code> en <code>|−⟩</code>. Así, sumar <code>f(x)</code> en <code>y</code> no cambia <code>y</code> — solo multiplica el estado por <code>(−1)^f(x)</code>. La respuesta “rebota” hacia la fase de <code>x</code>: es el <em>phase kickback</em> (retroceso de fase)."
+      ]
+    },
+    {
+      "title": "Consulta el oráculo balanceado",
+      "goal": "El oráculo fijo es una CNOT (<code>f(x) = x</code>). <code>y</code> empieza en <code>|1⟩</code>. Arma el circuito para que <code>x</code> termine en <code>|1⟩</code> — la señal de “balanceada”.",
+      "hints": [
+        "Antes del oráculo: pon <code>x</code> en superposición y transforma <code>y</code> de <code>|1⟩</code> en <code>|−⟩</code>.",
+        "Después del oráculo: una H en <code>x</code> transforma la fase en resultado."
+      ],
+      "success": "¡Una sola consulta! En la esfera, mira: <code>y</code> ni se movió con el oráculo, pero la flecha de <code>x</code> se fue al otro lado del ecuador — la respuesta quedó en la fase."
+    },
+    {
+      "question": "El mismo circuito, pero ahora el oráculo es constante (<code>f(x) = 1</code>, una X en <code>y</code>). ¿Qué probabilidad hay de medir <code>x = 1</code>?",
+      "explain": "Cero. Con un oráculo constante, las dos ramas de <code>x</code> reciben la misma fase (una fase global, invisible) y la última H devuelve <code>x</code> a <code>|0⟩</code>. Resultado 0 = constante, 1 = balanceada."
+    },
+    {
+      "question": "¿Cuál es el ingrediente esencial que hace funcionar el algoritmo?",
+      "options": [
+        { "text": "La computadora cuántica prueba <code>f(0)</code> y <code>f(1)</code> en paralelo y lee las dos.", "why": "Hasta “consulta las dos” en superposición, pero una medición solo entrega un resultado. Sin interferencia, no se podría extraer nada útil." },
+        { "text": "Phase kickback + interferencia: <code>f(x)</code> se vuelve fase en <code>x</code>, y la H final convierte la diferencia de fase en resultado.", "why": "Exacto. Es el mismo patrón de muchos algoritmos: preparar superposición, marcar con fase, interferir." },
+        { "text": "Los qubits son más rápidos que los transistores.", "why": "No tiene que ver con la velocidad física: se trata de cuántas consultas hacen falta." }
+      ]
+    },
+    {
+      "title": "El primer algoritmo cuántico",
+      "text": "El artículo de Deutsch de 1985 también describió la computadora cuántica universal. En 1992, con Richard Jozsa, generalizó el problema a <code>n</code> bits: el algoritmo de Deutsch–Jozsa resuelve con 1 consulta lo que un algoritmo clásico determinista podría necesitar hasta 2ⁿ⁻¹ + 1. Con aleatoriedad, lo clásico se defiende mucho mejor — pero la idea abrió el camino a Simon, Shor y Grover."
+    }
+  ],
+  "takeaways": [
+    "Los oráculos cuánticos son puertas reversibles: <code>|x⟩|y⟩ → |x⟩|y ⊕ f(x)⟩</code>.",
+    "Con el objetivo en <code>|−⟩</code>, la respuesta del oráculo se vuelve una fase en el registro de entrada (phase kickback).",
+    "Superposición + fase + interferencia: la receta general de los algoritmos cuánticos."
+  ],
+  "further": [
+    { "title": "Wikipedia — Algoritmo de Deutsch-Jozsa", "url": "https://es.wikipedia.org/wiki/Algoritmo_de_Deutsch-Jozsa" }
+  ]
+}

@@ -4,6 +4,8 @@
  *
  * Injects into engine/template.html:
  *   - engine/quantum.js (the simulator) at the QUANTUM:INJECT marker
+ *   - engine/strings.js (interface text, every language) at STRINGS:INJECT
+ *   - i18n/<lang>/ overlays as <script type="application/json" data-level-tr / data-glossary-tr>
  *   - every levels/*.json as <script type="application/json" data-level="slug">
  *   - content/glossary.json as <script type="application/json" id="glossary">
  *
@@ -14,7 +16,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { createHash } from "node:crypto";
-import { ROOT, QUANTUM_JS, GLOSSARY, readLevels } from "./lib.mjs";
+import { ROOT, QUANTUM_JS, STRINGS_JS, GLOSSARY, readLevels, readTranslations } from "./lib.mjs";
 
 const TEMPLATE = path.join(ROOT, "engine", "template.html");
 const DIST_DIR = path.join(ROOT, "dist");
@@ -22,6 +24,7 @@ const OUT = path.join(DIST_DIR, "index.html");
 const FONTS_DIR = path.join(DIST_DIR, "fonts");
 const LEVELS_MARKER = "<!-- LEVELS:INJECT -->";
 const QUANTUM_MARKER = "/* QUANTUM:INJECT */";
+const STRINGS_MARKER = "/* STRINGS:INJECT */";
 
 // Self-hosted fonts, each under the SIL OFL (the license travels with them).
 const FONTS = [
@@ -60,7 +63,7 @@ function escapeForScript(json) {
 
 async function main() {
   const template = await fs.readFile(TEMPLATE, "utf-8");
-  for (const marker of [LEVELS_MARKER, QUANTUM_MARKER, "__CSP_SCRIPT_HASHES__"]) {
+  for (const marker of [LEVELS_MARKER, QUANTUM_MARKER, STRINGS_MARKER, "__CSP_SCRIPT_HASHES__"]) {
     if (!template.includes(marker)) throw new Error(`Template is missing ${marker}`);
   }
 
@@ -78,10 +81,21 @@ async function main() {
     ...levels.map(({ data }) =>
       `<script type="application/json" data-level="${data.slug}">${escapeForScript(JSON.stringify(data))}</script>`),
     `<script type="application/json" id="glossary">${escapeForScript(JSON.stringify(glossary))}</script>`,
-  ].join("\n");
+  ];
+  const shipped = new Set(levels.map(({ data }) => data.slug));
+  const translations = await readTranslations();
+  for (const [lang, tr] of Object.entries(translations)) {
+    for (const [slug, data] of Object.entries(tr.levels)) {
+      if (!shipped.has(slug)) continue; // drafts and unknown slugs never ship
+      blocks.push(`<script type="application/json" data-level-tr="${slug}" data-lang="${lang}">${escapeForScript(JSON.stringify(data))}</script>`);
+    }
+    if (tr.glossary) blocks.push(`<script type="application/json" data-glossary-tr="${lang}">${escapeForScript(JSON.stringify(tr.glossary))}</script>`);
+  }
+  const injected = blocks.join("\n");
 
   const quantum = (await fs.readFile(QUANTUM_JS, "utf-8")).replace(/<\/script/gi, "<\\/script");
-  let output = template.replace(LEVELS_MARKER, () => blocks).replace(QUANTUM_MARKER, () => quantum);
+  const strings = (await fs.readFile(STRINGS_JS, "utf-8")).replace(/<\/script/gi, "<\\/script");
+  let output = template.replace(LEVELS_MARKER, () => injected).replace(QUANTUM_MARKER, () => quantum).replace(STRINGS_MARKER, () => strings);
   output = output.replace("__CSP_SCRIPT_HASHES__", scriptHashes(output));
 
   await fs.mkdir(DIST_DIR, { recursive: true });

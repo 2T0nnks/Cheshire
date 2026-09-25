@@ -1,0 +1,55 @@
+{
+  "title": "Just one question",
+  "subtitle": "Deutsch's algorithm: finding out a global property of a function by querying it only once.",
+  "steps": [
+    {
+      "title": "The black box",
+      "body": [
+        "Someone hands you a black box that computes a function <code>f</code> from one bit to one bit. It's either <strong>constant</strong> (<code>f(0) = f(1)</code>) or <strong>balanced</strong> (<code>f(0) ≠ f(1)</code>). Which is it?",
+        "Classically, there's no way around it: you have to query <code>f(0)</code> <em>and</em> <code>f(1)</code>. Two queries.",
+        "In 1985, David Deutsch showed that a quantum computer can do it with <strong>one</strong>."
+      ]
+    },
+    {
+      "title": "Oracles as circuits",
+      "body": [
+        "The box becomes a two-qubit gate: <code>|x⟩|y⟩ → |x⟩|y ⊕ f(x)⟩</code>. The qubit <code>x</code> is the question; <code>f(x)</code> is added (XOR) into <code>y</code>.",
+        "If <code>f(x) = x</code> (balanced), the oracle is a CNOT. If <code>f(x) = 1</code> (constant), it's an X on <code>y</code>.",
+        "The trick: prepare <code>y</code> in <code>|−⟩</code>. Then adding <code>f(x)</code> into <code>y</code> doesn't change <code>y</code> — it only multiplies the state by <code>(−1)^f(x)</code>. The answer “kicks back” into the phase of <code>x</code>: that's <em>phase kickback</em>."
+      ]
+    },
+    {
+      "title": "Query the balanced oracle",
+      "goal": "The fixed oracle is a CNOT (<code>f(x) = x</code>). <code>y</code> starts in <code>|1⟩</code>. Build the circuit so that <code>x</code> ends up in <code>|1⟩</code> — the “balanced” signal.",
+      "hints": [
+        "Before the oracle: put <code>x</code> in superposition and turn <code>y</code> from <code>|1⟩</code> into <code>|−⟩</code>.",
+        "After the oracle: an H on <code>x</code> turns the phase into a result."
+      ],
+      "success": "A single query! On the sphere, look: <code>y</code> didn't even move with the oracle, but the arrow of <code>x</code> went to the other side of the equator — the answer ended up in the phase."
+    },
+    {
+      "question": "Same circuit, but now the oracle is constant (<code>f(x) = 1</code>, an X on <code>y</code>). What's the chance of measuring <code>x = 1</code>?",
+      "explain": "Zero. With a constant oracle, both branches of <code>x</code> get the same phase (a global, invisible phase) and the last H brings <code>x</code> back to <code>|0⟩</code>. Result 0 = constant, 1 = balanced."
+    },
+    {
+      "question": "What's the essential ingredient that makes the algorithm work?",
+      "options": [
+        { "text": "The quantum computer tests <code>f(0)</code> and <code>f(1)</code> in parallel and reads both.", "why": "It does “query both” in superposition, but a measurement only gives one result. Without interference, nothing useful could be extracted." },
+        { "text": "Phase kickback + interference: <code>f(x)</code> becomes a phase on <code>x</code>, and the final H turns the phase difference into a result.", "why": "Exactly. It's the same pattern as many algorithms: prepare a superposition, mark with phase, interfere." },
+        { "text": "Qubits are faster than transistors.", "why": "It has nothing to do with physical speed: it's about how many queries are needed." }
+      ]
+    },
+    {
+      "title": "The first quantum algorithm",
+      "text": "Deutsch's 1985 paper also described the universal quantum computer. In 1992, with Richard Jozsa, he generalized the problem to <code>n</code> bits: the Deutsch–Jozsa algorithm solves with 1 query what a deterministic classical algorithm could need up to 2ⁿ⁻¹ + 1 queries for. With randomness, classical does much better — but the idea paved the way for Simon, Shor and Grover."
+    }
+  ],
+  "takeaways": [
+    "Quantum oracles are reversible gates: <code>|x⟩|y⟩ → |x⟩|y ⊕ f(x)⟩</code>.",
+    "With the target in <code>|−⟩</code>, the oracle's answer becomes a phase on the input register (phase kickback).",
+    "Superposition + phase + interference: the general recipe of quantum algorithms."
+  ],
+  "further": [
+    { "title": "Wikipedia — Deutsch–Jozsa algorithm", "url": "https://en.wikipedia.org/wiki/Deutsch%E2%80%93Jozsa_algorithm" }
+  ]
+}

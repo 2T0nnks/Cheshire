@@ -1,0 +1,59 @@
+{
+  "title": "Aguja en un pajar",
+  "subtitle": "El algoritmo de Grover: marca la respuesta con fase y amplifícala con interferencia.",
+  "steps": [
+    {
+      "title": "Buscar sin índice",
+      "body": [
+        "Imagina una lista de <code>N</code> elementos sin ningún orden, y una forma de comprobar si un elemento es el correcto. Clásicamente, pruebas uno por uno: en promedio, <code>N/2</code> intentos.",
+        "En 1996, Lov Grover mostró que una computadora cuántica necesita unas <code>√N</code> consultas. Para un millón de elementos: menos de mil, en vez de medio millón."
+      ]
+    },
+    {
+      "question": "Con 2 qubits hay 4 elementos. Los ponemos todos en superposición (H, H) y el oráculo marca el elemento <code>11</code> con una CZ. ¿Qué probabilidad hay de medir <code>11</code> ahora?",
+      "explain": "Todavía 25%. El oráculo marcó <code>11</code> invirtiendo el signo de su amplitud — fíjate en el color distinto de la barra —, pero la fase sola no cambia la probabilidad. Falta la interferencia."
+    },
+    {
+      "title": "Inversión respecto de la media",
+      "body": [
+        "El paso siguiente es el <strong>difusor</strong>: refleja cada amplitud respecto de la media de todas. La marcada, que quedó negativa, está muy por debajo de la media — y sale disparada hacia arriba. Las demás se achican.",
+        "Con 2 qubits, una sola ronda lleva la marcada al 100%. Como circuito, el difusor es: H en todos, “marcar el <code>|00⟩</code>”, H en todos. Marcar el <code>|00⟩</code> se puede hacer con X en todos, CZ, X en todos — o, más corto, Z en todos y CZ."
+      ]
+    },
+    {
+      "title": "Construye el difusor",
+      "goal": "El oráculo (columnas 0–1) marcó <code>11</code>. Construye el difusor para que <code>11</code> salga con 100% de probabilidad.",
+      "hints": [
+        "Empieza con H en los dos qubits.",
+        "Después marca el <code>|00⟩</code>: Z en los dos y una CZ (o X en los dos, CZ, X en los dos).",
+        "Termina con H en los dos."
+      ],
+      "success": "¡Encontraste la aguja con una consulta! Con 4 elementos, una computadora clásica necesitaría en promedio más de dos."
+    },
+    {
+      "question": "Cambiamos el oráculo para marcar <code>01</code> (X en el qubit 0, CZ, X en el qubit 0). Mismo difusor. ¿Qué probabilidad hay de medir <code>01</code>?",
+      "explain": "100%. El difusor no sabe nada sobre la respuesta: solo amplifica lo que esté marcado. Toda la “pregunta” vive en el oráculo."
+    },
+    {
+      "question": "Para 1 millón de elementos, ¿cuántas consultas necesita Grover, aproximadamente?",
+      "options": [
+        { "text": "Unas 500 mil", "why": "Ese es el promedio clásico, probando uno por uno." },
+        { "text": "Unas 800", "why": "Eso: alrededor de <code>(π/4)·√N</code> ≈ 785. Una aceleración cuadrática." },
+        { "text": "Unas 20", "why": "Sería una aceleración exponencial (≈ log₂N). Para búsqueda sin estructura, está demostrado que √N es lo mejor posible." },
+        { "text": "Exactamente 1", "why": "¡Solo con 4 elementos! En general, son varias rondas de oráculo + difusor — y pasarse empeora el resultado." }
+      ]
+    },
+    {
+      "title": "Grover y las contraseñas",
+      "text": "La aceleración de Grover es “solo” cuadrática: romper una clave de 128 bits por fuerza bruta bajaría de 2¹²⁸ a unos 2⁶⁴ pasos. Por eso se recomienda usar claves simétricas más grandes, como AES-256. Quien amenaza de verdad la criptografía actual es el algoritmo de Shor, contra RSA y curvas elípticas."
+    }
+  ],
+  "takeaways": [
+    "El oráculo marca la respuesta invirtiendo su fase; el difusor convierte la fase en probabilidad.",
+    "Grover necesita ~√N consultas: una aceleración cuadrática, que es óptima para búsqueda sin estructura.",
+    "Demasiadas rondas se pasan de largo: el número de iteraciones tiene que calcularse."
+  ],
+  "further": [
+    { "title": "Grover (1996) — A fast quantum mechanical algorithm for database search (en inglés)", "url": "https://arxiv.org/abs/quant-ph/9605043" }
+  ]
+}

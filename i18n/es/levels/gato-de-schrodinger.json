@@ -1,0 +1,68 @@
+{
+  "title": "El gato de Schrödinger",
+  "subtitle": "El experimento mental más famoso de la física fue, en realidad, una crítica. Abre la caja.",
+  "steps": [
+    {
+      "title": "Una caja, un gato, un átomo",
+      "body": [
+        "En 1935, Erwin Schrödinger propuso un escenario: un gato en una caja cerrada con un átomo radiactivo. Si el átomo decae, un mecanismo libera veneno. En una hora, hay 50% de probabilidad de que eso pase.",
+        "Según la mecánica cuántica, mientras nadie mide, el átomo está en superposición de “decayó” y “no decayó”. Y el gato, atado al destino del átomo, estaría… ¿vivo y muerto?",
+        "Schrödinger no creía que los gatos pudieran estar vivos y muertos. Quería mostrar lo absurdo que parece tomar la superposición al pie de la letra para cosas de nuestro tamaño."
+      ],
+      "aside": "Ningún gato resultó herido en la historia de la física. El experimento es solo mental."
+    },
+    {
+      "question": "¿Por qué Schrödinger inventó el gato?",
+      "options": [
+        { "text": "Para probar que los gatos pueden estar vivos y muertos a la vez.", "why": "Al contrario: usó el gato justamente porque nadie cree eso. Lo absurdo era el argumento." },
+        { "text": "Para criticar la idea de que la superposición vale igual para objetos cotidianos.", "why": "Eso. El texto de 1935 discutía el problema de la medición: ¿dónde termina el mundo cuántico y empieza el clásico? La pregunta todavía genera debate." },
+        { "text": "Para un experimento real de laboratorio.", "why": "Nunca se hizo con gatos. Pero versiones con objetos cada vez más grandes — moléculas, cristales diminutos — se hacen de verdad hoy." }
+      ]
+    },
+    {
+      "title": "Abre la caja (muchas veces)",
+      "body": "Aquí el átomo es un qubit en superposición (H), y el gato es otro qubit que “copia” al átomo con una puerta CNOT: si el átomo decae (1), el gato también pasa a 1. Abre la caja varias veces.",
+      "wires": ["átomo", "gato"],
+      "after": "Solo ves <code>00</code> (no decayó, gato vivo) o <code>11</code> (decayó, gato… bueno). Nunca <code>01</code> ni <code>10</code>. Átomo y gato quedaron <strong>entrelazados</strong>: ya no se puede describir uno sin el otro."
+    },
+    {
+      "question": "Antes de abrir, ¿qué probabilidad hay de encontrar al gato vivo (gato = 0), sin importar el átomo?",
+      "wires": ["átomo", "gato"],
+      "explain": "50%. El gato solo parece una moneda común — lo extraño está en la <em>correlación</em> perfecta con el átomo, no en las probabilidades de cada uno."
+    },
+    {
+      "title": "¿Entonces por qué nunca vemos gatos en superposición?",
+      "body": [
+        "Un gato de verdad intercambia calor, luz y aire con el entorno todo el tiempo. Cada fotón que rebota en él y se escapa lleva un poquito de información sobre “vivo o muerto”.",
+        "Esa información filtrada entrelaza al gato con billones de partículas del entorno, y la superposición deja de producir efectos observables. Eso se llama <strong>decoherencia</strong>, y es rapidísima para objetos grandes.",
+        "También es el gran enemigo de las computadoras cuánticas: por eso los qubits se mantienen aislados, en vacío o enfriados a centésimas de grado sobre el cero absoluto."
+      ]
+    },
+    {
+      "title": "¿Qué tan grande se puede llegar?",
+      "text": "En 2019, un grupo en Viena hizo pasar moléculas de unos 2.000 átomos (más de 25.000 unidades de masa atómica) por un interferómetro y observó interferencia — comportamiento de onda, como si pasaran por más de un camino a la vez. No se conoce un límite de tamaño: el desafío es solo aislar el objeto lo suficiente.",
+      "source": "Fein et al., Nature Physics (2019)."
+    },
+    {
+      "title": "El otro gato famoso de la física",
+      "text": "El de Schrödinger no es el único gato de la física. En 2013, se propuso el <strong>gato de Cheshire cuántico</strong>, inspirado en el gato de <em>Alicia en el País de las Maravillas</em> que desaparece y deja solo la sonrisa: en un interferómetro, mediciones débiles indican que una partícula pasa por un camino y su espín, por otro. En 2014, el efecto se observó con neutrones.",
+      "source": "Aharonov et al., New Journal of Physics (2013); Denkmayr et al., Nature Communications (2014)."
+    },
+    {
+      "question": "¿Cuál es el motivo principal por el que no vemos objetos grandes en superposición en la vida diaria?",
+      "options": [
+        { "text": "Las leyes cuánticas solo valen para cosas pequeñas.", "why": "Hasta donde se sabe, las leyes son las mismas para todo. Lo que cambia es cuánto interactúa el objeto con su entorno." },
+        { "text": "Decoherencia: el entorno “dispersa” la información y la superposición deja de interferir.", "why": "Eso. Cuanto más grande y caliente el objeto, más rápido se entrelaza con el entorno y se comporta de forma clásica." },
+        { "text": "La gravedad destruye la superposición.", "why": "Hay propuestas (como la de Roger Penrose) de que la gravedad podría tener un papel, pero eso aún no se ha observado. La decoherencia está bien establecida." }
+      ]
+    }
+  ],
+  "takeaways": [
+    "El gato fue una crítica: a Schrödinger le parecía absurdo aplicar la superposición sin cuidado a objetos grandes.",
+    "Átomo y gato quedan entrelazados: los resultados están correlacionados aunque cada uno, por separado, parezca aleatorio.",
+    "La decoherencia explica por qué el mundo grande parece clásico — y por qué los qubits necesitan tanto aislamiento."
+  ],
+  "further": [
+    { "title": "Stanford Encyclopedia of Philosophy — Measurement in Quantum Theory (en inglés)", "url": "https://plato.stanford.edu/entries/qt-measurement/" }
+  ]
+}

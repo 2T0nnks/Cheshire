@@ -1,6 +1,6 @@
 # Cheshire
 
-**Física quântica, de brincadeira.**
+**Física quântica, na prática.**
 
 Minijogo educativo e open source para aprender computação e física quântica montando circuitos, medindo qubits e vendo a interferência acontecer. Fases curtas para públicos diferentes — de quem está só curioso até quem quer entender Grover.
 
@@ -31,7 +31,11 @@ Trilhas: **Fundamentos** → **Circuitos** → **Fenômenos** → **Algoritmos e
 
 Fases atuais: moeda quântica, gato de Schrödinger, quântico no dia a dia, esfera de Bloch, interferência, emaranhamento, fenda dupla, BB84, Deutsch, teletransporte e Grover (mais tunelamento e Shor “em breve”).
 
-O **Gato de Cheshire** acompanha o jogador (dá para esconder na página Sobre). Há também um **laboratório livre** (sandbox com todas as portas e exemplos prontos) e um **glossário** (`content/glossary.json`).
+O **Gato de Cheshire** acompanha o jogador (dá para esconder na página Sobre). O jogo está em **português, español e English** (botão de idioma no topo; detecta o idioma do navegador). Há também um **laboratório livre** (sandbox com todas as portas e exemplos prontos) e um **glossário** (`content/glossary.json`).
+
+## Idiomas
+
+O português é o original. Espanhol e inglês ficam em `i18n/<idioma>/` (texto das fases e glossário) e em `engine/strings.js` (interface). Traduções só trocam texto — o validador impede que mexam na física. Veja a seção “Traduzindo” em [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md).
 
 ## Rodar localmente
 

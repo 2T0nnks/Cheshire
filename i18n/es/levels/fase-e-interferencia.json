@@ -1,0 +1,65 @@
+{
+  "title": "Ondas que se cancelan",
+  "subtitle": "¿Dos veces aleatorio da… certeza? La interferencia es el truco detrás de todo algoritmo cuántico.",
+  "steps": [
+    {
+      "title": "Probabilidades que se cancelan",
+      "body": [
+        "En la vida común, las probabilidades solo se suman: si hay dos caminos hacia un resultado, la probabilidad total es mayor.",
+        "En el mundo cuántico, lo que se suma son las <strong>amplitudes</strong> — y tienen signo (en realidad, fase). Un camino con <code>+½</code> y otro con <code>−½</code> se anulan, como una cresta de ola que se encuentra con un valle.",
+        "Pongamos a prueba tu intuición."
+      ]
+    },
+    {
+      "question": "Una H deja el qubit mitad y mitad. ¿Y si aplicamos <strong>dos</strong> H seguidas? ¿Qué probabilidad hay de medir 1?",
+      "explain": "¡Cero! La segunda H no “vuelve a mezclar”: <em>deshace</em> la primera. Los dos caminos que llevan al 1 tienen amplitudes <code>+½</code> y <code>−½</code> y se cancelan. Los que llevan al 0 suman <code>½ + ½ = 1</code>."
+    },
+    {
+      "title": "La cuenta detrás",
+      "body": [
+        "La H manda <code>|0⟩ → (|0⟩ + |1⟩)/√2</code> y <code>|1⟩ → (|0⟩ − |1⟩)/√2</code>.",
+        "Aplicándola dos veces desde <code>|0⟩</code>, hay dos caminos hacia el 1: vía 0 (amplitud <code>+½</code>) y vía 1 (amplitud <code>−½</code>). Suma: cero. Eso es <strong>interferencia destructiva</strong>.",
+        "Los algoritmos cuánticos son coreografías de interferencia: hacer que las respuestas incorrectas se cancelen y las correctas se refuercen."
+      ]
+    },
+    {
+      "question": "¿Y si ponemos una Z entre las dos H? La Z no cambia ninguna probabilidad… ¿Qué probabilidad hay de medir 1?",
+      "explain": "¡100%! La Z invirtió el signo de uno de los caminos. Ahora es el 0 el que se cancela y el 1 el que se refuerza. Una fase “invisible” decidió el resultado."
+    },
+    {
+      "title": "El 1 sin X",
+      "goal": "Lleva el qubit a <code>|1⟩</code> con certeza — pero la puerta X no está disponible.",
+      "hints": ["Acabas de ver este truco en el paso anterior."],
+      "success": "H·Z·H = X. Construiste un NOT usando solo interferencia."
+    },
+    {
+      "title": "Las fases se suman",
+      "goal": "Entre las dos H fijas, gira la fase lo suficiente para que el qubit dé 1 con certeza. Solo S y T disponibles.",
+      "hints": [
+        "Necesitas media vuelta (180°) de fase, como la Z.",
+        "S gira 90°, T gira 45°."
+      ],
+      "success": "Dos S = una Z. Cuatro T también funcionarían. En la esfera, cada puerta giró la flecha por el ecuador; al final, la H convirtió la fase en resultado."
+    },
+    {
+      "title": "Interferencia en tus oídos",
+      "text": "Los auriculares con cancelación de ruido usan interferencia destructiva del sonido: un micrófono capta el ruido y el auricular reproduce la misma onda con el signo invertido. La cresta se encuentra con el valle, y el ruido desaparece. Con amplitudes cuánticas la idea es parecida — solo que con posibilidades en vez de presión del aire."
+    },
+    {
+      "question": "¿A qué equivalen dos puertas Z seguidas?",
+      "options": [
+        { "text": "A una X", "why": "Z no intercambia 0 y 1: solo toca la fase. Dos medias vueltas alrededor del eje vertical no llevan la flecha al otro polo." },
+        { "text": "A nada (identidad)", "why": "Eso. Dos medias vueltas = una vuelta completa. El signo de <code>|1⟩</code> se invierte y se desinvierte." },
+        { "text": "A una H", "why": "H mezcla polos y ecuador. Z nunca hace eso, ni repetida." }
+      ]
+    }
+  ],
+  "takeaways": [
+    "Las amplitudes se suman con fase: pueden reforzarse o cancelarse.",
+    "H seguida de H vuelve al inicio; H·Z·H se convierte en una X.",
+    "La fase es invisible en una medición directa, pero decide el resultado cuando hay interferencia."
+  ],
+  "further": [
+    { "title": "3Blue1Brown — Quantum computing explained (Grover, interferencia; en inglés)", "url": "https://www.youtube.com/watch?v=RQWpF2Gb-gU" }
+  ]
+}

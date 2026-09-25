@@ -40,3 +40,20 @@ test("only bare inline tags are allowed", () => {
   assert.equal(checkHtml({ a: '<img src=x onerror="alert(1)">' }).length, 1);
   assert.equal(checkHtml({ a: '<a href="https://x">x</a>' }).length, 2);
 });
+
+import { checkTranslation, checkStrings } from "./validate.mjs";
+import { loadStrings } from "./lib.mjs";
+
+test("translations may change text but never physics", () => {
+  const base = { title: "a", steps: [{ ...bell, hints: ["x", "y"] }] };
+  assert.equal(checkTranslation(base, { title: "b", steps: [{ title: "T", hints: ["X", "Y"] }] }).errors.length, 0);
+  assert.match(checkTranslation(base, { steps: [{ solution: ["X 0"] }] }).errors.join("\n"), /can't be translated/);
+  assert.match(checkTranslation(base, { steps: [{ target: {} }] }).errors.join("\n"), /can't be translated/);
+  assert.match(checkTranslation(base, { steps: [{ hints: ["only one"] }] }).errors.join("\n"), /same order and count/);
+  assert.match(checkTranslation(base, { subtitle: "new" }).errors.join("\n"), /not in the original/);
+  assert.match(checkTranslation(base, { title: "<img src=x>" }).errors.join("\n"), /markup not allowed/);
+});
+
+test("every language has every interface string", async () => {
+  assert.deepEqual(checkStrings(await loadStrings()), []);
+});

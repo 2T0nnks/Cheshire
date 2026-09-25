@@ -1,0 +1,66 @@
+{
+  "title": "Acción fantasmal",
+  "subtitle": "Crea pares entrelazados y mira por qué a Einstein le incomodaba — y por qué aun así nada viaja más rápido que la luz.",
+  "steps": [
+    {
+      "title": "Dos qubits, un solo estado",
+      "body": [
+        "En 1935, Einstein, Podolsky y Rosen publicaron un artículo que señalaba una consecuencia extraña de la mecánica cuántica: partículas que interactuaron pueden quedar con resultados de medición perfectamente ligados, aunque estén muy lejos una de otra.",
+        "Einstein después lo llamó “acción fantasmal a distancia”. Sospechaba que la teoría estaba incompleta.",
+        "Hoy sabemos, por experimentos, que el entrelazamiento es real. Y vas a crearlo con dos puertas."
+      ]
+    },
+    {
+      "title": "Crea un par de Bell",
+      "goal": "Llega a <code>(|00⟩ + |11⟩)/√2</code>: los dos qubits siempre iguales, pero cada uno aleatorio.",
+      "hints": [
+        "Pon el primer qubit en superposición.",
+        "Después, la CNOT: selecciónala y haz clic en el hilo de control (●). Con dos qubits, el otro hilo será el objetivo (⊕)."
+      ],
+      "success": "Mira las esferas: las flechas se <em>encogieron</em> hasta el centro. Entrelazados, ninguno de los dos tiene un estado propio — el estado es del par."
+    },
+    {
+      "title": "Alice y Bob miden",
+      "body": "Imagina a Alice y Bob separados por una galaxia, cada uno con un qubit del par. Mide varias veces.",
+      "after": "Siempre iguales: <code>00</code> o <code>11</code>. Pero fíjate que, para Alice sola, el resultado es una moneda justa. La correlación solo aparece cuando los dos comparan sus notas."
+    },
+    {
+      "question": "Alice mide y obtiene 1. Sabe al instante que Bob obtendrá 1. ¿Se puede usar esto para mandar un mensaje más rápido que la luz?",
+      "options": [
+        { "text": "Sí: Alice elige el resultado y Bob lo lee.", "why": "Alice no elige nada — su resultado es aleatorio. No tiene cómo codificar un mensaje en él." },
+        { "text": "No: los resultados son aleatorios, y la correlación solo aparece al comparar datos por un canal común.", "why": "Exacto. Es el llamado teorema de no señalización. El entrelazamiento es una correlación, no un teléfono." },
+        { "text": "Sí, pero solo con muchos pares.", "why": "Ni con muchos: las estadísticas locales de Bob son siempre 50/50, haga lo que haga Alice." }
+      ]
+    },
+    {
+      "title": "Opuestos inseparables",
+      "goal": "Crea <code>(|01⟩ + |10⟩)/√2</code>: los dos qubits <em>siempre distintos</em>.",
+      "hints": ["Empieza con el par de Bell que ya sabes hacer. Después, invierte uno de los lados."],
+      "success": "Un estado de Bell distinto, con anticorrelación perfecta. Hay cuatro estados de Bell, y todos se transforman unos en otros con puertas de un solo qubit."
+    },
+    {
+      "title": "Tres a la vez (GHZ)",
+      "goal": "Entrelaza tres qubits en <code>(|000⟩ + |111⟩)/√2</code>.",
+      "hints": ["Haz un par de Bell y después “extiende” la cadena con una CNOT más."],
+      "success": "Un estado GHZ (Greenberger–Horne–Zeilinger). Medir cualquiera de los tres revela los otros dos."
+    },
+    {
+      "title": "Entrelazamiento desde el espacio",
+      "text": "En 2017, el satélite chino Micius envió pares de fotones entrelazados a dos estaciones en la Tierra separadas por unos 1.200 km. Las correlaciones sobrevivieron al viaje.",
+      "source": "Yin et al., Science (2017)."
+    },
+    {
+      "title": "Einstein se equivocó (esta vez)",
+      "text": "En 1964, John Bell mostró que se puede comprobar si el entrelazamiento esconde “instrucciones” previas. Alain Aspect, John Clauser y Anton Zeilinger hicieron los experimentos — y la naturaleza violó las desigualdades de Bell. Nobel de Física de 2022.",
+      "source": "The Nobel Prize in Physics 2022."
+    }
+  ],
+  "takeaways": [
+    "H seguida de CNOT crea un par de Bell: dos qubits con resultados perfectamente correlacionados.",
+    "Entrelazados, los qubits no tienen estado individual — en la esfera, las flechas se encogen.",
+    "Correlación no es comunicación: nada viaja más rápido que la luz."
+  ],
+  "further": [
+    { "title": "The Nobel Prize in Physics 2022 — información divulgativa (en inglés)", "url": "https://www.nobelprize.org/prizes/physics/2022/popular-information/" }
+  ]
+}

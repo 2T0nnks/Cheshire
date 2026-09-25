@@ -1,0 +1,74 @@
+{
+  "title": "Un paseo por la esfera",
+  "subtitle": "Las puertas cuánticas son giros en un globo. Lleva la flecha adonde pida el desafío.",
+  "steps": [
+    {
+      "title": "Un globo para un qubit",
+      "body": [
+        "Todo estado de un qubit se puede dibujar como una flecha dentro de una esfera: la <strong>esfera de Bloch</strong>. El polo norte es <code>|0⟩</code>, el polo sur es <code>|1⟩</code>.",
+        "La latitud da las probabilidades: cuanto más cerca del polo sur, mayor la probabilidad de medir 1. En el ecuador, es mitad y mitad.",
+        "La longitud es la <strong>fase</strong>: invisible para una medición directa, pero decisiva cuando los estados interfieren. ¿Y las puertas cuánticas? Son giros de la flecha."
+      ],
+      "aside": "En los desafíos, la esfera junto al circuito muestra la flecha en tiempo real. El objetivo aparece como una flecha punteada."
+    },
+    {
+      "title": "Patas arriba",
+      "goal": "Lleva la flecha del polo norte (<code>|0⟩</code>) al polo sur (<code>|1⟩</code>).",
+      "hints": ["X es un giro de 180° alrededor del eje X, que atraviesa la esfera de adelante hacia atrás."],
+      "success": "X da media vuelta: el norte se vuelve sur. Es el NOT cuántico."
+    },
+    {
+      "title": "Rumbo al ecuador",
+      "goal": "Deja la flecha en el ecuador, apuntando hacia ti: el estado <code>|+⟩ = (|0⟩ + |1⟩)/√2</code>.",
+      "hints": ["H cambia el polo norte por el punto del ecuador que apunta hacia ti."],
+      "success": "La Hadamard es un giro de 180° alrededor de un eje diagonal, entre X y Z. Cambia “polos” por “ecuador”."
+    },
+    {
+      "title": "El otro lado del ecuador",
+      "goal": "Llega a <code>|−⟩ = (|0⟩ − |1⟩)/√2</code>: también en el ecuador, pero apuntando hacia atrás.",
+      "hints": [
+        "Las barras de probabilidad de <code>|+⟩</code> y <code>|−⟩</code> son idénticas. Lo que cambia es el color (la fase) de la barra del 1.",
+        "Z da media vuelta alrededor del eje vertical — cambiando “adelante” por “atrás” en el ecuador."
+      ],
+      "success": "Mira: las probabilidades son las mismas que en <code>|+⟩</code>, pero la barra del 1 cambió de color. El signo menos es real — solo aparece cuando hay interferencia."
+    },
+    {
+      "question": "¿Qué hace la puerta Z con un qubit en <code>|0⟩</code>?",
+      "options": [
+        { "text": "Lo cambia a <code>|1⟩</code>", "why": "Eso es la X. La Z gira alrededor del eje vertical — y un punto en el polo no se mueve cuando el globo gira a su alrededor." },
+        { "text": "Nada: <code>|0⟩</code> sigue siendo <code>|0⟩</code>", "why": "Eso. Z solo invierte el signo de <code>|1⟩</code>. Como <code>|0⟩</code> no tiene parte en <code>|1⟩</code>, queda igual." },
+        { "text": "Crea una superposición", "why": "Quien crea superposición a partir de un polo es la H. Z solo toca la fase." }
+      ]
+    },
+    {
+      "title": "Mira hacia un lado",
+      "goal": "Llega a <code>|+i⟩ = (|0⟩ + i|1⟩)/√2</code>: en el ecuador, apuntando a la derecha.",
+      "hints": [
+        "Primero ve al ecuador. Después da un cuarto de vuelta alrededor del eje vertical.",
+        "S es “media Z”: gira 90° en vez de 180°."
+      ],
+      "success": "S giró la fase 90°. En números, la amplitud del 1 ganó una <code>i</code> — y el color de la barra giró con ella."
+    },
+    {
+      "title": "Tres cuartos de vuelta",
+      "goal": "Llega a <code>|−i⟩ = (|0⟩ − i|1⟩)/√2</code>, apuntando a la izquierda. ¡Sin puerta que gire hacia atrás!",
+      "hints": [
+        "Girar −90° es lo mismo que girar +270°.",
+        "270° = 90° (S) + 180° (Z)."
+      ],
+      "success": "Las fases se suman como ángulos: 90° + 180° = 270°, que es lo mismo que −90°."
+    },
+    {
+      "title": "¿Quién fue Bloch?",
+      "text": "Felix Bloch compartió el Nobel de Física de 1952 por la resonancia magnética nuclear: medir cómo giran los espines de los núcleos atómicos en un campo magnético. Décadas después, esa idea se convirtió en la resonancia magnética de los hospitales. La esfera que lleva su nombre describe exactamente esos giros."
+    }
+  ],
+  "takeaways": [
+    "Un qubit es una flecha en la esfera de Bloch: la latitud da las probabilidades, la longitud es la fase.",
+    "X, Z y H son giros de 180° alrededor de ejes distintos; S y T son giros menores alrededor del eje vertical.",
+    "Estados con las mismas probabilidades pueden ser distintos: la fase cuenta."
+  ],
+  "further": [
+    { "title": "Quirk — simulador de circuitos cuánticos en el navegador", "url": "https://algassert.com/quirk" }
+  ]
+}

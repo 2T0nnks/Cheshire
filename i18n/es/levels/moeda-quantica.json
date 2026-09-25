@@ -1,0 +1,68 @@
+{
+  "title": "La moneda que aún no cayó",
+  "subtitle": "Tu primer qubit: superposición, medición y el azar más honesto del universo.",
+  "steps": [
+    {
+      "title": "Los bits son monedas en el suelo",
+      "body": [
+        "Toda computadora que usaste guarda información en <strong>bits</strong>: 0 o 1, cara o cruz. La moneda está siempre en el suelo, con un lado hacia arriba — aunque nadie mire.",
+        "Un <strong>qubit</strong> es distinto. Antes de medirlo, puede estar en una <em>superposición</em>: una combinación de 0 y 1, cada uno con un peso. Piensa en una moneda que todavía gira en el aire.",
+        "Cuando mides, la moneda “cae”: sale 0 o 1. ¿Cuál? Eso la física no lo decide de antemano — solo da las probabilidades."
+      ],
+      "aside": "La analogía de la moneda es un punto de partida. En los próximos niveles verás dónde se rompe — y ahí es cuando se pone bueno."
+    },
+    {
+      "title": "Lanza la moneda cuántica",
+      "body": "Este circuito empieza con un qubit en <code>|0⟩</code> y aplica la puerta <strong>H</strong> (Hadamard), que lo pone a girar. Mide algunas veces y mira qué pasa.",
+      "after": "Mitad 0, mitad 1 — pero sin ningún patrón en la secuencia. Cada medición preparó un qubit nuevo y lo midió. No hay “memoria” ni truco: es el azar más puro que ofrece la naturaleza."
+    },
+    {
+      "question": "Mediste un qubit en superposición y salió <code>1</code>. Si mides <em>el mismo qubit</em> otra vez, sin tocar nada, ¿qué sale?",
+      "options": [
+        { "text": "Siempre 1", "why": "¡Eso! La medición “deja caer la moneda”: después, el qubit pasa a ser exactamente el resultado que viste. Medir de nuevo confirma el 1." },
+        { "text": "50% de probabilidad de 0 o 1, otra vez", "why": "Sería así si la moneda volviera a girar sola. Pero la medición cambia el estado: después de ver 1, el qubit queda en <code>|1⟩</code>." },
+        { "text": "Siempre 0, para compensar", "why": "¡El universo no equilibra cuentas! No hay memoria para “compensar” — y el qubit ahora está en <code>|1⟩</code>." }
+      ]
+    },
+    {
+      "title": "Arma tu propia moneda",
+      "goal": "Deja el qubit con 50% de probabilidad de dar 0 y 50% de dar 1.",
+      "hints": [
+        "Haz clic en una puerta de la paleta y después en un espacio vacío del hilo.",
+        "La puerta que pone el qubit “a girar” empieza con H."
+      ],
+      "success": "¡Moneda en el aire! Mira las barras: los dos resultados tienen la misma altura. Y la flecha de la esfera se acostó en el ecuador — ahí viven las superposiciones mitad y mitad."
+    },
+    {
+      "title": "Moneda trucada",
+      "goal": "Ahora haz que el qubit dé <code>1</code> con 100% de certeza.",
+      "hints": [
+        "Aquí no hace falta superposición: solo quieres dar vuelta la moneda.",
+        "La puerta X es el “NOT” cuántico: intercambia 0 y 1."
+      ],
+      "success": "La puerta <strong>X</strong> es el NOT de las computadoras comunes. La flecha fue del polo norte (<code>|0⟩</code>) al polo sur (<code>|1⟩</code>)."
+    },
+    {
+      "title": "Azar de verdad",
+      "text": "El “aleatorio” de tu computadora es, casi siempre, una cuenta muy bien disfrazada: quien conoce la semilla puede predecirlo todo. Los generadores cuánticos de números aleatorios miden fenómenos cuánticos — como fluctuaciones del vacío o fotones en un espejo semitransparente — y producen secuencias que nadie puede predecir, ni siquiera en principio.",
+      "source": "P. ej.: el generador cuántico público de la Australian National University (ANU)."
+    },
+    {
+      "question": "¿Qué frase describe mejor la superposición?",
+      "options": [
+        { "text": "El qubit ya es 0 o 1; solo que no sabemos cuál.", "why": "Esa es la idea de “variable oculta local”, y los experimentos (Nobel de 2022) muestran que la naturaleza no funciona así. La superposición es más extraña que la simple ignorancia." },
+        { "text": "El qubit es 0 y 1 al mismo tiempo, y la medición elige.", "why": "Frase popular, pero engañosa: si fuera solo “los dos a la vez”, no habría forma de explicar la interferencia, que verás en el nivel sobre fase e interferencia." },
+        { "text": "Un estado con pesos (amplitudes) para 0 y 1, que definen las probabilidades al medir.", "why": "Exacto. La superposición se describe con amplitudes — números que hasta pueden cancelarse. Ellas deciden las probabilidades de la medición." }
+      ]
+    }
+  ],
+  "takeaways": [
+    "Un bit es 0 o 1. Un qubit puede estar en superposición hasta que se mide.",
+    "Medir da un resultado aleatorio, con probabilidades definidas por el estado — y cambia el estado.",
+    "La puerta H crea una superposición mitad y mitad; la puerta X intercambia 0 y 1."
+  ],
+  "further": [
+    { "title": "Wikipedia — Cúbit", "url": "https://es.wikipedia.org/wiki/C%C3%BAbit" },
+    { "title": "Quantum Country — ensayo interactivo de Andy Matuschak y Michael Nielsen (en inglés)", "url": "https://quantum.country/qcvc" }
+  ]
+}

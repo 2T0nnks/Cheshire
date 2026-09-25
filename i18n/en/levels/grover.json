@@ -1,0 +1,59 @@
+{
+  "title": "Needle in a haystack",
+  "subtitle": "Grover's algorithm: mark the answer with phase and amplify it with interference.",
+  "steps": [
+    {
+      "title": "Searching without an index",
+      "body": [
+        "Picture a list of <code>N</code> items in no particular order, and a way to check whether an item is the right one. Classically, you test one by one: <code>N/2</code> tries on average.",
+        "In 1996, Lov Grover showed that a quantum computer needs about <code>√N</code> queries. For a million items: fewer than a thousand, instead of half a million."
+      ]
+    },
+    {
+      "question": "With 2 qubits there are 4 items. We put them all in superposition (H, H) and the oracle marks item <code>11</code> with a CZ. What's the chance of measuring <code>11</code> now?",
+      "explain": "Still 25%. The oracle marked <code>11</code> by flipping the sign of its amplitude — notice the bar's different color — but phase alone doesn't change probability. Interference is missing."
+    },
+    {
+      "title": "Inversion about the mean",
+      "body": [
+        "The next step is the <strong>diffuser</strong>: it reflects each amplitude about the average of all of them. The marked one, now negative, sits far below the average — and gets thrown way up. The others shrink.",
+        "With 2 qubits, a single round takes the marked item to 100%. As a circuit, the diffuser is: H on all, “mark <code>|00⟩</code>”, H on all. Marking <code>|00⟩</code> can be done with X on all, CZ, X on all — or, shorter, Z on all and a CZ."
+      ]
+    },
+    {
+      "title": "Build the diffuser",
+      "goal": "The oracle (columns 0–1) marked <code>11</code>. Build the diffuser so that <code>11</code> comes out with 100% probability.",
+      "hints": [
+        "Start with H on both qubits.",
+        "Then mark <code>|00⟩</code>: Z on both and a CZ (or X on both, CZ, X on both).",
+        "Finish with H on both."
+      ],
+      "success": "You found the needle with one query! With 4 items, a classical computer would need more than two on average."
+    },
+    {
+      "question": "We change the oracle to mark <code>01</code> (X on qubit 0, CZ, X on qubit 0). Same diffuser. What's the chance of measuring <code>01</code>?",
+      "explain": "100%. The diffuser knows nothing about the answer: it just amplifies whatever is marked. The whole “question” lives in the oracle."
+    },
+    {
+      "question": "For 1 million items, roughly how many queries does Grover need?",
+      "options": [
+        { "text": "About 500 thousand", "why": "That's the classical average, testing one by one." },
+        { "text": "About 800", "why": "Right: around <code>(π/4)·√N</code> ≈ 785. A quadratic speedup." },
+        { "text": "About 20", "why": "That would be an exponential speedup (≈ log₂N). For unstructured search, it's proven that √N is the best possible." },
+        { "text": "Exactly 1", "why": "Only with 4 items! In general, it takes several rounds of oracle + diffuser — and overshooting makes the result worse." }
+      ]
+    },
+    {
+      "title": "Grover and passwords",
+      "text": "Grover's speedup is “only” quadratic: brute-forcing a 128-bit key would drop from 2¹²⁸ to about 2⁶⁴ steps. That's why the advice is to use larger symmetric keys, like AES-256. The real threat to today's cryptography is Shor's algorithm, against RSA and elliptic curves."
+    }
+  ],
+  "takeaways": [
+    "The oracle marks the answer by flipping its phase; the diffuser turns phase into probability.",
+    "Grover needs ~√N queries: a quadratic speedup, which is optimal for unstructured search.",
+    "Too many rounds overshoot: the number of iterations has to be calculated."
+  ],
+  "further": [
+    { "title": "Grover (1996) — A fast quantum mechanical algorithm for database search", "url": "https://arxiv.org/abs/quant-ph/9605043" }
+  ]
+}

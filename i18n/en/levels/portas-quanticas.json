@@ -1,0 +1,74 @@
+{
+  "title": "A stroll around the sphere",
+  "subtitle": "Quantum gates are turns on a globe. Take the arrow wherever the challenge asks.",
+  "steps": [
+    {
+      "title": "A globe for one qubit",
+      "body": [
+        "Every state of a qubit can be drawn as an arrow inside a sphere: the <strong>Bloch sphere</strong>. The north pole is <code>|0⟩</code>, the south pole is <code>|1⟩</code>.",
+        "Latitude gives the odds: the closer to the south pole, the more likely you are to measure 1. On the equator, it's half and half.",
+        "Longitude is the <strong>phase</strong>: invisible to a direct measurement, but decisive when states interfere. And quantum gates? They're turns of the arrow."
+      ],
+      "aside": "In the challenges, the sphere next to the circuit shows the arrow in real time. The target shows up as a dashed arrow."
+    },
+    {
+      "title": "Upside down",
+      "goal": "Take the arrow from the north pole (<code>|0⟩</code>) to the south pole (<code>|1⟩</code>).",
+      "hints": ["X is a 180° turn around the X axis, which goes through the sphere from front to back."],
+      "success": "X turns half a revolution: north becomes south. It's the quantum NOT."
+    },
+    {
+      "title": "Off to the equator",
+      "goal": "Leave the arrow on the equator, pointing at you: the state <code>|+⟩ = (|0⟩ + |1⟩)/√2</code>.",
+      "hints": ["H swaps the north pole for the point on the equator that faces you."],
+      "success": "The Hadamard is a 180° turn around a diagonal axis, between X and Z. It swaps “poles” for “equator”."
+    },
+    {
+      "title": "The other side of the equator",
+      "goal": "Reach <code>|−⟩ = (|0⟩ − |1⟩)/√2</code>: also on the equator, but pointing backwards.",
+      "hints": [
+        "The probability bars for <code>|+⟩</code> and <code>|−⟩</code> are identical. What changes is the color (the phase) of the 1 bar.",
+        "Z turns half a revolution around the vertical axis — swapping “front” for “back” on the equator."
+      ],
+      "success": "Notice: the probabilities are the same as <code>|+⟩</code>, but the 1 bar changed color. The minus sign is real — it only shows up when there's interference."
+    },
+    {
+      "question": "What does the Z gate do to a qubit in <code>|0⟩</code>?",
+      "options": [
+        { "text": "Turns it into <code>|1⟩</code>", "why": "That's X. Z turns around the vertical axis — and a point on the pole doesn't move when the globe spins around it." },
+        { "text": "Nothing: <code>|0⟩</code> stays <code>|0⟩</code>", "why": "Right. Z only flips the sign of <code>|1⟩</code>. Since <code>|0⟩</code> has no <code>|1⟩</code> part, it stays the same." },
+        { "text": "Creates a superposition", "why": "Creating superposition from a pole is H's job. Z only touches the phase." }
+      ]
+    },
+    {
+      "title": "Look to the side",
+      "goal": "Reach <code>|+i⟩ = (|0⟩ + i|1⟩)/√2</code>: on the equator, pointing right.",
+      "hints": [
+        "First go to the equator. Then turn a quarter revolution around the vertical axis.",
+        "S is “half a Z”: it turns 90° instead of 180°."
+      ],
+      "success": "S rotated the phase by 90°. In numbers, the amplitude of 1 gained an <code>i</code> — and the bar's color rotated along with it."
+    },
+    {
+      "title": "Three quarters of a turn",
+      "goal": "Reach <code>|−i⟩ = (|0⟩ − i|1⟩)/√2</code>, pointing left. No gate that turns backwards!",
+      "hints": [
+        "Turning −90° is the same as turning +270°.",
+        "270° = 90° (S) + 180° (Z)."
+      ],
+      "success": "Phases add up like angles: 90° + 180° = 270°, which is the same as −90°."
+    },
+    {
+      "title": "Who was Bloch?",
+      "text": "Felix Bloch shared the 1952 Nobel Prize in Physics for nuclear magnetic resonance: measuring how the spins of atomic nuclei turn in a magnetic field. Decades later, that idea became the MRI scan in hospitals. The sphere named after him describes exactly those turns."
+    }
+  ],
+  "takeaways": [
+    "A qubit is an arrow on the Bloch sphere: latitude gives the odds, longitude is the phase.",
+    "X, Z and H are 180° turns around different axes; S and T are smaller turns around the vertical axis.",
+    "States with the same probabilities can be different: phase matters."
+  ],
+  "further": [
+    { "title": "Quirk — quantum circuit simulator in the browser", "url": "https://algassert.com/quirk" }
+  ]
+}

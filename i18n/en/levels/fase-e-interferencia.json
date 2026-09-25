@@ -1,0 +1,65 @@
+{
+  "title": "Waves that cancel out",
+  "subtitle": "Twice random makes… certain? Interference is the trick behind every quantum algorithm.",
+  "steps": [
+    {
+      "title": "Odds that cancel out",
+      "body": [
+        "In everyday life, probabilities only add up: if there are two paths to a result, the total chance is higher.",
+        "In the quantum world, what adds up are the <strong>amplitudes</strong> — and they have a sign (actually, a phase). One path with <code>+½</code> and another with <code>−½</code> cancel each other, like a wave crest meeting a trough.",
+        "Let's test your intuition."
+      ]
+    },
+    {
+      "question": "One H leaves the qubit half and half. What if we apply <strong>two</strong> H gates in a row? What's the chance of measuring 1?",
+      "explain": "Zero! The second H doesn't “shuffle again”: it <em>undoes</em> the first. The two paths leading to 1 have amplitudes <code>+½</code> and <code>−½</code> and cancel out. The ones leading to 0 add up to <code>½ + ½ = 1</code>."
+    },
+    {
+      "title": "The math behind it",
+      "body": [
+        "H sends <code>|0⟩ → (|0⟩ + |1⟩)/√2</code> and <code>|1⟩ → (|0⟩ − |1⟩)/√2</code>.",
+        "Applying it twice starting from <code>|0⟩</code>, there are two paths to 1: via 0 (amplitude <code>+½</code>) and via 1 (amplitude <code>−½</code>). Sum: zero. That's <strong>destructive interference</strong>.",
+        "Quantum algorithms are choreographies of interference: making wrong answers cancel out and right ones reinforce each other."
+      ]
+    },
+    {
+      "question": "What if we put a Z between the two H gates? Z doesn't change any probability… What's the chance of measuring 1?",
+      "explain": "100%! Z flipped the sign of one of the paths. Now it's 0 that cancels and 1 that reinforces. An “invisible” phase decided the result."
+    },
+    {
+      "title": "1 without X",
+      "goal": "Take the qubit to <code>|1⟩</code> with certainty — but the X gate isn't available.",
+      "hints": ["You just saw this trick in the previous step."],
+      "success": "H·Z·H = X. You built a NOT using nothing but interference."
+    },
+    {
+      "title": "Phases add up",
+      "goal": "Between the two fixed H gates, rotate the phase enough for the qubit to read 1 with certainty. Only S and T available.",
+      "hints": [
+        "You need half a turn (180°) of phase, like Z.",
+        "S turns 90°, T turns 45°."
+      ],
+      "success": "Two S's = one Z. Four T's would work too. On the sphere, each gate turned the arrow along the equator; at the end, H turned the phase into a result."
+    },
+    {
+      "title": "Interference in your ears",
+      "text": "Noise-cancelling headphones use destructive interference of sound: a microphone picks up the noise and the headphone plays the same wave with its sign flipped. Crest meets trough, and the noise disappears. Quantum amplitudes work in a similar way — just with possibilities instead of air pressure."
+    },
+    {
+      "question": "Two Z gates in a row are equivalent to what?",
+      "options": [
+        { "text": "An X", "why": "Z doesn't swap 0 and 1: it only touches phase. Two half turns around the vertical axis don't take the arrow to the other pole." },
+        { "text": "Nothing (identity)", "why": "Right. Two half turns = one full turn. The sign of <code>|1⟩</code> flips and flips back." },
+        { "text": "An H", "why": "H mixes poles and equator. Z never does that, not even repeated." }
+      ]
+    }
+  ],
+  "takeaways": [
+    "Amplitudes add up with phase: they can reinforce or cancel each other.",
+    "H followed by H goes back to the start; H·Z·H becomes an X.",
+    "Phase is invisible in a direct measurement, but decides the result when there's interference."
+  ],
+  "further": [
+    { "title": "3Blue1Brown — Quantum computing explained (Grover, interference)", "url": "https://www.youtube.com/watch?v=RQWpF2Gb-gU" }
+  ]
+}

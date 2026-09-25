@@ -1,0 +1,64 @@
+{
+  "title": "Looking spoils it",
+  "subtitle": "The double-slit experiment as a circuit: why “peeking at the path” erases interference.",
+  "steps": [
+    {
+      "title": "One particle, two slits",
+      "body": [
+        "In 1801, Thomas Young shone light through two slits and saw bright and dark stripes on a wall: interference, the signature of waves.",
+        "A century later, it turned out light arrives in packets (photons). And in 1989, Akira Tonomura and colleagues sent <strong>electrons one at a time</strong> through an equivalent setup. Each one shows up as a tiny dot… but add up thousands, and the stripes appear.",
+        "Each electron, on its own, “interferes with itself”. Until someone tries to find out which slit it went through."
+      ]
+    },
+    {
+      "title": "The double slit becomes a circuit",
+      "body": [
+        "Let's use a cleaner version: the <strong>Mach–Zehnder interferometer</strong>. A half-silvered mirror splits the photon into two paths; another half-silvered mirror joins them again.",
+        "In the circuit, each half-silvered mirror is an <strong>H</strong>. The upper path is <code>0</code>, the lower path is <code>1</code>. The measurement result tells you which detector the photon reached."
+      ]
+    },
+    {
+      "title": "No peeking",
+      "body": "Two half-silvered mirrors (H, H). Send photons, one at a time.",
+      "wires": ["photon"],
+      "after": "All at detector 0! The two paths interfere: constructively at detector 0, destructively at 1. Just like the double-slit stripes."
+    },
+    {
+      "title": "Now with a detector on the path",
+      "body": "A second qubit plays the role of a detector that records the path: a CNOT notes “went through the bottom” without pushing or slowing the photon.",
+      "wires": ["photon", "detector"],
+      "after": "Look only at the first digit (the photon): now it's 0 and 1 half and half. The interference is gone. The detector didn't disturb the photon “by force” — it was enough for the path information to exist somewhere."
+    },
+    {
+      "question": "Why did the interference disappear?",
+      "options": [
+        { "text": "The detector gave the photon a “push”.", "why": "The CNOT doesn't touch the photon: it only changes the detector when the photon takes the bottom path. And yet the interference vanished." },
+        { "text": "The path information got recorded (entangled) in the detector, so the paths were no longer indistinguishable.", "why": "Right. Interference only happens between possibilities the universe can't tell apart. It's decoherence in miniature." },
+        { "text": "Detectors are classical and “break” quantum physics.", "why": "Here the detector is another qubit — everything stays quantum. What matters is the information, not the size of the detector." }
+      ]
+    },
+    {
+      "title": "Erase the clue",
+      "goal": "The detector has already recorded the path. Use the free slot, <em>before</em> the last mirror, to erase that information and make the photon always reach detector 0 again.",
+      "wires": ["photon", "detector"],
+      "hints": [
+        "The CNOT is its own inverse.",
+        "Make the detector “un-record” the path with the same gate that recorded it."
+      ],
+      "success": "Information erased, interference restored! This is the idea behind <em>quantum eraser</em> experiments. On the sphere, the photon's arrow grew back."
+    },
+    {
+      "title": "The most beautiful experiment",
+      "text": "In 2002, readers of Physics World voted the double slit with single electrons “the most beautiful experiment in physics”. Richard Feynman said it contains “the only mystery” of quantum mechanics.",
+      "source": "Physics World, September 2002."
+    }
+  ],
+  "takeaways": [
+    "Single particles produce interference patterns, like waves.",
+    "Recording the path — anywhere — destroys the interference.",
+    "Erasing the path information can restore it: what counts is what the universe can tell apart."
+  ],
+  "further": [
+    { "title": "Wikipedia — Double-slit experiment", "url": "https://en.wikipedia.org/wiki/Double-slit_experiment" }
+  ]
+}

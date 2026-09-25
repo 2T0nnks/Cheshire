@@ -1,0 +1,61 @@
+{
+  "title": "Cuántica en tu bolsillo",
+  "subtitle": "Celular, GPS, resonancia magnética, el propio Sol: la física cuántica trabaja para ti hace décadas.",
+  "steps": [
+    {
+      "title": "Ya usas física cuántica",
+      "body": [
+        "El chip de tu celular tiene miles de millones de <strong>transistores</strong>. Solo funcionan porque la mecánica cuántica explica cómo se comportan los electrones dentro de semiconductores como el silicio.",
+        "La pantalla usa LEDs, la cámara usa sensores que cuentan fotones, la fibra óptica lleva tu internet con láseres. Todo eso es ingeniería cuántica — la primera revolución cuántica.",
+        "La segunda revolución, que está ocurriendo ahora, es distinta: en vez de solo entender el comportamiento cuántico, controlar qubits uno por uno."
+      ]
+    },
+    {
+      "question": "¿Cuál de estos <em>no</em> necesita la mecánica cuántica para explicarse?",
+      "options": [
+        { "text": "El láser de un lector de código de barras", "why": "El láser funciona por emisión estimulada: los átomos liberan fotones idénticos en escalones de energía bien definidos. Efecto cuántico puro." },
+        { "text": "La luz de un LED", "why": "El color del LED viene del salto de energía (gap) del semiconductor — algo que solo la mecánica cuántica explica." },
+        { "text": "Una palanca levantando una piedra", "why": "¡Eso! Las palancas son física clásica pura: Arquímedes ya las explicaba hace más de 2.200 años." },
+        { "text": "Un examen de resonancia magnética", "why": "La resonancia “escucha” el espín de los núcleos de hidrógeno del cuerpo — una propiedad cuántica." }
+      ]
+    },
+    {
+      "title": "El GPS es un reloj cuántico",
+      "text": "Cada satélite GPS lleva relojes atómicos, que cuentan las oscilaciones de un salto cuántico de energía en átomos de cesio o rubidio. El propio segundo se define así: 9.192.631.770 oscilaciones del cesio-133. Un error de una millonésima de segundo ya movería tu posición unos 300 metros.",
+      "source": "BIPM — definición del segundo en el Sistema Internacional."
+    },
+    {
+      "title": "El Sol brilla por efecto túnel",
+      "text": "En el núcleo del Sol, los protones no tienen suficiente energía para vencer la repulsión eléctrica entre ellos — según la física clásica, la fusión casi no ocurriría. Gracias al <strong>efecto túnel cuántico</strong>, a veces “atraviesan” esa barrera. Sin este efecto, el Sol no brillaría como brilla."
+    },
+    {
+      "question": "¿Por qué trabajo ganó Albert Einstein el Nobel de Física de 1921?",
+      "options": [
+        { "text": "La teoría de la relatividad", "why": "¡Sorpresa común! La relatividad era demasiado polémica en esa época y no se citó en el premio." },
+        { "text": "El efecto fotoeléctrico — la luz llega en paquetes (cuantos)", "why": "Eso. En 1905, Einstein explicó que la luz arranca electrones de un metal en paquetes de energía, los fotones. Fue uno de los pilares de la física cuántica." },
+        { "text": "La ecuación E = mc²", "why": "También es de 1905, pero no fue el motivo del Nobel." }
+      ]
+    },
+    {
+      "title": "Un circuito que se comporta como un átomo",
+      "text": "El Nobel de Física de 2025 fue para John Clarke, Michel Devoret y John Martinis, que en los años 80 mostraron efecto túnel cuántico y niveles de energía discretos en un circuito eléctrico que se puede sostener con la mano. Ese descubrimiento es la base de los qubits superconductores que usan muchas computadoras cuánticas actuales.",
+      "source": "The Nobel Prize in Physics 2025."
+    },
+    {
+      "question": "¿Una computadora cuántica hará más rápidos tus juegos y planillas?",
+      "options": [
+        { "text": "Sí, es más rápida en todo.", "why": "No lo es. Para la mayoría de las tareas diarias, una computadora común es más rápida, más barata y más confiable." },
+        { "text": "No: acelera tipos específicos de problemas, como simular moléculas o factorizar números enormes.", "why": "Eso. La ventaja cuántica aparece en problemas con la estructura adecuada para que la interferencia trabaje. No es una “PC turbo”." },
+        { "text": "Solo si se enfría con nitrógeno líquido.", "why": "Muchos qubits superconductores se mantienen aún más fríos, cerca de −273 °C, pero eso no los hace buenos en todo." }
+      ]
+    }
+  ],
+  "takeaways": [
+    "Transistores, LEDs, láseres, GPS y resonancia magnética dependen de la física cuántica.",
+    "La primera revolución cuántica usó el comportamiento colectivo; la segunda controla qubits individuales.",
+    "Las computadoras cuánticas no son más rápidas en todo — solo en problemas con la estructura adecuada."
+  ],
+  "further": [
+    { "title": "The Nobel Prize in Physics 2025 — información divulgativa (en inglés)", "url": "https://www.nobelprize.org/prizes/physics/2025/popular-information/" }
+  ]
+}
