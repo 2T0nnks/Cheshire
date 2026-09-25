@@ -8,7 +8,11 @@
   "audience": "curioso",
   "icon": "🐈",
   "duration": "~7 min",
-  "tags": ["superposição", "decoerência", "história"],
+  "tags": [
+    "superposição",
+    "decoerência",
+    "história"
+  ],
   "author": "2T0nnks",
   "license": "CC-BY-SA-4.0",
   "steps": [
@@ -27,9 +31,19 @@
       "type": "quiz",
       "question": "Por que Schrödinger inventou o gato?",
       "options": [
-        { "text": "Para provar que gatos podem estar vivos e mortos ao mesmo tempo.", "why": "Era o contrário: ele usou o gato justamente porque ninguém acredita nisso. O absurdo era o argumento." },
-        { "text": "Para criticar a ideia de que a superposição vale igualzinho para objetos do dia a dia.", "correct": true, "why": "Isso. O texto de 1935 discutia o problema da medição: onde termina o mundo quântico e começa o clássico? A pergunta ainda gera debate." },
-        { "text": "Para um experimento real de laboratório.", "why": "Nunca foi feito com gatos. Mas versões com objetos cada vez maiores — moléculas, cristais minúsculos — são feitas de verdade hoje." }
+        {
+          "text": "Para provar que gatos podem estar vivos e mortos ao mesmo tempo.",
+          "why": "Era o contrário: ele usou o gato justamente porque ninguém acredita nisso. O absurdo era o argumento."
+        },
+        {
+          "text": "Para criticar a ideia de que a superposição vale igualzinho para objetos do dia a dia.",
+          "correct": true,
+          "why": "Isso. O texto de 1935 discutia o problema da medição: onde termina o mundo quântico e começa o clássico? A pergunta ainda gera debate."
+        },
+        {
+          "text": "Para um experimento real de laboratório.",
+          "why": "Nunca foi feito com gatos. Mas versões com objetos cada vez maiores — moléculas, cristais minúsculos — são feitas de verdade hoje."
+        }
       ]
     },
     {
@@ -37,8 +51,14 @@
       "title": "Abra a caixa (muitas vezes)",
       "body": "Aqui o átomo é um qubit colocado em superposição (H), e o gato é outro qubit que “copia” o átomo com uma porta CNOT: se o átomo decair (1), o gato muda para 1 também. Abra a caixa várias vezes.",
       "qubits": 2,
-      "wires": ["átomo", "gato"],
-      "circuit": ["H 0", "CNOT 0 1"],
+      "wires": [
+        "átomo",
+        "gato"
+      ],
+      "circuit": [
+        "H 0",
+        "CNOT 0 1"
+      ],
       "minShots": 20,
       "after": "Você só vê <code>00</code> (não decaiu, gato vivo) ou <code>11</code> (decaiu, gato… bem). Nunca <code>01</code> ou <code>10</code>. Átomo e gato ficaram <strong>emaranhados</strong>: não dá mais para descrever um sem o outro."
     },
@@ -46,8 +66,14 @@
       "type": "predict",
       "question": "Antes de abrir, qual a chance de encontrar o gato vivo (gato = 0), não importa o átomo?",
       "qubits": 2,
-      "wires": ["átomo", "gato"],
-      "circuit": ["H 0", "CNOT 0 1"],
+      "wires": [
+        "átomo",
+        "gato"
+      ],
+      "circuit": [
+        "H 0",
+        "CNOT 0 1"
+      ],
       "outcome": "x0",
       "explain": "50%. O gato sozinho parece uma moeda comum — o estranho está na <em>correlação</em> perfeita com o átomo, não nas chances de cada um."
     },
@@ -69,12 +95,29 @@
       "source": "Fein et al., Nature Physics (2019)."
     },
     {
+      "type": "fact",
+      "icon": "😼",
+      "title": "O outro gato famoso da física",
+      "text": "Schrödinger não tem o único gato da física. Em 2013, físicos propuseram o <strong>gato de Cheshire quântico</strong>, inspirado no gato de <em>Alice no País das Maravilhas</em> que some e deixa só o sorriso: num interferômetro, medições fracas indicam que uma partícula passa por um caminho e o seu spin, por outro. Em 2014, o efeito foi observado com nêutrons.",
+      "source": "Aharonov et al., New Journal of Physics (2013); Denkmayr et al., Nature Communications (2014)."
+    },
+    {
       "type": "quiz",
       "question": "Qual o principal motivo de não vermos objetos grandes em superposição no dia a dia?",
       "options": [
-        { "text": "As leis quânticas só valem para coisas pequenas.", "why": "Até onde se sabe, as leis são as mesmas para tudo. O que muda é o quanto o objeto conversa com o ambiente." },
-        { "text": "Decoerência: o ambiente “espalha” a informação e a superposição deixa de interferir.", "correct": true, "why": "Isso. Quanto maior e mais quente o objeto, mais rápido ele se emaranha com o ambiente e passa a se comportar de forma clássica." },
-        { "text": "A gravidade destrói a superposição.", "why": "Há propostas (como a de Roger Penrose) de que a gravidade poderia ter um papel, mas isso ainda não foi observado. A decoerência já é bem estabelecida." }
+        {
+          "text": "As leis quânticas só valem para coisas pequenas.",
+          "why": "Até onde se sabe, as leis são as mesmas para tudo. O que muda é o quanto o objeto conversa com o ambiente."
+        },
+        {
+          "text": "Decoerência: o ambiente “espalha” a informação e a superposição deixa de interferir.",
+          "correct": true,
+          "why": "Isso. Quanto maior e mais quente o objeto, mais rápido ele se emaranha com o ambiente e passa a se comportar de forma clássica."
+        },
+        {
+          "text": "A gravidade destrói a superposição.",
+          "why": "Há propostas (como a de Roger Penrose) de que a gravidade poderia ter um papel, mas isso ainda não foi observado. A decoerência já é bem estabelecida."
+        }
       ]
     }
   ],
@@ -83,8 +126,18 @@
     "Átomo e gato ficam emaranhados: os resultados são correlacionados mesmo que cada um, sozinho, pareça aleatório.",
     "Decoerência explica por que o mundo grande parece clássico — e por que qubits precisam de tanto isolamento."
   ],
-  "terms": ["superposicao", "emaranhamento", "decoerencia", "colapso", "cnot"],
+  "terms": [
+    "superposicao",
+    "emaranhamento",
+    "decoerencia",
+    "colapso",
+    "cnot",
+    "gato-de-cheshire-quantico"
+  ],
   "further": [
-    { "title": "Stanford Encyclopedia of Philosophy — Measurement in Quantum Theory", "url": "https://plato.stanford.edu/entries/qt-measurement/" }
+    {
+      "title": "Stanford Encyclopedia of Philosophy — Measurement in Quantum Theory",
+      "url": "https://plato.stanford.edu/entries/qt-measurement/"
+    }
   ]
 }

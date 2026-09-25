@@ -23,7 +23,7 @@
   },
   "fase": {
     "term": "Fase",
-    "short": "O “ângulo” de uma amplitude. Não muda as probabilidades sozinha, mas decide se duas possibilidades se reforçam ou se cancelam quando interferem. No Bloch, a cor da barra mostra a fase."
+    "short": "O “ângulo” de uma amplitude. Não muda as probabilidades sozinha, mas decide se duas possibilidades se reforçam ou se cancelam quando interferem. No jogo, a cor da barra mostra a fase."
   },
   "medicao": {
     "term": "Medição",
@@ -73,7 +73,7 @@
   "emaranhamento": {
     "term": "Emaranhamento",
     "short": "Quando dois ou mais qubits formam um único estado que não se descreve qubit a qubit. Os resultados das medições ficam correlacionados, a qualquer distância.",
-    "long": "No Bloch, as setas dos qubits emaranhados encolhem para o centro da esfera: sozinho, nenhum deles tem um estado definido."
+    "long": "No jogo, as setas dos qubits emaranhados encolhem para o centro da esfera: sozinho, nenhum deles tem um estado definido."
   },
   "estado-de-bell": {
     "term": "Estado de Bell",
@@ -106,5 +106,10 @@
   "quantum": {
     "term": "Quantum",
     "short": "Do latim “quanto”: a menor porção indivisível de algo. Max Planck, em 1900, propôs que a luz troca energia em pacotes — os quanta."
+  },
+  "gato-de-cheshire-quantico": {
+    "term": "Gato de Cheshire quântico",
+    "short": "Efeito proposto em 2013 em que, num interferômetro, medições fracas indicam que uma partícula passou por um caminho e uma propriedade dela (como o spin) por outro — o “sorriso sem o gato”.",
+    "long": "Observado com nêutrons em 2014 (Denkmayr et al., Nature Communications). O que isso diz sobre a realidade ainda é debatido."
   }
 }

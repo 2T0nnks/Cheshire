@@ -2,7 +2,7 @@
   "name": "quantum-game",
   "version": "0.1.0",
   "private": true,
-  "description": "Bloch — minijogo educativo open source de computação e física quântica. Fases em JSON, motor num único HTML com simulador de qubits.",
+  "description": "Cheshire — minijogo educativo open source de computação e física quântica. Fases em JSON, motor num único HTML com simulador de qubits.",
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",

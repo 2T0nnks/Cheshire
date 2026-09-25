@@ -1,10 +1,10 @@
-# Bloch
+# Cheshire
 
 **Física quântica, de brincadeira.**
 
 Minijogo educativo e open source para aprender computação e física quântica montando circuitos, medindo qubits e vendo a interferência acontecer. Fases curtas para públicos diferentes — de quem está só curioso até quem quer entender Grover.
 
-> Homenagem a Felix Bloch e à esfera que leva seu nome: o jeito mais bonito de enxergar um qubit. Em todo desafio, a seta que gira é ela.
+> O Gato de Cheshire, de *Alice no País das Maravilhas*, some e deixa só o sorriso — e é o seu companheiro no jogo: comenta as jogadas, dá pistas e desaparece se você ficar parado. A física tem até um “gato de Cheshire quântico” (2013): uma partícula que parece passar por um caminho enquanto o seu spin passa por outro.
 
 ## Como funciona
 
@@ -31,7 +31,7 @@ Trilhas: **Fundamentos** → **Circuitos** → **Fenômenos** → **Algoritmos e
 
 Fases atuais: moeda quântica, gato de Schrödinger, quântico no dia a dia, esfera de Bloch, interferência, emaranhamento, fenda dupla, BB84, Deutsch, teletransporte e Grover (mais tunelamento e Shor “em breve”).
 
-Há também um **laboratório livre** (sandbox com todas as portas e exemplos prontos) e um **glossário** (`content/glossary.json`).
+O **Gato de Cheshire** acompanha o jogador (dá para esconder na página Sobre). Há também um **laboratório livre** (sandbox com todas as portas e exemplos prontos) e um **glossário** (`content/glossary.json`).
 
 ## Rodar localmente
 

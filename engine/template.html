@@ -2,12 +2,12 @@
 <html lang="pt-BR">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Bloch — minijogo educativo e open source para aprender computação e física quântica brincando com qubits.">
+<meta name="description" content="Cheshire — minijogo educativo e open source para aprender computação e física quântica brincando com qubits.">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="color-scheme" content="light dark">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src __CSP_SCRIPT_HASHES__; style-src 'unsafe-inline'; font-src 'self'; img-src data:; base-uri 'none'; form-action 'none'">
-<title>Bloch — física quântica de brincadeira</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%2311121A%22%2F%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2220%22%20fill%3D%22none%22%20stroke%3D%22%234FC7C0%22%20stroke-width%3D%223%22%2F%3E%3Cellipse%20cx%3D%2232%22%20cy%3D%2232%22%20rx%3D%2220%22%20ry%3D%227%22%20fill%3D%22none%22%20stroke%3D%22%234FC7C0%22%20stroke-width%3D%222%22%20opacity%3D%22.5%22%2F%3E%3Cline%20x1%3D%2232%22%20y1%3D%2232%22%20x2%3D%2244%22%20y2%3D%2218%22%20stroke%3D%22%23FF8A65%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2244%22%20cy%3D%2218%22%20r%3D%224%22%20fill%3D%22%23FF8A65%22%2F%3E%3C%2Fsvg%3E">
+<title>Cheshire — física quântica de brincadeira</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2224%22%20fill%3D%22%2311121A%22%2F%3E%3Cg%20transform%3D%22translate%284%202%29%20scale%28.92%29%22%3E%3Cpath%20d%3D%22M20%2042%20L17%209%20L43%2029%20Z%22%20fill%3D%22%239B63C4%22%2F%3E%3Cpath%20d%3D%22M23%2035%20L21.5%2017%20L36%2029%20Z%22%20fill%3D%22%23F4A6C8%22%2F%3E%3Cpath%20d%3D%22M80%2042%20L83%209%20L57%2029%20Z%22%20fill%3D%22%239B63C4%22%2F%3E%3Cpath%20d%3D%22M77%2035%20L78.5%2017%20L64%2029%20Z%22%20fill%3D%22%23F4A6C8%22%2F%3E%3Cellipse%20cx%3D%2250%22%20cy%3D%2256%22%20rx%3D%2237%22%20ry%3D%2231%22%20fill%3D%22%239B63C4%22%2F%3E%3Cpath%20d%3D%22M40%2028%20Q50%2034%2060%2028M35%2035%20Q50%2043%2065%2035M14%2054%20Q21%2056%2024%2062M86%2054%20Q79%2056%2076%2062%22%20stroke%3D%22%237A3FA0%22%20stroke-width%3D%224%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%2F%3E%3Cellipse%20cx%3D%2236%22%20cy%3D%2249%22%20rx%3D%228.5%22%20ry%3D%227%22%20fill%3D%22%23F6D35B%22%2F%3E%3Cellipse%20cx%3D%2264%22%20cy%3D%2249%22%20rx%3D%228.5%22%20ry%3D%227%22%20fill%3D%22%23F6D35B%22%2F%3E%3Cellipse%20cx%3D%2236%22%20cy%3D%2249%22%20rx%3D%221.9%22%20ry%3D%225.8%22%20fill%3D%22%232A1B35%22%2F%3E%3Cellipse%20cx%3D%2264%22%20cy%3D%2249%22%20rx%3D%221.9%22%20ry%3D%225.8%22%20fill%3D%22%232A1B35%22%2F%3E%3Cpath%20d%3D%22M19%2063%20Q50%2098%2081%2063%20Q50%2078%2019%2063Z%22%20fill%3D%22%23FFFFFF%22%20stroke%3D%22%23D2407A%22%20stroke-width%3D%222.6%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M31%2069.5v8M40.5%2072.5v10M50%2073.5v10.5M59.5%2072.5v10M69%2069.5v8%22%20stroke%3D%22%23D2407A%22%20stroke-width%3D%221.7%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
 <!-- LEVELS:INJECT -->
 
 <style>
@@ -511,6 +511,36 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
 .confetti i.sq { border-radius: 2px; }
 @keyframes burst { to { transform: translate(var(--dx), var(--dy)) rotate(var(--r)) scale(0.3); opacity: 0; } }
 
+/* Pet: the Cheshire Cat */
+.brand svg { width: 34px; height: 34px; }
+.pet { position: fixed; right: 18px; bottom: 18px; z-index: 50; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; pointer-events: none; transition: bottom .3s var(--ease); }
+body.in-level .pet { bottom: 84px; }
+.pet-cat { pointer-events: auto; width: 88px; height: 88px; padding: 0; border: 0; background: none; cursor: pointer; filter: drop-shadow(0 8px 14px rgba(20, 10, 30, 0.25)); animation: pet-float 5s ease-in-out infinite; }
+.pet-cat svg { width: 100%; height: 100%; overflow: visible; }
+.pet-cat:hover { animation-play-state: paused; }
+@keyframes pet-float { 50% { transform: translateY(-6px) rotate(2deg); } }
+.pet-body { transition: opacity 2.2s ease; }
+.pet.vanish .pet-body { opacity: 0.06; }
+.pet.vanish .pet-cat { filter: none; }
+.pet-tail { transform-origin: 80px 82px; animation: pet-tail 3.2s ease-in-out infinite; }
+@keyframes pet-tail { 50% { transform: rotate(-14deg); } }
+.pet-blink { transform-box: fill-box; transform-origin: center; animation: pet-blink 5.5s infinite; }
+@keyframes pet-blink { 0%, 93%, 100% { transform: scaleY(1); } 96% { transform: scaleY(0.1); } }
+.pet-pupils { transition: transform .35s var(--ease); }
+.pet-head { transform-box: fill-box; transform-origin: 50% 80%; transition: transform .4s var(--ease); }
+.pet-grin path:first-child { transition: transform .3s var(--ease); transform-box: fill-box; transform-origin: center top; }
+.pet-eyes-happy { display: none; }
+.pet[data-mood="happy"] .pet-eyes-open { display: none; }
+.pet[data-mood="happy"] .pet-eyes-happy { display: inline; }
+.pet[data-mood="happy"] .pet-cat { animation: pet-hop .6s var(--ease) 2; }
+@keyframes pet-hop { 40% { transform: translateY(-14px) rotate(-4deg); } }
+.pet[data-mood="oops"] .pet-head { transform: rotate(-9deg); }
+.pet[data-mood="oops"] .pet-pupils { transform: translate(-3px, 2px); }
+.pet[data-mood="think"] .pet-pupils { transform: translate(2px, -3px); }
+.pet-bubble { pointer-events: auto; position: relative; max-width: min(270px, calc(100vw - 40px)); padding: 11px 14px; border-radius: 16px 16px 4px 16px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); box-shadow: var(--shadow-lg); font-size: 0.93rem; line-height: 1.45; animation: step-in .3s var(--ease); margin-right: 26px; }
+.pet-bubble code { font-size: 0.85em; }
+@media (max-width: 640px) { .pet-cat { width: 64px; height: 64px; } .pet { right: 10px; } body.in-level .pet { bottom: 124px; } }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
 }
@@ -520,9 +550,9 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
 <a class="sr-only" href="#main">Pular para o conteúdo</a>
 <header class="site-header">
   <div class="wrap">
-    <button class="brand" data-go="home" aria-label="Bloch — início">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="3" opacity=".9"/><ellipse cx="32" cy="32" rx="22" ry="7.5" fill="none" stroke="currentColor" stroke-width="2" opacity=".35"/><line x1="32" y1="32" x2="45" y2="16" stroke="#E0714A" stroke-width="4.5" stroke-linecap="round"/><circle cx="45" cy="16" r="4.5" fill="#E0714A"/><circle cx="32" cy="32" r="2.5" fill="currentColor"/></svg>
-      Bloch
+    <button class="brand" data-go="home" aria-label="Cheshire — início">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><path d="M20 42 L17 9 L43 29 Z" fill="#9B63C4"/><path d="M23 35 L21.5 17 L36 29 Z" fill="#F4A6C8"/><path d="M80 42 L83 9 L57 29 Z" fill="#9B63C4"/><path d="M77 35 L78.5 17 L64 29 Z" fill="#F4A6C8"/><ellipse cx="50" cy="56" rx="37" ry="31" fill="#9B63C4"/><path d="M40 28 Q50 34 60 28M35 35 Q50 43 65 35M14 54 Q21 56 24 62M86 54 Q79 56 76 62" stroke="#7A3FA0" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="36" cy="49" rx="8.5" ry="7" fill="#F6D35B"/><ellipse cx="64" cy="49" rx="8.5" ry="7" fill="#F6D35B"/><ellipse cx="36" cy="49" rx="1.9" ry="5.8" fill="#2A1B35"/><ellipse cx="64" cy="49" rx="1.9" ry="5.8" fill="#2A1B35"/><path d="M19 63 Q50 98 81 63 Q50 78 19 63Z" fill="#FFFFFF" stroke="#D2407A" stroke-width="2.6" stroke-linejoin="round"/><path d="M31 69.5v8M40.5 72.5v10M50 73.5v10.5M59.5 72.5v10M69 69.5v8" stroke="#D2407A" stroke-width="1.7"/></svg>
+      Cheshire
     </button>
     <nav class="nav" id="nav" aria-label="Principal">
       <button data-go="home">Fases</button>
@@ -625,12 +655,16 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
   <section id="view-sobre" class="view" hidden>
     <div class="wrap">
       <div class="page-head">
-        <h1>Sobre o Bloch</h1>
+        <h1>Sobre o Cheshire</h1>
         <p>Um minijogo aberto para ensinar computação e física quântica a pessoas diferentes, em níveis diferentes — do “nunca ouvi falar” ao “quero entender Grover”.</p>
       </div>
       <div class="prose">
-        <h2>Por que “Bloch”?</h2>
-        <p>Homenagem a Felix Bloch e à esfera que leva seu nome: o jeito mais bonito de enxergar um qubit. Em todo desafio, a seta que você vê girando é ela.</p>
+        <h2>Por que “Cheshire”?</h2>
+        <p>Em <em>Alice no País das Maravilhas</em> (Lewis Carroll, 1865), o Gato de Cheshire some aos poucos até sobrar só o sorriso — e Alice comenta que já viu muito gato sem sorriso, mas nunca um sorriso sem gato. É o seu companheiro aqui: ele comenta suas jogadas, dá pistas e, se você ficar parado, desaparece deixando só o sorriso. Clique nele para ouvir uma curiosidade.</p>
+        <p>A física também tem o seu: em 2013, Aharonov, Popescu, Rohrlich e Skrzypczyk propuseram o <strong>gato de Cheshire quântico</strong> — num interferômetro, medições fracas indicam que a partícula passou por um caminho e o seu spin, por outro. Em 2014 o efeito foi observado com nêutrons, e o que ele significa ainda é debatido.</p>
+        <p><button class="btn small" id="pet-toggle">Esconder o Gato</button></p>
+        <h2>E a esfera que gira?</h2>
+        <p>É a esfera de Bloch, homenagem a Felix Bloch: o jeito mais bonito de enxergar um qubit. Em todo desafio, a seta que você vê girando é ela.</p>
         <h2>Como as fases funcionam</h2>
         <p>Cada fase é um único arquivo JSON na pasta <code>levels/</code> do repositório. O motor lê esses arquivos no build e monta tudo num só HTML — sem servidor, sem rastreador, sem requisição a terceiros. Uma fase é uma sequência de passos:</p>
         <div class="types">
@@ -667,12 +701,27 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
 
 <footer class="site-footer">
   <div class="wrap">
-    <span>Bloch · aprenda quântica brincando · <a href="https://github.com/2T0nnks/quantum-game" rel="noopener">código no GitHub</a></span>
+    <span>Cheshire · aprenda quântica brincando · <a href="https://github.com/2T0nnks/quantum-game" rel="noopener">código no GitHub</a></span>
     <span>Feito com qubits simulados e muito café ☕</span>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="pet" id="pet" data-mood="idle">
+  <div class="pet-bubble" id="pet-bubble" role="status" aria-live="polite" hidden></div>
+  <button class="pet-cat" id="pet-cat" aria-label="Gato de Cheshire — clique para ouvir uma curiosidade">
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <g class="pet-body">
+        <path class="pet-tail" d="M80 82 C100 80 101 54 88 50" stroke="#8A52B3" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <g class="pet-head"><path d="M20 42 L17 9 L43 29 Z" fill="#9B63C4"/><path d="M23 35 L21.5 17 L36 29 Z" fill="#F4A6C8"/><path d="M80 42 L83 9 L57 29 Z" fill="#9B63C4"/><path d="M77 35 L78.5 17 L64 29 Z" fill="#F4A6C8"/><ellipse cx="50" cy="56" rx="37" ry="31" fill="#9B63C4"/><path d="M40 28 Q50 34 60 28M35 35 Q50 43 65 35M14 54 Q21 56 24 62M86 54 Q79 56 76 62" stroke="#7A3FA0" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <g class="pet-eyes-open"><g class="pet-blink"><ellipse cx="36" cy="49" rx="8.5" ry="7" fill="#F6D35B"/><ellipse cx="64" cy="49" rx="8.5" ry="7" fill="#F6D35B"/><g class="pet-pupils"><ellipse cx="36" cy="49" rx="1.9" ry="5.8" fill="#2A1B35"/><ellipse cx="64" cy="49" rx="1.9" ry="5.8" fill="#2A1B35"/></g></g></g>
+          <g class="pet-eyes-happy"><path d="M28 51 Q36 42 44 51M56 51 Q64 42 72 51" stroke="#2A1B35" stroke-width="3.2" fill="none" stroke-linecap="round"/></g>
+        </g>
+      </g>
+      <g class="pet-grin"><path d="M19 63 Q50 98 81 63 Q50 78 19 63Z" fill="#FFFFFF" stroke="#D2407A" stroke-width="2.6" stroke-linejoin="round"/><path d="M31 69.5v8M40.5 72.5v10M50 73.5v10.5M59.5 72.5v10M69 69.5v8" stroke="#D2407A" stroke-width="1.7"/></g>
+    </svg>
+  </button>
+</div>
 
 <script>
 /* QUANTUM:INJECT */
@@ -745,11 +794,12 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
   const KET = bits => `|${bits}⟩`;
 
   // ── Persistence (per browser only) ───────────────────
-  const STORE_KEY = "bloch:v1";
+  const STORE_KEY = "cheshire:v1";
+  const LEGACY_KEY = "bloch:v1";
   const store = (() => {
-    const base = { progress: {}, theme: null, audience: "todos" };
+    const base = { progress: {}, theme: null, audience: "todos", pet: true };
     try {
-      const d = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
+      const d = JSON.parse(localStorage.getItem(STORE_KEY) || localStorage.getItem(LEGACY_KEY) || "{}");
       return { ...base, ...d, progress: d.progress || {} };
     } catch { return base; }
   })();
@@ -1133,6 +1183,49 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
     return api;
   }
 
+  // ── Pet: the Cheshire Cat ─────────────────────────────
+  const choose = list => list[Math.floor(Math.random() * list.length)];
+  const Pet = (() => {
+    const root = $("#pet"), bubble = $("#pet-bubble");
+    let hideTimer, idleTimer, last = "";
+    const QUIPS = [
+      "Aqui somos todos meio superpostos. Você também, até alguém olhar.",
+      "Aonde você quer chegar? Isso depende bastante do circuito que você montar.",
+      "Já vi muito gato sem sorriso. Mas qubit sem fase? Nunca.",
+      "Se eu sumir, não se preocupe: é só decoerência.",
+      "Cada vez mais curiosíssimo! É assim que se aprende quântica.",
+      "Duas H seguidas se desfazem. Eu e o Chapeleiro também, depois do chá.",
+    ];
+    function setMood(m) { root.dataset.mood = m; }
+    function wake() {
+      root.classList.remove("vanish");
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(() => root.classList.add("vanish"), 40000);
+    }
+    function say(text, mood = "talk", ms = 4500, html = false) {
+      if (!store.pet || !text) return;
+      if (html) bubble.innerHTML = text; else bubble.textContent = text;
+      last = text;
+      bubble.hidden = false;
+      setMood(mood);
+      wake();
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => { bubble.hidden = true; setMood("idle"); }, ms);
+    }
+    function sayOnce(text, mood, ms) { if (text !== last || bubble.hidden) say(text, mood, ms); }
+    $("#pet-cat").addEventListener("click", () => {
+      const terms = Object.values(GLOSSARY);
+      if (Math.random() < 0.5) { const g = choose(terms); say(`<strong>${g.term}:</strong> ${g.short}`, "happy", 9000, true); }
+      else say(choose(QUIPS), "happy", 6000);
+    });
+    function apply() {
+      root.hidden = !store.pet;
+      const t = $("#pet-toggle");
+      if (t) t.textContent = store.pet ? "Esconder o Gato" : "Mostrar o Gato";
+    }
+    return { say, sayOnce, wake, apply };
+  })();
+
   // ── Views & routing ──────────────────────────────────
   const VIEWS = ["home", "level", "lab", "glossario", "sobre"];
   let current = { view: "home" };
@@ -1167,12 +1260,13 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
     document.querySelector(".site-footer").hidden = view === "level";
     activeKeyHandler = null;
     if (heroAnim) { cancelAnimationFrame(heroAnim); heroAnim = null; }
-    if (view === "home") renderHome();
+    document.body.classList.toggle("in-level", view === "level");
+    if (view === "home") { renderHome(); Pet.say(choose(["Olá! Por onde começar? Depende de aonde você quer chegar.", "Bem-vindo. Aqui nada é só uma coisa ou outra — até alguém olhar.", "Escolha uma fase. Eu te acompanho… às vezes só com o sorriso."]), "talk", 5000); }
     if (view === "level") startLevel(PLAYABLE.find(l => l.slug === params.slug));
-    if (view === "lab") renderLab();
+    if (view === "lab") { renderLab(); Pet.say("Laboratório livre! Nada pode dar errado. Quer dizer… quase nada.", "think", 4500); }
     if (view === "glossario") renderGlossary(params.term);
-    const titles = { home: "Bloch — física quântica de brincadeira", lab: "Laboratório · Bloch", glossario: "Glossário · Bloch", sobre: "Sobre · Bloch" };
-    document.title = view === "level" ? `${PLAYABLE.find(l => l.slug === params.slug).title} · Bloch` : titles[view];
+    const titles = { home: "Cheshire — física quântica de brincadeira", lab: "Laboratório · Cheshire", glossario: "Glossário · Cheshire", sobre: "Sobre · Cheshire" };
+    document.title = view === "level" ? `${PLAYABLE.find(l => l.slug === params.slug).title} · Cheshire` : titles[view];
   }
 
   // ── Home ─────────────────────────────────────────────
@@ -1276,6 +1370,7 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
     $("#lv-icon").textContent = level.icon;
     $("#lv-title").textContent = level.title;
     renderStep();
+    Pet.say(choose([`${level.icon} ${level.title}. Vamos nessa!`, `Ah, “${level.title}”. Uma das minhas favoritas.`, "Siga o coelho. Ou o circuito."]), "talk", 3500);
   }
 
   function setNext({ enabled, label, ready }) {
@@ -1367,12 +1462,14 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
           b.classList.add("right");
           buttons.forEach((x, j) => { x.disabled = true; if (j !== k && !x.classList.contains("wrong")) x.classList.add("dim"); });
           complete(firstTry ? 1 : 0, { status: firstTry ? "Na primeira! +1 ponto" : "Isso! Agora você sabe o porquê.", kind: "ok" });
+          Pet.say(firstTry ? choose(["Isso! Sorri de orelha a orelha.", "Exato. Até apareci inteiro de alegria.", "Na mosca. Você é bom nisso."]) : "Aí sim. Errar faz parte da superposição.", "happy", 3500);
           if (firstTry) confetti(b);
         } else {
           firstTry = false;
           b.classList.add("wrong");
           b.disabled = true;
           setStatus("Quase! Leia o porquê e tente outra.", "warn");
+          Pet.say(choose(["Hmm, não foi dessa vez. Lê o porquê — eu espero.", "Cada vez mais curiosíssimo! Tenta outra.", "Nem tudo é o que parece. Tenta de novo."]), "oops", 3500);
         }
       }
       activeKeyHandler = e => {
@@ -1412,8 +1509,10 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
           successBox.replaceChildren(el("div", { class: "success-box" }, el("b", { text: "Alvo atingido. " }), el("span", { html: step.success || "" })));
           complete(pts, { status: msg, kind: "ok" });
           if (!gaveUp) confetti(successBox);
+          Pet.say(gaveUp ? "Estude esse circuito com calma. Da próxima, é seu." : used < par ? "Menos portas que a solução oficial?! Até eu fiquei visível de surpresa." : choose(["O Gato sorri: alvo atingido!", "Que circuito elegante.", "Perfeito. A seta foi exatamente aonde devia."]), gaveUp ? "talk" : "happy", 4500);
         } else if (r.probsMatch && step.target.state) {
           setStatus("As probabilidades batem… mas a <strong>fase</strong> não. Olhe as cores das barras e a esfera.", "warn");
+          Pet.sayOnce("Psst: as barras batem, mas a cor não. É a fase!", "think", 5000);
         } else if (circuit.playerCount() > 0) {
           setStatus(`Quase lá? Fidelidade com o alvo: ${Math.round(Math.max(0, r.score) * 100)}%`);
         } else setStatus("");
@@ -1430,6 +1529,7 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
           hintArea.append(el("div", { class: "hint-box" }, el("b", { text: `Dica ${hintsUsed + 1}: ` }), el("span", { html: hints[hintsUsed] })));
           hintsUsed++;
           refreshHint();
+          Pet.say("Psst… deixei uma dica logo abaixo do circuito.", "think", 3500);
         } else {
           gaveUp = true;
           circuit.setPlayer(step.solution);
@@ -1471,6 +1571,7 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
       const meterText = el("span", { text: `0/${min}` });
       const afterBox = el("div");
       function shoot(k) {
+        if (shots === 0) Pet.say("Caiu! Antes de medir, nem eu sabia o resultado.", "think", 4000);
         let last;
         for (let j = 0; j < k; j++) {
           last = Q.sample(st);
@@ -1548,6 +1649,7 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
         requestAnimationFrame(() => requestAnimationFrame(() => { truthBar.style.width = `${truth * 100}%`; }));
         complete(pts, { status: pts === 1 ? "+1 ponto pela intuição quântica" : pts ? "+½ ponto" : "Sem ponto desta vez — mas agora você sabe!", kind: pts ? "ok" : "warn" });
         if (pts === 1) confetti(confirm);
+        Pet.say(pts === 1 ? "Que intuição quântica! Estou impressionado." : pts ? "Chegou perto. A quântica engana todo mundo." : "Surpreso? Eu também fiquei, da primeira vez.", pts ? "happy" : "oops", 4500);
       }
       activeKeyHandler = e => {
         if (locked) return false;
@@ -1606,6 +1708,7 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
     setNext({ enabled: false, label: "Fim da fase" });
     $("#btn-next").hidden = true;
     confetti($(".big-stars", node));
+    Pet.say(stars === 3 ? "Três estrelas! Eu sabia — ou estava em superposição de saber." : "Fase concluída! Quer tentar as três estrelas?", "happy", 5000);
     window.scrollTo({ top: 0, behavior: reducedMotion() ? "auto" : "smooth" });
   }
   function safeUrl(u) { return /^https:\/\//.test(u) ? u : "#"; }
@@ -1693,6 +1796,8 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
     });
     $("#btn-next").addEventListener("click", advance);
     $("#dyk-next").addEventListener("click", () => { factIdx++; showFact(); });
+    $("#pet-toggle").addEventListener("click", () => { store.pet = !store.pet; save(); Pet.apply(); if (store.pet) Pet.say("Voltei! Nunca fui embora, na verdade.", "happy"); });
+    ["pointerdown", "keydown"].forEach(ev => document.addEventListener(ev, () => Pet.wake(), { passive: true }));
     $("#reset-progress").addEventListener("click", () => {
       if (!confirm("Apagar todo o seu progresso neste navegador?")) return;
       store.progress = {}; save(); renderXp(); toast("Progresso apagado.");
@@ -1714,6 +1819,7 @@ select.btn { appearance: none; -webkit-appearance: none; padding-right: 2em; bac
 
   applyTheme();
   renderXp();
+  Pet.apply();
   wire();
   route(true);
 })();
