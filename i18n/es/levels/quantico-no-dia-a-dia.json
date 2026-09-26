@@ -42,7 +42,7 @@
       "source": "The Nobel Prize in Physics 2025."
     },
     {
-      "question": "¿Una computadora cuántica hará más rápidos tus juegos y planillas?",
+      "question": "¿Una computadora cuántica hará más rápidos tus juegos y hojas de cálculo?",
       "options": [
         { "text": "Sí, es más rápida en todo.", "why": "No lo es. Para la mayoría de las tareas diarias, una computadora común es más rápida, más barata y más confiable." },
         { "text": "No: acelera tipos específicos de problemas, como simular moléculas o factorizar números enormes.", "why": "Eso. La ventaja cuántica aparece en problemas con la estructura adecuada para que la interferencia trabaje. No es una “PC turbo”." },

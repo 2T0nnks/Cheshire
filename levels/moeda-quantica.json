@@ -93,7 +93,7 @@
   ],
   "terms": ["bit", "qubit", "superposicao", "medicao", "hadamard", "porta-x"],
   "further": [
-    { "title": "Wikipédia — Qubit", "url": "https://pt.wikipedia.org/wiki/Qubit" },
+    { "title": "Wikipédia — Bit quântico", "url": "https://pt.wikipedia.org/wiki/Bit_qu%C3%A2ntico" },
     { "title": "Quantum Country — ensaio interativo de Andy Matuschak e Michael Nielsen", "url": "https://quantum.country/qcvc" }
   ]
 }

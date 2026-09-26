@@ -6,7 +6,7 @@
       "title": "Una partícula, dos rendijas",
       "body": [
         "En 1801, Thomas Young hizo pasar luz por dos rendijas y vio franjas claras y oscuras en una pared: interferencia, la firma de las ondas.",
-        "Un siglo después, se descubrió que la luz llega en paquetes (fotones). Y en 1989, Akira Tonomura y sus colegas enviaron <strong>electrones de a uno</strong> por un montaje equivalente. Cada uno aparece como un puntito… pero, sumando miles, surgen las franjas.",
+        "Un siglo después, se descubrió que la luz llega en paquetes (fotones). En 1974, Merli, Missiroli y Pozzi, en Bolonia, enviaron <strong>electrones de uno en uno</strong> por un montaje equivalente; en 1989, Akira Tonomura y sus colegas filmaron cómo se formaba el patrón. Cada electrón aparece como un puntito… pero, sumando miles, surgen las franjas.",
         "Cada electrón, solo, “interfiere consigo mismo”. Hasta que alguien intenta descubrir por qué rendija pasó."
       ]
     },
@@ -19,7 +19,7 @@
     },
     {
       "title": "Sin espiar",
-      "body": "Dos espejos semitransparentes (H, H). Envía fotones, de a uno.",
+      "body": "Dos espejos semitransparentes (H, H). Envía fotones, de uno en uno.",
       "wires": ["fotón"],
       "after": "¡Todos en el detector 0! Los dos caminos interfieren: de forma constructiva en el detector 0 y destructiva en el 1. Como las franjas de la doble rendija."
     },
@@ -43,7 +43,7 @@
       "wires": ["fotón", "detector"],
       "hints": [
         "La CNOT es su propia inversa.",
-        "Haz que el detector “desanote” el camino con la misma puerta que lo anotó."
+        "Haz que el detector “borre” el registro del camino con la misma puerta que lo anotó."
       ],
       "success": "¡Información borrada, interferencia de vuelta! Es la idea detrás de los experimentos de <em>borrador cuántico</em>. En la esfera, la flecha del fotón volvió a crecer."
     },
