@@ -16,7 +16,7 @@
     {
       "title": "Inversión respecto de la media",
       "body": [
-        "El paso siguiente es el <strong>difusor</strong>: refleja cada amplitud respecto de la media de todas. La marcada, que quedó negativa, está muy por debajo de la media — y sale disparada hacia arriba. Las demás se achican.",
+        "El paso siguiente es el <strong>difusor</strong>: refleja cada amplitud respecto de la media de todas. La marcada, que quedó negativa, está muy por debajo de la media — y sale disparada hacia arriba. Las demás disminuyen.",
         "Con 2 qubits, una sola ronda lleva la marcada al 100%. Como circuito, el difusor es: H en todos, “marcar el <code>|00⟩</code>”, H en todos. Marcar el <code>|00⟩</code> se puede hacer con X en todos, CZ, X en todos — o, más corto, Z en todos y CZ."
       ]
     },

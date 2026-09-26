@@ -18,7 +18,7 @@
       "title": "Uma partícula, duas fendas",
       "body": [
         "Em 1801, Thomas Young passou luz por duas fendas e viu listras claras e escuras numa parede: interferência, a assinatura das ondas.",
-        "Um século depois, descobriu-se que a luz chega em pacotes (fótons). E, em 1989, Akira Tonomura e colegas mandaram <strong>elétrons um de cada vez</strong> por um aparato equivalente. Cada um aparece como um pontinho… mas, somando milhares, surgem as listras.",
+        "Um século depois, descobriu-se que a luz chega em pacotes (fótons). Em 1974, Merli, Missiroli e Pozzi, em Bolonha, mandaram <strong>elétrons um de cada vez</strong> por um aparato equivalente; em 1989, Akira Tonomura e colegas filmaram o padrão se formando. Cada elétron aparece como um pontinho… mas, somando milhares, surgem as listras.",
         "Cada elétron, sozinho, “interfere consigo mesmo”. Até alguém tentar descobrir por qual fenda ele passou."
       ]
     },
@@ -92,6 +92,6 @@
   ],
   "terms": ["dualidade", "interferencia", "decoerencia", "emaranhamento"],
   "further": [
-    { "title": "Wikipédia — Experiência da dupla fenda", "url": "https://pt.wikipedia.org/wiki/Experi%C3%AAncia_da_dupla_fenda" }
+    { "title": "Wikipédia — Experimento da dupla fenda", "url": "https://pt.wikipedia.org/wiki/Experimento_da_dupla_fenda" }
   ]
 }

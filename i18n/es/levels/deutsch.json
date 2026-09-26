@@ -34,7 +34,7 @@
     {
       "question": "¿Cuál es el ingrediente esencial que hace funcionar el algoritmo?",
       "options": [
-        { "text": "La computadora cuántica prueba <code>f(0)</code> y <code>f(1)</code> en paralelo y lee las dos.", "why": "Hasta “consulta las dos” en superposición, pero una medición solo entrega un resultado. Sin interferencia, no se podría extraer nada útil." },
+        { "text": "La computadora cuántica prueba <code>f(0)</code> y <code>f(1)</code> en paralelo y lee las dos.", "why": "Es cierto que “consulta las dos” en superposición, pero una medición solo entrega un resultado. Sin interferencia, no se podría extraer nada útil." },
         { "text": "Phase kickback + interferencia: <code>f(x)</code> se vuelve fase en <code>x</code>, y la H final convierte la diferencia de fase en resultado.", "why": "Exacto. Es el mismo patrón de muchos algoritmos: preparar superposición, marcar con fase, interferir." },
         { "text": "Los qubits son más rápidos que los transistores.", "why": "No tiene que ver con la velocidad física: se trata de cuántas consultas hacen falta." }
       ]
