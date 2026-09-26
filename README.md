@@ -50,7 +50,7 @@ npm run new         # cria o esqueleto de uma fase nova (status draft)
 
 ## Publicar no GitHub Pages
 
-O workflow `.github/workflows/deploy.yml` roda testes, validação e build a cada push na `main` e publica `dist/` no Pages. Para ativar uma vez: **Settings → Pages → Build and deployment → Source: GitHub Actions**. O site fica em `https://2t0nnks.github.io/quantum-game/`.
+O workflow `.github/workflows/deploy.yml` roda testes, validação e build a cada push na `main` e publica `dist/` no Pages. Para ativar uma vez: **Settings → Pages → Build and deployment → Source: GitHub Actions**. O site fica em `https://2t0nnks.github.io/Cheshire/`.
 
 ## Privacidade e segurança
 

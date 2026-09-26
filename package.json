@@ -1,5 +1,5 @@
 {
-  "name": "quantum-game",
+  "name": "cheshire",
   "version": "0.1.0",
   "private": true,
   "description": "Cheshire — minijogo educativo open source de computação e física quântica. Fases em JSON, motor num único HTML com simulador de qubits.",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/2T0nnks/quantum-game.git"
+    "url": "git+https://github.com/2T0nnks/Cheshire.git"
   },
   "keywords": [
     "quantum-computing",

@@ -224,7 +224,7 @@
 <h2>Convenções</h2>
 <p>O fio de cima é o qubit 0 e é o dígito mais à esquerda: em <code>|10⟩</code>, o qubit 0 vale 1. Nas barras de probabilidade, a <strong>cor</strong> mostra a fase de cada amplitude; nas esferas, uma seta curta significa que o qubit está emaranhado com os outros.</p>
 <h2>Contribua</h2>
-<p>Professor(a), estudante ou pesquisador(a)? Escreva uma fase ou traduza uma. O passo a passo está em <code>docs/CONTRIBUTING.md</code>, no <a href="https://github.com/2T0nnks/quantum-game" rel="noopener">repositório no GitHub</a>.</p>
+<p>Professor(a), estudante ou pesquisador(a)? Escreva uma fase ou traduza uma. O passo a passo está em <code>docs/CONTRIBUTING.md</code>, no <a href="https://github.com/2T0nnks/Cheshire" rel="noopener">repositório no GitHub</a>.</p>
 <h2>Privacidade</h2>
 <p>Seu progresso fica só no seu navegador (localStorage). Nada é enviado a lugar nenhum.</p>
 <p><button class="btn small" data-action="reset-progress">Apagar meu progresso</button></p>
@@ -232,7 +232,7 @@
 <p>Código do motor sob MIT; conteúdo das fases e documentação sob CC BY-SA 4.0. Fontes Space Grotesk, Atkinson Hyperlegible e JetBrains Mono sob SIL OFL.</p>`,
     resetConfirm: "Apagar todo o seu progresso neste navegador?",
     resetDone: "Progresso apagado.",
-    footerLeftHtml: "Cheshire · aprenda quântica brincando · <a href=\"https://github.com/2T0nnks/quantum-game\" rel=\"noopener\">código no GitHub</a>",
+    footerLeftHtml: "Cheshire · aprenda quântica brincando · <a href=\"https://github.com/2T0nnks/Cheshire\" rel=\"noopener\">código no GitHub</a>",
     footerRight: "Feito com qubits simulados e muito café ☕",
 
     petAria: "Gato de Cheshire — clique para ouvir uma curiosidade",
@@ -473,7 +473,7 @@
 <h2>Convenciones</h2>
 <p>El hilo de arriba es el qubit 0 y es el dígito de más a la izquierda: en <code>|10⟩</code>, el qubit 0 vale 1. En las barras de probabilidad, el <strong>color</strong> muestra la fase de cada amplitud; en las esferas, una flecha corta significa que el qubit está entrelazado con los demás.</p>
 <h2>Contribuye</h2>
-<p>¿Docente, estudiante o investigador(a)? Escribe un nivel o traduce uno. El paso a paso está en <code>docs/CONTRIBUTING.md</code>, en el <a href="https://github.com/2T0nnks/quantum-game" rel="noopener">repositorio de GitHub</a>.</p>
+<p>¿Docente, estudiante o investigador(a)? Escribe un nivel o traduce uno. El paso a paso está en <code>docs/CONTRIBUTING.md</code>, en el <a href="https://github.com/2T0nnks/Cheshire" rel="noopener">repositorio de GitHub</a>.</p>
 <h2>Privacidad</h2>
 <p>Tu progreso se queda solo en tu navegador (localStorage). No se envía nada a ningún lado.</p>
 <p><button class="btn small" data-action="reset-progress">Borrar mi progreso</button></p>
@@ -481,7 +481,7 @@
 <p>Código del motor bajo MIT; contenido de los niveles y documentación bajo CC BY-SA 4.0. Fuentes Space Grotesk, Atkinson Hyperlegible y JetBrains Mono bajo SIL OFL.</p>`,
     resetConfirm: "¿Borrar todo tu progreso en este navegador?",
     resetDone: "Progreso borrado.",
-    footerLeftHtml: "Cheshire · aprende cuántica jugando · <a href=\"https://github.com/2T0nnks/quantum-game\" rel=\"noopener\">código en GitHub</a>",
+    footerLeftHtml: "Cheshire · aprende cuántica jugando · <a href=\"https://github.com/2T0nnks/Cheshire\" rel=\"noopener\">código en GitHub</a>",
     footerRight: "Hecho con qubits simulados y mucho café ☕",
 
     petAria: "Gato de Cheshire — haz clic para oír una curiosidad",
@@ -722,7 +722,7 @@
 <h2>Conventions</h2>
 <p>The top wire is qubit 0 and it's the leftmost digit: in <code>|10⟩</code>, qubit 0 is 1. In the probability bars, the <strong>color</strong> shows each amplitude's phase; on the spheres, a short arrow means the qubit is entangled with the others.</p>
 <h2>Contribute</h2>
-<p>Teacher, student or researcher? Write a level or translate one. The step-by-step guide is in <code>docs/CONTRIBUTING.md</code>, in the <a href="https://github.com/2T0nnks/quantum-game" rel="noopener">GitHub repository</a>.</p>
+<p>Teacher, student or researcher? Write a level or translate one. The step-by-step guide is in <code>docs/CONTRIBUTING.md</code>, in the <a href="https://github.com/2T0nnks/Cheshire" rel="noopener">GitHub repository</a>.</p>
 <h2>Privacy</h2>
 <p>Your progress stays in your browser only (localStorage). Nothing is sent anywhere.</p>
 <p><button class="btn small" data-action="reset-progress">Erase my progress</button></p>
@@ -730,7 +730,7 @@
 <p>Engine code under MIT; level content and documentation under CC BY-SA 4.0. Space Grotesk, Atkinson Hyperlegible and JetBrains Mono fonts under the SIL OFL.</p>`,
     resetConfirm: "Erase all your progress in this browser?",
     resetDone: "Progress erased.",
-    footerLeftHtml: "Cheshire · learn quantum by playing · <a href=\"https://github.com/2T0nnks/quantum-game\" rel=\"noopener\">code on GitHub</a>",
+    footerLeftHtml: "Cheshire · learn quantum by playing · <a href=\"https://github.com/2T0nnks/Cheshire\" rel=\"noopener\">code on GitHub</a>",
     footerRight: "Made with simulated qubits and lots of coffee ☕",
 
     petAria: "Cheshire Cat — click to hear a fun fact",
